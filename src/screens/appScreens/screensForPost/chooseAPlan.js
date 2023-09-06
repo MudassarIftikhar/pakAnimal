@@ -18,9 +18,9 @@ const ChooseAPlan = ({route, navigation}) => {
   const type = '';
   return (
     <SafeAreaView>
-      <StatusBar backgroundColor={'#00AEEF'} />
+      <StatusBar backgroundColor={'#b63439'} />
       <View
-        style={{height: 50, backgroundColor: '#00AEEF', alignItems: 'center'}}>
+        style={{height: 50, backgroundColor: '#b63439', alignItems: 'center'}}>
         <View
           style={{
             flexDirection: 'row',

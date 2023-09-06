@@ -102,8 +102,8 @@ class Home extends Component {
     // this.getApiData();
   }
   async getApiData() {
-    let resp = await axios.get('http://192.168.1.16:3000/api/user/register');
-    console.log('Response>>>>', resp.data);
+    // let resp = await axios.get('http://192.168.1.16:3000/api/user/register');
+    // console.log('Response>>>>', resp.data);
     // console.log('Data>>>>>',this.setState.data)
   }
   render() {
@@ -130,7 +130,7 @@ class Home extends Component {
             />
 
             <View style={styles.searchLocationContainer}>
-              <Ionicons name="location-sharp" size={15} color="#00AEEF" />
+              <Ionicons name="location-sharp" size={15} color="#b63439" />
               <Text style={styles.locationTxt} numberOfLines={1}>
                 Faisalabad
               </Text>
@@ -160,7 +160,7 @@ class Home extends Component {
                   <Ionicons
                     name="checkmark-circle"
                     size={25}
-                    color={'#00AEEF'}
+                    color={'#b63439'}
                   />
                   <Text style={styles.txtLbl2}>text 1</Text>
                 </View>
@@ -168,7 +168,7 @@ class Home extends Component {
                   <Ionicons
                     name="checkmark-circle"
                     size={25}
-                    color={'#00AEEF'}
+                    color={'#b63439'}
                   />
                   <Text style={styles.txtLbl2}>text 2</Text>
                 </View>
@@ -176,7 +176,7 @@ class Home extends Component {
                   <Ionicons
                     name="checkmark-circle"
                     size={25}
-                    color={'#00AEEF'}
+                    color={'#b63439'}
                   />
                   <Text style={styles.txtLbl2}>text 3</Text>
                 </View>
@@ -263,7 +263,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
   headerContainer: {
     height: 125,
-    backgroundColor: '#00AEEF',
+    backgroundColor: '#b63439',
   },
   tabBtnContainer: {
     flexDirection: 'row',
@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
   searchLocationContainer: {
     flexDirection: 'row',
     borderStartWidth: 1,
-    borderStartColor: '#00AEEF',
+    borderStartColor: '#b63439',
     paddingStart: 10,
     alignItems: 'center',
     paddingEnd: 20,
@@ -328,7 +328,7 @@ const styles = StyleSheet.create({
     width: 60,
     marginStart: 5,
     textAlign: 'center',
-    color: '#00AEEF',
+    color: '#b63439',
     fontSize: 14,
   },
   lbl1: {
@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     margin: 10,
-    color: '#0000FF',
+    color: '#b63439',
   },
   postDiscription: {
     fontSize: 16,
@@ -414,7 +414,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   lblTxt: {
-    color: '#00AEEF',
+    color: '#b63439',
     paddingStart: 10,
     marginTop: 10,
   },
@@ -439,7 +439,7 @@ const styles = StyleSheet.create({
   viewAll: {
     position: 'absolute',
     right: 0,
-    color: '#00AEEF',
+    color: '#b63439',
     marginRight: 15,
   },
   itemListContaier: {
