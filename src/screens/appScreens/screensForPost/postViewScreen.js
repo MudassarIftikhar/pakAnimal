@@ -16,6 +16,7 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import PagerView from 'react-native-pager-view';
 const PostViewScreen = ({route, navigation}) => {
   console.log('Type>>>>', route);
   const type = route.params.postTitle;
@@ -25,7 +26,14 @@ const PostViewScreen = ({route, navigation}) => {
         <View>
           <StatusBar translucent backgroundColor={'rgba(0,0,0,0)'} />
           <View style={styles.imageMainContainer}>
-            <Image style={styles.itemImage} source={route.params.postImage} />
+            <PagerView style={styles.itemImage} initialPage={0}>
+              <Image
+                key="1"
+                style={styles.itemImage}
+                source={route.params.postImage}
+              />
+            </PagerView>
+            {/* <Image style={styles.itemImage} source={route.params.postImage} /> */}
             <View style={styles.imageTxtContainer}>
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <IonIcons name="chevron-back-sharp" size={30} color="#fff" />

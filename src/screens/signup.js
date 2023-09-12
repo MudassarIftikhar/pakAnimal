@@ -1,16 +1,13 @@
+/* eslint-disable no-alert */
 import React, {useState} from 'react';
 import {services} from '../utils/api/services';
 import {
-  Alert,
   Image,
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 import Cross from 'react-native-vector-icons/Feather';
@@ -68,10 +65,8 @@ const SignUp = ({navigation}) => {
         onPress={() => navigation.goBack()}>
         <Cross name="x" size={20} color="#000" />
       </TouchableOpacity>
-      <View style={{margin: 30}}>
-        <Text style={{fontWeight: '700', color: '#000', fontSize: 22}}>
-          Let's get you started!{' '}
-        </Text>
+      <View style={styles.innerMainContaier}>
+        <Text style={styles.lableLetsGo}>Let's get you started! </Text>
         <Text style={styles.lable}>Email Address</Text>
         <TextInput
           style={styles.textInputStyle}
@@ -146,12 +141,13 @@ const SignUp = ({navigation}) => {
         <TouchableOpacity onPress={() => createUser()}>
           <Text style={styles.btnSignup}>Sign Up</Text>
         </TouchableOpacity>
-        <Text style={styles.lblAlreadyAcc}>
-          Already have an account?{' '}
+        <View style={styles.haveAccContainer}>
+          <Text style={styles.lblAlreadyAcc}> Already have an account? </Text>
           <TouchableOpacity onPress={() => navigation.navigate('EmailLogin')}>
-            <Text style={{fontWeight: '600', color: '#000'}}>Sign In</Text>
+            <Text style={styles.txtSingIn}>Sign In</Text>
           </TouchableOpacity>
-        </Text>
+        </View>
+
         <Text style={styles.lable2}>
           {' '}
           By continuing you agree to our{'\n'}{' '}
@@ -229,5 +225,16 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     marginEnd: 10,
   },
+  lableLetsGo: {fontWeight: '700', color: '#000', fontSize: 22},
+  txtSingIn: {
+    fontWeight: '800',
+    color: '#000',
+    marginTop: 20,
+  },
+  haveAccContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  innerMainContaier: {margin: 30},
 });
 export default SignUp;

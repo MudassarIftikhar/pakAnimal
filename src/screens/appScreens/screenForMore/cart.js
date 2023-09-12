@@ -1,14 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
-  Image,
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
@@ -17,43 +13,16 @@ const Cart = ({navigation}) => {
   return (
     <SafeAreaView>
       <StatusBar backgroundColor={'#00AEEF'} />
-      <View
-        style={{height: 50, backgroundColor: '#00AEEF', alignItems: 'center'}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            height: 40,
-            width: '100%',
-            alignSelf: 'flex-start',
-            alignItems: 'center',
-            right: 0,
-            paddingTop: 5,
-          }}>
+      <View style={styles.header}>
+        <View style={styles.headerBox}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <IonIcons name="chevron-back-sharp" size={30} color="#fff" />
           </TouchableOpacity>
-          <Text
-            style={{
-              fontSize: 20,
-              color: '#fff',
-              fontWeight: '600',
-              marginStart: 20,
-            }}>
-            Cart (0)
-          </Text>
+          <Text style={styles.headerTxt}>Cart (0)</Text>
         </View>
       </View>
 
-      <View
-        style={{
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-          flexDirection: 'column',
-          width: '100%',
-          paddingStart: 20,
-          paddingEnd: 20,
-          marginTop: 160,
-        }}>
+      <View style={styles.noItemBox}>
         <Feather name="shopping-cart" size={100} color="#909090" />
         <Text style={styles.txtLbl}>No Item added to cart</Text>
         <Text style={styles.txtLbl2}>Looking for Products?</Text>
@@ -91,6 +60,31 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 15,
     color: '#808080',
+  },
+  header: {height: 50, backgroundColor: '#00AEEF', alignItems: 'center'},
+  headerBox: {
+    flexDirection: 'row',
+    height: 40,
+    width: '100%',
+    alignSelf: 'flex-start',
+    alignItems: 'center',
+    right: 0,
+    paddingTop: 5,
+  },
+  headerTxt: {
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: '600',
+    marginStart: 20,
+  },
+  noItemBox: {
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    flexDirection: 'column',
+    width: '100%',
+    paddingStart: 20,
+    paddingEnd: 20,
+    marginTop: 160,
   },
 });
 export default Cart;

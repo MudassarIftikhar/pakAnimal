@@ -1,55 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Image,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  TextInput,
-  TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import Cross from 'react-native-vector-icons/Feather';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesom from 'react-native-vector-icons/FontAwesome';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-const personalList = [
-  {
-    id: '1',
-    name: 'My Cart',
-    iconName: 'opencart',
-    iconType: 'FontAwesome',
-  },
-  {
-    id: '2',
-    name: 'My Orders',
-    iconName: 'opencart',
-    iconType: 'FontAwesome',
-  },
-  {
-    id: '3',
-    name: 'Saved',
-    iconName: 'heart',
-    iconType: 'EvilIcons',
-  },
-  {
-    id: '4',
-    name: 'My Garage',
-    iconName: 'garage',
-    iconType: 'MaterialCommunityIcons',
-  },
-  {
-    id: '5',
-    name: 'Language',
-    iconName: 'language',
-    iconType: 'FontAwesome',
-  },
-];
+
 const More = ({navigation}) => {
   return (
     <ScrollView>
@@ -116,14 +77,7 @@ const More = ({navigation}) => {
         <View style={styles.listContainer}>
           <FontAwesom name="language" size={20} color="#808080" />
           <Text style={styles.listLblText}>Language</Text>
-          <Text
-            style={{
-              color: '#00AEEF',
-              fontWeight: '600',
-              textDecorationLine: 'underline',
-            }}>
-            English
-          </Text>
+          <Text style={styles.language}>English</Text>
         </View>
 
         <Text style={styles.lblText}>Others</Text>
@@ -211,6 +165,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomColor: '#000',
     borderBottomWidth: 0.2,
+  },
+  language: {
+    color: '#00AEEF',
+    fontWeight: '600',
+    textDecorationLine: 'underline',
   },
 });
 export default More;

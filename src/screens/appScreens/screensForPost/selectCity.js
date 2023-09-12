@@ -1,14 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {
-  Image,
-  SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 import {Modal} from 'react-native-paper';

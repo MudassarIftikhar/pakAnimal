@@ -1,15 +1,11 @@
-import {useRoute} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Image,
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
@@ -19,30 +15,12 @@ const ChooseAPlan = ({route, navigation}) => {
   return (
     <SafeAreaView>
       <StatusBar backgroundColor={'#b63439'} />
-      <View
-        style={{height: 50, backgroundColor: '#b63439', alignItems: 'center'}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            height: 40,
-            width: '100%',
-            alignSelf: 'flex-start',
-            alignItems: 'center',
-            right: 0,
-            paddingTop: 5,
-          }}>
+      <View style={styles.header}>
+        <View style={styles.headerBox}>
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <IonIcons name="chevron-back-sharp" size={30} color="#fff" />
           </TouchableOpacity>
-          <Text
-            style={{
-              fontSize: 20,
-              color: '#fff',
-              fontWeight: '600',
-              marginStart: 20,
-            }}>
-            Choose a plan
-          </Text>
+          <Text style={styles.headerTxt}>Choose a Plan</Text>
         </View>
       </View>
       {type === 'Pet' ? (
@@ -173,6 +151,22 @@ const styles = StyleSheet.create({
   postImage: {
     height: 130,
     width: 100,
+  },
+  header: {height: 50, backgroundColor: '#b63439', alignItems: 'center'},
+  headerBox: {
+    flexDirection: 'row',
+    height: 40,
+    width: '100%',
+    alignSelf: 'flex-start',
+    alignItems: 'center',
+    right: 0,
+    paddingTop: 5,
+  },
+  headerTxt: {
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: '600',
+    marginStart: 20,
   },
 });
 export default ChooseAPlan;

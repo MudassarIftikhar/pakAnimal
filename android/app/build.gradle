@@ -76,12 +76,12 @@ android {
 
     namespace "com.pakanimal"
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
         applicationId "com.pakanimal"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        vectorDrawables.useSupportLibrary = true
     }
     signingConfigs {
         debug {

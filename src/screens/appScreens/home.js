@@ -1,25 +1,17 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import {
   FlatList,
   Image,
-  SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
-import {useRoute} from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import SellNow from './sellNow';
-import axios from 'axios';
-import CategoryTab from '../../router/homeCategoryTab';
-import {Item} from 'react-native-paper/lib/typescript/components/Drawer/Drawer';
 const tabButton = [
   {
     id: '1',
@@ -143,8 +135,8 @@ class Home extends Component {
             <Text style={styles.lbl1}>PakWild Offerings</Text>
 
             <TouchableOpacity onPress={{}} style={styles.postContainer}>
-              <View style={{flexDirection: 'row', flex: 1}}>
-                <View style={{flexDirection: 'column', flex: 1, marginEnd: 10}}>
+              <View style={styles.cardOutterBox}>
+                <View style={styles.cardInnerBox}>
                   <Text style={styles.postHeading}>Sell Your Pet!</Text>
                   <Text style={styles.postDiscription} numberOfLines={2}>
                     Connect with Caring Pet Owners and Verified Buyers
@@ -474,5 +466,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 5,
   },
+  cardOutterBox: {flexDirection: 'row', flex: 1},
+  cardInnerBox: {flexDirection: 'column', flex: 1, marginEnd: 10},
 });
 export default Home;

@@ -1,17 +1,6 @@
-import React, {useState} from 'react';
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  useColorScheme,
-  View,
-} from 'react-native';
-import IonIcons from 'react-native-vector-icons/Ionicons';
+import React from 'react';
+import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
+
 const Pending = ({navigation}) => {
   return (
     <SafeAreaView>

@@ -1,16 +1,7 @@
-import React, {useState} from 'react';
-import {
-  Image,
-  StyleSheet,
-  Text,
-  Button,
-  View,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Modal} from 'react-native-paper';
 import Cross from 'react-native-vector-icons/Feather';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import PostAdd from '../../router/postAdd';
 const SellNow = ({navigation, props}) => {
   // const [showModal, setShowModal] = useState(false);
 

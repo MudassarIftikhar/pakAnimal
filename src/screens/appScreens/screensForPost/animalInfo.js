@@ -1,133 +1,32 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
-  Dimensions,
-  Image,
   ImageBackground,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
-import IonIcons from 'react-native-vector-icons/Ionicons';
-import Cross from 'react-native-vector-icons/Feather';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesom from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
-import StepIndicator from 'react-native-step-indicator';
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const ios_blue = '#007AFF';
-const themeColor = '#0D1014';
 
-// import {SelectMultipleGroupButton} from './index.js';
 import SimpleButton from '../../sample/SimpleButton';
-// import GroupButton from './sample/GroupButton';
-// import SegmentedControl from './sample/SegmentedControl';
-// import ListButton from './sample/ListButton';
-
-import {Item} from 'react-native-paper/lib/typescript/src/components/Drawer/Drawer';
-const buttonLbl = [
-  {
-    id: '1',
-    name: 'Cat',
-  },
-  {
-    id: '2',
-    name: 'goat',
-  },
-  {
-    id: '3',
-    name: 'Dog',
-  },
-  {
-    id: '4',
-    name: 'Cow',
-  },
-];
-const labels = ['Basic info', 'Animal info', 'Checkout'];
-const customStyles = {
-  stepIndicatorSize: 25,
-  currentStepIndicatorSize: 30,
-  separatorStrokeWidth: 1,
-  currentStepStrokeWidth: 3,
-  stepStrokeCurrentColor: 'gold',
-  stepStrokeWidth: 2,
-  stepStrokeFinishedColor: '#fe7013',
-  stepStrokeUnFinishedColor: '#fff',
-  separatorFinishedColor: 'gold',
-  separatorUnFinishedColor: '#fff',
-  stepIndicatorFinishedColor: '#fe7013',
-  stepIndicatorUnFinishedColor: '#ffffff',
-  stepIndicatorCurrentColor: 'gold',
-  stepIndicatorLabelFontSize: 11,
-  currentStepIndicatorLabelFontSize: 11,
-  stepIndicatorLabelCurrentColor: '#000',
-  stepIndicatorLabelFinishedColor: '#000',
-  stepIndicatorLabelUnFinishedColor: '#000',
-  labelColor: '#fff',
-  labelSize: 11,
-  currentStepLabelColor: 'gold',
-};
+import Header from '../../../components/header';
+import InfoTrack from '../../../components/infoTrack';
 
 const AnimalInfo = ({props, navigation}) => {
-  console.log('props>>>>>>', props.propData);
   return (
     <View flex={1} backgroundColor={'#EF4036'}>
       <StatusBar backgroundColor={'#EF4036'} />
       <ImageBackground source={require('../../../assets/images/BG-01.png')}>
-        <View
-          style={{
-            height: 50,
-            alignItems: 'center',
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              height: 40,
-              width: '100%',
-              alignSelf: 'flex-start',
-              alignItems: 'center',
-              right: 0,
-              paddingTop: 5,
-              paddingStart: 15,
-            }}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <IonIcons name="arrow-back" size={30} color="#fff" />
-            </TouchableOpacity>
-            <Text
-              style={{
-                fontSize: 20,
-                color: '#fff',
-                fontWeight: '600',
-                marginStart: 40,
-                flex: 1,
-              }}>
-              Animal Info
-            </Text>
-            <Cross marginEnd={10} name="x" size={25} color="#fff" />
-          </View>
-        </View>
-        <View style={styles.infoTrackMainDiv}>
-          <StepIndicator
-            stepCount={3}
-            customStyles={customStyles}
-            currentPosition={1}
-            labels={labels}
-          />
-        </View>
-        <View style={styles.outerDiv}>
-          <Text style={styles.lable1}>Animal info</Text>
-        </View>
+        <Header title="Animal Info" CrossIcon={true} Navigation={navigation} />
+        <InfoTrack position={1} title="Animal info" />
       </ImageBackground>
       <ScrollView style={styles.txtInputMainDiv}>
-        <View style={{marginTop: 20, marginBottom: 20}}>
+        <View style={styles.discriptionBox}>
           {/* 3rd Field */}
           <View style={styles.txtInputInnerDiv}>
             <Entypo style={styles.iconBack} name="location-pin" size={15} />
@@ -139,32 +38,18 @@ const AnimalInfo = ({props, navigation}) => {
               style={styles.input}
               placeholder="Briefly describe the animal you're selling"
               placeholderTextColor={'#B2BEB5'}
-              value={props.propData}
+              value={props}
             />
-            {/* <TouchableOpacity
-              activeOpacity={0.8}
-              style={styles.selectCityBtn}
-              onPress={() => navigation.navigate('SelectCity')}>
-              <IonIcons name={'chevron-forward'} color={'#eee'} size={26} />
-            </TouchableOpacity> */}
           </View>
           <View style={styles.txtInputInnerDiv}>
             <Entypo style={styles.iconBack} name="location-pin" size={15} />
             <Text style={styles.headingLbl}>Choose your Animal</Text>
           </View>
-          <View style={{marginLeft: 55}}>
+          <View style={styles.multiBtnContainer}>
             <SimpleButton />
           </View>
         </View>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'flex-end',
-            paddingTop: 2,
-            borderTopWidth: 1,
-            borderTopColor: '#eee',
-            marginTop: 150,
-          }}>
+        <View style={styles.btnBox}>
           <TouchableOpacity
             style={styles.submitBtn}
             onPress={() => navigation.navigate('CheckOutSecond')}>
@@ -180,8 +65,6 @@ const styles = StyleSheet.create({
   infoTrackMainDiv: {
     height: 70,
     paddingTop: 20,
-    // justifyContent: 'center',
-    // flexDirection: 'row',
   },
   outerDiv: {
     height: 100,
@@ -265,6 +148,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 5,
     padding: 5,
+  },
+  multiBtnContainer: {
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: '600',
+    marginStart: 40,
+    flex: 1,
+  },
+  discriptionBox: {marginTop: 20, marginBottom: 20},
+  btnBox: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingTop: 2,
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+    marginTop: 150,
   },
 });
 export default AnimalInfo;

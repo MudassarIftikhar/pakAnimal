@@ -1,15 +1,10 @@
-import {useRoute} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React from 'react';
 import {
-  Image,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';

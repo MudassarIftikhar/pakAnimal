@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  FlatList,
   Image,
   SafeAreaView,
   ScrollView,
@@ -19,8 +20,13 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {Item} from 'react-native-paper/lib/typescript/components/Drawer/Drawer';
-// import ImagePicker from 'react-native-image-crop-picker';
+import ImagePicker from 'react-native-image-crop-picker';
 import {launchImageCamera, launchImageLibrary} from 'react-native-image-picker';
+// import SvgIcon from 'react-native-svg-icon';
+import DiscriptionSvg from '../../../assets/images/Description-01.svg';
+import AnimalTypeSvg from '../../../assets/images/Animal Type-01.svg';
+
+let imageList = [];
 const SellYourCar = ({navigation}) => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -53,16 +59,59 @@ const SellYourCar = ({navigation}) => {
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   const [selectedImage, setSelectedImage] = useState('');
-  const imagePicker = () => {
-    let options = {
-      storageOptions: {
-        path: 'image',
-      },
-    };
-    launchImageLibrary(options, response => {
-      setSelectedImage(response.assets[0].uri);
-      console.log('Response>>>', response.assets[0].uri);
-    });
+  const [seImages, setImages] = useState([]);
+  const IimagePicker = () => {
+    // let options = {
+    //   storageOptions: {
+    //     path: 'image',
+    //   },
+    // };
+    // launchImageLibrary(options, response => {
+    //   setSelectedImage(response.assets[0].uri);
+    //   console.log('Response>>>', response.assets[0].uri);
+    // });
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    })
+      .then(image => {
+        setSelectedImage(image.path);
+        console.log(image);
+      })
+      .catch(err => console.log('Error Exception>>>>', err));
+  };
+  const pickMultiple = () => {
+    ImagePicker.openPicker({
+      multiple: true,
+      waitAnimationEnd: false,
+      sortOrder: 'desc',
+      includeExif: true,
+      forceJpg: true,
+    })
+      .then(images => {
+        if (images) {
+          setImages(images);
+        }
+        // let tempArray = [];
+        // images.forEach(item => {
+        //   let image = {
+        //     uri: item.path,
+        //     // width: item.width,
+        //     // height: item.height,
+        //   };
+        //   console.log('imagpath==========' + image.uri);
+        //   tempArray.push(image.uri);
+
+        //   imageList = tempArray;
+        //   setImages(image);
+        // });
+        // images.map(i => {
+        //   console.log('received image', i);
+        //   setImages(i);
+        // });
+      })
+      .catch(e => alert(e));
   };
   return (
     <SafeAreaView backgroundColor={'#fff'} flex={1}>
@@ -93,36 +142,63 @@ const SellYourCar = ({navigation}) => {
         </View>
       </View>
       <ScrollView>
-        {selectedImage ? (
-          <View>
-            <Image
-              style={{height: 150, width: '100%', marginTop: 5}}
-              source={{uri: selectedImage}}
-            />
-            <Text
-              style={{alignItems: 'center', textAlign: 'center', marginTop: 5}}>
-              {selectedImage.length} Photo
-            </Text>
-            <TouchableOpacity
-              style={styles.imgSecondDiv}
-              onPress={() => {
-                imagePicker();
-              }}>
-              <SimpleLineIcons name={'camera'} size={20} color={'#fff'} />
-              <Text style={styles.lable2}>Add more Photos</Text>
-            </TouchableOpacity>
-          </View>
+        {seImages ? (
+          (console.log('SelectedImage>>>>', seImages),
+          (
+            <View>
+              <ScrollView horizontal={true}>
+                <FlatList
+                  data={seImages}
+                  keyExtractor={item => item.path}
+                  renderItem={({item}) => (
+                    <Image
+                      source={{uri: item.path}}
+                      style={{width: 100, height: 100}}
+                    />
+                  )}
+                />
+                {/* <Image
+                  style={{height: 150, width: 120}}
+                  source={imageList[0]}
+                /> */}
+              </ScrollView>
+
+              <Text
+                style={{
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  marginTop: 5,
+                }}>
+                {seImages.length} Photo
+              </Text>
+              <TouchableOpacity
+                style={styles.imgSecondDiv}
+                onPress={() => {
+                  pickMultiple();
+                }}>
+                <SimpleLineIcons name={'camera'} size={20} color={'#fff'} />
+                <Text style={styles.lable2}>Add more Photos</Text>
+              </TouchableOpacity>
+            </View>
+          ))
         ) : (
           <TouchableOpacity
             style={styles.imgMainDiv}
             onPress={() => {
-              imagePicker();
+              pickMultiple();
             }}>
             <SimpleLineIcons name={'camera'} size={30} color={'#707070'} />
             <Text style={styles.lable1}>Add Photo</Text>
           </TouchableOpacity>
         )}
-
+        {/* <TouchableOpacity
+          style={styles.imgMainDiv}
+          onPress={() => {
+            IimagePicker();
+          }}> 
+          <SimpleLineIcons name={'camera'} size={30} color={'#707070'} />
+          <Text style={styles.lable1}>Add Photo</Text>
+        </TouchableOpacity>*/}
         <Text style={styles.headingLbl}>
           Tap on images to edit them. To reorder,select the image,hold and drag.
         </Text>
@@ -131,7 +207,7 @@ const SellYourCar = ({navigation}) => {
 
         <View style={styles.infoContainer}>
           <View style={styles.iconBack}>
-            <MaterialIcons name={'location-city'} size={25} color={'#808080'} />
+            {/* <DiscriptionSvg height={20} width={20} /> */}
           </View>
           <View flex={1} paddingStart={13}>
             <Text style={styles.text1}>Description</Text>
@@ -166,7 +242,7 @@ const SellYourCar = ({navigation}) => {
             setOpen1(!open1);
           }}>
           <View style={styles.iconBack}>
-            <MaterialIcons name={'location-city'} size={25} color={'#808080'} />
+            {/* <AnimalTypeSvg width={20} height={20} /> */}
           </View>
           <View flex={1} paddingStart={13}>
             <Text style={styles.text1}>Animal Type</Text>

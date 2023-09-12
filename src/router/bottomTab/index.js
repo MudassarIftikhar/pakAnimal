@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
@@ -16,11 +16,7 @@ const BottomTab = ({navigation}) => {
       initialRouteName="Home"
       activeColor="#0000FF"
       inactiveColor="#000"
-      barStyle={{
-        backgroundColor: '#694fad',
-        paddingBottom: 48,
-        fontSize: 16,
-      }}
+      barStyle={styles.barView}
       tabBarOptions={{
         labelStyle: {
           fontSize: 14,
@@ -46,12 +42,7 @@ const BottomTab = ({navigation}) => {
           headerShown: false,
           title: '',
           tabBarIcon: ({color}) => (
-            <View
-              style={{
-                flex: 1,
-                alignItems: 'center',
-                flexDirection: 'column',
-              }}>
+            <View style={styles.homeView}>
               <Ionicons name="ios-home-outline" color={color} size={26} />
               <Text width={'100%'}>Home</Text>
             </View>
@@ -78,7 +69,7 @@ const BottomTab = ({navigation}) => {
           tabBarStyle: {display: 'none'},
           tabBarIcon: ({focused}) => (
             <Image
-              style={{height: 50, width: 50, top: -10}}
+              style={styles.plusBtn}
               source={require('../../assets/images/plus.png')}
             />
           ),
@@ -109,5 +100,21 @@ const BottomTab = ({navigation}) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  barView: {
+    backgroundColor: '#694fad',
+    paddingBottom: 48,
+    fontSize: 16,
+  },
+  homeView: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  plusBtn: {
+    height: 50,
+    width: 50,
+    top: -10,
+  },
+});
 export default BottomTab;

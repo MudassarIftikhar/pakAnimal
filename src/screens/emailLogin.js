@@ -3,14 +3,10 @@ import {
   Alert,
   Image,
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 import Cross from 'react-native-vector-icons/Feather';
@@ -50,10 +46,8 @@ const EmailLogin = ({navigation}) => {
         onPress={() => navigation.goBack()}>
         <Cross name="x" size={20} color="#000" />
       </TouchableOpacity>
-      <View style={{margin: 30}}>
-        <Text style={{fontWeight: '700', color: '#000', fontSize: 22}}>
-          Enter your Email
-        </Text>
+      <View style={styles.innerContainer}>
+        <Text style={styles.lblEnterEmail}>Enter your Email</Text>
         <Text style={styles.lable}>Email Address</Text>
         <TextInput
           style={styles.textInputStyle}
@@ -97,12 +91,12 @@ const EmailLogin = ({navigation}) => {
           <Text style={styles.btnSignup}>Sign in</Text>
         </TouchableOpacity>
 
-        <Text style={styles.lblAlreadyAcc}>
-          Don't have an account yet?{' '}
+        <View style={styles.haveAccContainer}>
+          <Text style={styles.lblAlreadyAcc}>Don't have an account yet? </Text>
           <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-            <Text style={{fontWeight: '800', color: '#000'}}>Sign Up</Text>
+            <Text style={styles.txtSignup}>Sign Up</Text>
           </TouchableOpacity>
-        </Text>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -148,7 +142,6 @@ const styles = StyleSheet.create({
   lblAlreadyAcc: {
     fontSize: 16,
     color: '#000',
-    alignItems: 'center',
     marginTop: 20,
   },
   lable2: {
@@ -172,6 +165,17 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     alignSelf: 'flex-end',
     marginEnd: 10,
+  },
+  innerContainer: {margin: 30},
+  lblEnterEmail: {fontWeight: '700', color: '#000', fontSize: 22},
+  txtSignup: {
+    fontWeight: '800',
+    color: '#000',
+    marginTop: 20,
+  },
+  haveAccContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 export default EmailLogin;

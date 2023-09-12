@@ -1,16 +1,5 @@
-import React, {useState} from 'react';
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React from 'react';
+import {SafeAreaView, StyleSheet, Text} from 'react-native';
 const Chat = ({navigation}) => {
   return (
     <SafeAreaView>

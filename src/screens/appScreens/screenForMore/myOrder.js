@@ -1,23 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
-  Image,
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
+import Header from '../../../components/header';
 const MyOrders = ({navigation}) => {
   return (
     <SafeAreaView>
       <StatusBar backgroundColor={'#00AEEF'} />
-      <View
+      <Header title="My Orders" />
+      {/* <View
         style={{height: 50, backgroundColor: '#00AEEF', alignItems: 'center'}}>
         <View
           style={{
@@ -42,7 +39,7 @@ const MyOrders = ({navigation}) => {
             My Orders
           </Text>
         </View>
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 };

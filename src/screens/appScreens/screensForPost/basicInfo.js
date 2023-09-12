@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  BackHandler,
   ImageBackground,
   ScrollView,
   StatusBar,
@@ -10,40 +11,15 @@ import {
   View,
 } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import Cross from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
-import StepIndicator from 'react-native-step-indicator';
 import {AvoidSoftInput, AvoidSoftInputView} from 'react-native-avoid-softinput';
 import {useFocusEffect} from '@react-navigation/native';
-
-const labels = ['Basic info', 'Animal info', 'Checkout'];
-const customStyles = {
-  stepIndicatorSize: 25,
-  currentStepIndicatorSize: 30,
-  separatorStrokeWidth: 1,
-  currentStepStrokeWidth: 3,
-  stepStrokeCurrentColor: 'gold',
-  stepStrokeWidth: 2,
-  stepStrokeFinishedColor: '#fe7013',
-  stepStrokeUnFinishedColor: '#fff',
-  separatorFinishedColor: 'gold',
-  separatorUnFinishedColor: '#fff',
-  stepIndicatorFinishedColor: '#fe7013',
-  stepIndicatorUnFinishedColor: '#ffffff',
-  stepIndicatorCurrentColor: 'gold',
-  stepIndicatorLabelFontSize: 11,
-  currentStepIndicatorLabelFontSize: 11,
-  stepIndicatorLabelCurrentColor: '#000',
-  stepIndicatorLabelFinishedColor: '#000',
-  stepIndicatorLabelUnFinishedColor: '#000',
-  labelColor: '#fff',
-  labelSize: 11,
-  currentStepLabelColor: 'gold',
-};
-
+import Header from '../../../components/header';
+import InfoTrack from '../../../components/infoTrack';
+import {utilityStyles} from '../../../utils/utility';
 const BasicInfo = ({navigation, route}) => {
   const [fullName, setFullName] = useState('Mudassar Iftikhar');
   const [phoneNo, setPhoneNo] = useState('0345678667');
@@ -62,63 +38,36 @@ const BasicInfo = ({navigation, route}) => {
   const disabled = () => {
     return fullName !== '' && phoneNo !== '' ? false : true;
   };
-  // console.log('>>>', route);
   let CCity = '';
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        navigation.goBack();
+        return true;
+      };
 
-  // setCity(route.params.cCity);
+      // Add Event Listener for hardwareBackPress
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => {
+        // Once the Screen gets blur Remove Event Listener
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+      };
+    }, []),
+  );
+
   return (
-    <View flex={1} backgroundColor={'#EF4036'}>
+    <View paddingTop={40} flex={1} backgroundColor={'#EF4036'}>
       <StatusBar backgroundColor={'#EF4036'} />
       <ImageBackground source={require('../../../assets/images/BG-01.png')}>
-        <View
-          style={{
-            marginTop: 50,
-            height: 50,
-            alignItems: 'center',
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              height: 40,
-              width: '100%',
-              alignSelf: 'flex-start',
-              alignItems: 'center',
-              right: 0,
-              paddingTop: 5,
-              paddingStart: 15,
-            }}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <IonIcons name="arrow-back" size={30} color="#fff" />
-            </TouchableOpacity>
-            <Text
-              style={{
-                fontSize: 20,
-                color: '#fff',
-                fontWeight: '600',
-                marginStart: 40,
-                flex: 1,
-              }}>
-              Basic Info
-            </Text>
-            <Cross marginEnd={10} name="x" size={25} color="#fff" />
-          </View>
-        </View>
-        <View style={styles.infoTrackMainDiv}>
-          <StepIndicator
-            stepCount={3}
-            customStyles={customStyles}
-            currentPosition={0}
-            labels={labels}
-          />
-        </View>
-        <View style={styles.outerDiv}>
-          <Text style={styles.lable1}>Your basic info</Text>
-        </View>
+        <Header title="Basic Info" CrossIcon={true} Navigation={navigation} />
+
+        <InfoTrack position={0} title="Your Basic info" />
       </ImageBackground>
       <View style={styles.txtInputMainDiv}>
         <AvoidSoftInputView>
           <ScrollView>
-            <View style={{marginBottom: 20}}>
+            <View style={styles.infoBox}>
               <View style={styles.txtInputInnerDiv}>
                 <MaterialCommunityIcon
                   style={styles.iconBack}
@@ -177,15 +126,7 @@ const BasicInfo = ({navigation, route}) => {
           </ScrollView>
         </AvoidSoftInputView>
 
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'flex-end',
-            paddingTop: 2,
-            borderTopWidth: 1,
-            borderTopColor: '#eee',
-            marginTop: 150,
-          }}>
+        <View style={utilityStyles.buttonNext}>
           <TouchableOpacity
             style={styles.submitBtn}
             disabled={fullName !== '' && phoneNo !== '' ? false : true}
@@ -275,6 +216,16 @@ const styles = StyleSheet.create({
     bottom: 1,
     padding: 0,
     paddingBottom: 8,
+  },
+
+  infoBox: {marginBottom: 20},
+  btnView: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingTop: 2,
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+    marginTop: 150,
   },
 });
 export default BasicInfo;
