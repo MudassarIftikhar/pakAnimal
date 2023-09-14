@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import Cross from 'react-native-vector-icons/Feather';
 const Header = props => {
