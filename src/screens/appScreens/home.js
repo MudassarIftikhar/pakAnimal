@@ -7,6 +7,7 @@ import HomeTabButton from '../../components/homeTabButton';
 import OferingCard from '../../components/oferingCard';
 import FeatureList from '../../components/featureList';
 import ItemList from '../../components/itemList';
+import CategoryTab from '../../router/homeCategoryTab';
 
 class Home extends Component {
   // const [modalVisible, setModalVisible] = useState(false);
@@ -51,6 +52,7 @@ class Home extends Component {
         <ScrollView horizontal={false} marginBottom={120}>
           <View marginBottom={20}>
             <Text style={styles.lbl1}>Browse Animal</Text>
+            <CategoryTab />
             <Text style={styles.lbl1}>PakWild Offerings</Text>
 
             <OferingCard />

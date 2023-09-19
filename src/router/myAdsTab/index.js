@@ -1,41 +1,19 @@
-import React, {useState} from 'react';
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  useColorScheme,
-  View,
-} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Octicons from 'react-native-vector-icons/Octicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import React from 'react';
+import {StyleSheet} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Tab = createMaterialTopTabNavigator();
 
-import {NavigationContainer} from '@react-navigation/native';
-import Home from '../../screens/appScreens/home';
 import MyAds from '../../screens/appScreens/myAds/myAds';
-import Chat from '../../screens/appScreens/chat';
 import Pending from '../../screens/appScreens/myAds/pending';
 import Remove from '../../screens/appScreens/myAds/remove';
-// const Tab = createBottomTabNavigator();
 const BottomTab = ({navigation}) => {
   return (
     <Tab.Navigator
       initialRouteName="Active (0)"
       activeColor="#0000FF"
       inactiveColor="#000"
-      barStyle={{
-        backgroundColor: '#694fad',
-        paddingBottom: 48,
-        fontSize: 16,
-      }}
+      barStyle={styles.tabBarStyle}
       tabBarOptions={{
         labelStyle: {
           fontSize: 14,
@@ -50,5 +28,11 @@ const BottomTab = ({navigation}) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    backgroundColor: '#694fad',
+    paddingBottom: 48,
+    fontSize: 16,
+  },
+});
 export default BottomTab;

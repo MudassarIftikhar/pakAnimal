@@ -1,5 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import Cross from 'react-native-vector-icons/Feather';
 const Header = props => {
@@ -17,12 +23,14 @@ const Header = props => {
     </View>
   );
 };
-
+const screenHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   header: {
     height: 50,
     width: '100%',
     alignItems: 'center',
+    marginTop: screenHeight * 0.03,
+    backgroundColor: '#b63439',
   },
   headerBox: {
     flexDirection: 'row',

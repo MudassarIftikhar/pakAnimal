@@ -1,5 +1,7 @@
+import {useFocusEffect} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {
+  BackHandler,
   ScrollView,
   StyleSheet,
   Text,
@@ -23,6 +25,22 @@ const SelectCity = ({navigation}) => {
   useEffect(() => {
     getApiData();
   }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        navigation.goBack();
+        return true;
+      };
+
+      // Add Event Listener for hardwareBackPress
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => {
+        // Once the Screen gets blur Remove Event Listener
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+      };
+    }, []),
+  );
   return (
     // <Modal visible={true} transparent={false} animationType="slide">
     <View style={styles.main}>

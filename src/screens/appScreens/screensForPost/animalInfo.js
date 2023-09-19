@@ -19,7 +19,7 @@ import InfoTrack from '../../../components/infoTrack';
 
 const AnimalInfo = ({props, navigation}) => {
   return (
-    <View paddingTop={40} flex={1} backgroundColor={'#EF4036'}>
+    <View flex={1} backgroundColor={'#EF4036'}>
       <StatusBar backgroundColor={'#EF4036'} />
       <ImageBackground source={require('../../../assets/images/BG-01.png')}>
         <Header title="Animal Info" CrossIcon={true} Navigation={navigation} />

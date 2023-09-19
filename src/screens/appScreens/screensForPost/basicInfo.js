@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
   BackHandler,
+  Dimensions,
   ImageBackground,
   ScrollView,
   StatusBar,
@@ -20,6 +21,7 @@ import {useFocusEffect} from '@react-navigation/native';
 import Header from '../../../components/header';
 import InfoTrack from '../../../components/infoTrack';
 import {utilityStyles} from '../../../utils/utility';
+const screenHeight = Dimensions.get('window').height;
 const BasicInfo = ({navigation, route}) => {
   const [fullName, setFullName] = useState('Mudassar Iftikhar');
   const [phoneNo, setPhoneNo] = useState('0345678667');
@@ -57,7 +59,7 @@ const BasicInfo = ({navigation, route}) => {
   );
 
   return (
-    <View paddingTop={40} flex={1} backgroundColor={'#EF4036'}>
+    <View flex={1} backgroundColor={'#EF4036'}>
       <StatusBar backgroundColor={'#EF4036'} />
       <ImageBackground source={require('../../../assets/images/BG-01.png')}>
         <Header title="Basic Info" CrossIcon={true} Navigation={navigation} />
@@ -208,7 +210,7 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     marginStart: 20,
     marginRight: 20,
-    marginBottom: 40,
+    marginBottom: screenHeight * 0.13,
   },
   selectCityBtn: {
     position: 'absolute',

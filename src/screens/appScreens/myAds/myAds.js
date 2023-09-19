@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Image,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
 const MyAds = ({navigation}) => {
   return (
     <SafeAreaView>

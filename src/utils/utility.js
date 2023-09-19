@@ -1,8 +1,8 @@
 // const redColor = '#b63439';
 // const pageName = 'Ho gya';
 
-import {StyleSheet} from 'react-native';
-
+import {Dimensions, StyleSheet} from 'react-native';
+const screenHeight = Dimensions.get('window').height;
 export const utilityStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -21,10 +21,8 @@ export const utilityStyles = StyleSheet.create({
     borderTopColor: '#eee',
     marginTop: 150,
   },
+  headerBackGround: {
+    backgroundColor: '#b63439',
+  },
   // Add more utility styles as needed
 });
-
-export const PageName = () => {
-  const pageName = 'Ho hayyy';
-  return pageName;
-};

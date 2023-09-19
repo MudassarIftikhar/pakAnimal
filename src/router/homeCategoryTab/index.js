@@ -1,29 +1,9 @@
-import React, {useState} from 'react';
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  useColorScheme,
-  View,
-} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Octicons from 'react-native-vector-icons/Octicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import React from 'react';
+import {StyleSheet} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import Categories from '../../components/categories';
 
 const Tab = createMaterialTopTabNavigator();
-
-import {NavigationContainer} from '@react-navigation/native';
-import Home from '../../screens/appScreens/home';
-import MyAds from '../../screens/appScreens/myAds/myAds';
-import Chat from '../../screens/appScreens/chat';
-import Pending from '../../screens/appScreens/myAds/pending';
-import Remove from '../../screens/appScreens/myAds/remove';
 // const Tab = createBottomTabNavigator();
 const CategoryTab = ({navigation}) => {
   return (
@@ -31,24 +11,26 @@ const CategoryTab = ({navigation}) => {
       initialRouteName="Category"
       activeColor="#0000FF"
       inactiveColor="#000"
-      barStyle={{
-        backgroundColor: '#694fad',
-        paddingBottom: 48,
-        fontSize: 16,
-      }}
+      barStyle={styles.tabBarStyle}
       tabBarOptions={{
         labelStyle: {
-          fontSize: 14,
+          fontSize: 13,
           margin: 0,
           padding: 0,
         },
       }}>
-      <Tab.Screen name="Category" options={{}} />
-      <Tab.Screen name="Pet" options={{}} />
-      <Tab.Screen name="Farm Animal" options={{}} />
+      <Tab.Screen name="Category" component={Categories} options={{}} />
+      <Tab.Screen name="Pet" component={Categories} options={{}} />
+      <Tab.Screen name="Farm Animal" component={Categories} options={{}} />
     </Tab.Navigator>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    backgroundColor: '#694fad',
+    paddingBottom: 48,
+    fontWeight: '600',
+  },
+});
 export default CategoryTab;
