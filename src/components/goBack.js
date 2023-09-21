@@ -1,6 +1,6 @@
 import {useFocusEffect} from '@react-navigation/native';
 import React from 'react';
-import {BackHandler} from 'react-native';
+import {BackHandler, Text, View} from 'react-native';
 
 const GoBack = ({props}) => {
   useFocusEffect(

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {
   StyleSheet,
   Switch,
@@ -6,15 +6,17 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  FlatList,
+  Image,
 } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-// import SvgIcon from 'react-native-svg-icon';
+
+import RBSheet from 'react-native-raw-bottom-sheet';
 import DiscriptionSvg from '../assets/images/Description-01.svg';
 import AnimalTypeSvg from '../assets/images/Animal Type-01.svg';
 
-import Svg, {ImageSVG} from 'react-native-svg';
 const BreedingPostInfo = props => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -45,7 +47,89 @@ const BreedingPostInfo = props => {
   ]);
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
+  const refRBSheet = useRef();
+  const colorsList = [
+    {
+      imag: require('../assets/images/white.png'),
+      name: 'White',
+    },
+    {
+      imag: require('../assets/images/silver.png'),
+      name: 'Silver',
+    },
+    {
+      imag: require('../assets/images/black.png'),
+      name: 'Black',
+    },
+    {
+      imag: require('../assets/images/grey.png'),
+      name: 'Grey',
+    },
+    {
+      imag: require('../assets/images/blue.png'),
+      name: 'Blue',
+    },
+    {
+      imag: require('../assets/images/green.png'),
+      name: 'Green',
+    },
+    {
+      imag: require('../assets/images/red.png'),
+      name: 'Red',
+    },
+    {
+      imag: require('../assets/images/gold.png'),
+      name: 'Gold',
+    },
+    {
+      imag: require('../assets/images/maroon.png'),
+      name: 'Maroon',
+    },
+    {
+      imag: require('../assets/images/beige.png'),
+      name: 'Beige',
+    },
+    {
+      imag: require('../assets/images/pink.png'),
+      name: 'Pink',
+    },
+    {
+      imag: require('../assets/images/brown.png'),
+      name: 'Brown',
+    },
+    {
+      imag: require('../assets/images/burgundy.png'),
+      name: 'Burgundy',
+    },
+    {
+      imag: require('../assets/images/yellow.png'),
+      name: 'Yellow',
+    },
+    {
+      imag: require('../assets/images/bronze.png'),
+      name: 'Bronze',
+    },
+    {
+      imag: require('../assets/images/purple.png'),
+      name: 'Purple',
+    },
+    {
+      imag: require('../assets/images/turquoise.png'),
+      name: 'Turquoise',
+    },
+    {
+      imag: require('../assets/images/orange.png'),
+      name: 'Orange',
+    },
+    {
+      imag: require('../assets/images/indigo.png'),
+      name: 'Indigo',
+    },
+    {
+      imag: require('../assets/images/magneta.png'),
+      name: 'Magneta',
+    },
+  ];
   return (
     <View>
       {/* Info List */}
@@ -212,8 +296,46 @@ const BreedingPostInfo = props => {
         />
       </TouchableOpacity>
       <View style={styles.horizontolLine2} />
+      <View>
+        <RBSheet
+          ref={refRBSheet}
+          closeOnDragDown={true}
+          closeOnPressMask={true}
+          height={600}
+          customStyles={{
+            draggableIcon: {
+              backgroundColor: '#FFFFFF',
+            },
+          }}>
+          <View style={{flexDirection: 'column'}}>
+            <View style={styles.sheettopcontent}>
+              <Text style={styles.bodycolor}>Body color</Text>
+              <Text style={styles.cancel}>Cancel</Text>
+            </View>
+            <View style={styles.flatlist}>
+              <FlatList
+                data={colorsList}
+                numColumns={5}
+                horizontal={false}
+                renderItem={({item}) => (
+                  <TouchableOpacity style={styles.colornname}>
+                    <View style={styles.colorandnameview}>
+                      <Image source={item.imag} style={styles.colorimage} />
+                      <Text style={styles.namesofcolors}>{item.name}</Text>
+                    </View>
+                  </TouchableOpacity>
+                )}
+              />
+            </View>
+          </View>
+        </RBSheet>
+      </View>
 
-      <TouchableOpacity style={styles.infoContainer} onPress={() => {}}>
+      <TouchableOpacity
+        style={styles.infoContainer}
+        onPress={() => {
+          refRBSheet.current.open();
+        }}>
         <View style={styles.iconBack}>
           <MaterialCommunityIcon name={'tag'} size={20} color={'#808080'} />
         </View>
@@ -424,6 +546,43 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0.4,
     borderRightWidth: 0.4,
     marginTop: 4,
+  },
+  sheettopcontent: {
+    flexDirection: 'row',
+  },
+  bodycolor: {
+    color: 'darkblue',
+    fontWeight: 'bold',
+    flex: 1,
+    marginLeft: 20,
+  },
+  cancel: {
+    color: 'skyblue',
+    fontWeight: 'bold',
+    marginRight: 20,
+  },
+  colornname: {
+    flexDirection: 'column',
+    paddingTop: 20,
+    alignItems: 'center',
+    margin: 15,
+  },
+  colorimage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+  colorandnameview: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    maxHeight: 60,
+    maxWidth: 40,
+  },
+  namesofcolors: {
+    paddingTop: 3,
+  },
+  flatlist: {
+    padding: 35,
   },
 });
 export default BreedingPostInfo;
