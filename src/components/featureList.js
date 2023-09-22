@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: '#fff',
     margin: 5,
+    elevation: 5,
   },
   featureImg: {
     width: '100%',

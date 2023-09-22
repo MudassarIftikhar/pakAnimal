@@ -1,6 +1,5 @@
 import React from 'react';
 import {} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SellNow from '../../screens/appScreens/sellNow';
 import ChooseAPlan from '../../screens/appScreens/screensForPost/chooseAPlan';
@@ -20,7 +19,8 @@ const PostAdd = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="ChooseAPlan">
+      initialRouteName="Sell Now">
+      <Stack.Screen name="Sell Now" component={SellNow} />
       <Stack.Screen name="ChooseAPlan" component={ChooseAPlan} />
       <Stack.Screen name="BasicInfo" component={BasicInfo} />
       <Stack.Screen name="SelectCity" component={SelectCity} />

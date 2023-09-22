@@ -1,8 +1,9 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, Text} from 'react-native';
 const Chat = ({navigation}) => {
   return (
     <SafeAreaView>
+      <StatusBar backgroundColor={'#b63439'} />
       <Text>Chat Activity</Text>
     </SafeAreaView>
   );

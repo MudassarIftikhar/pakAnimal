@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Categories from '../../components/categories';
+import BrowsCategory from '../../components/browsCategory';
 
 const Tab = createMaterialTopTabNavigator();
 // const Tab = createBottomTabNavigator();
@@ -18,9 +19,18 @@ const CategoryTab = ({navigation}) => {
           margin: 0,
           padding: 0,
         },
-      }}>
+      }}
+      screenOptions={{
+        tabBarScrollEnabled: true,
+        tabBarIndicatorStyle: {
+          backgroundColor: '#b63439',
+          height: 1,
+        },
+        swipeEnabled: false,
+      }}
+      sceneContainerStyle={{backgroundColor: 'white'}}>
       <Tab.Screen name="Category" component={Categories} options={{}} />
-      <Tab.Screen name="Pet" component={Categories} options={{}} />
+      <Tab.Screen name="Pet" component={BrowsCategory} options={{}} />
       <Tab.Screen name="Farm Animal" component={Categories} options={{}} />
     </Tab.Navigator>
   );

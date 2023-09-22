@@ -9,12 +9,13 @@ import MyAdsTab from '../myAdsTab';
 import Chat from '../../screens/appScreens/chat';
 import SellNow from '../../screens/appScreens/sellNow';
 import MoreTab from '../moreTab';
+import PostAdd from '../postAdd';
 const Tab = createBottomTabNavigator();
 const BottomTab = ({navigation}) => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      activeColor="#0000FF"
+      activeColor="#b63439"
       inactiveColor="#000"
       barStyle={styles.barView}
       tabBarOptions={{
@@ -26,12 +27,12 @@ const BottomTab = ({navigation}) => {
       }}
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#00AEEF',
+          backgroundColor: '#b63439',
           height: 50,
         },
-        headerTintColor: 'white',
         headerTitleStyle: {
           fontWeight: 'bold',
+          color: '#fff',
         },
         headerTitleAlign: 'center',
       }}>
@@ -70,12 +71,12 @@ const BottomTab = ({navigation}) => {
           tabBarIcon: ({focused}) => (
             <Image
               style={styles.plusBtn}
-              source={require('../../assets/images/plus.png')}
+              source={require('../../assets/images/pluss.png')}
             />
           ),
         }}
-        name="Sell Now"
-        component={SellNow}
+        name="PostAdd"
+        component={PostAdd}
       />
       <Tab.Screen
         name="Chat"
@@ -105,6 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#694fad',
     paddingBottom: 48,
     fontSize: 16,
+    activeColor: '#b63439',
   },
   homeView: {
     flex: 1,

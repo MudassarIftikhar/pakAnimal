@@ -42,7 +42,7 @@ const OferingCard = props => {
 
 const styles = StyleSheet.create({
   postContainer: {
-    elevation: 5,
+    elevation: 7,
     borderRadius: 20,
     backgroundColor: '#fff',
     paddingLeft: 10,

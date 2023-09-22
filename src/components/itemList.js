@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     margin: 8,
     flexGrow: 1,
+    elevation: 5,
   },
   itemImage: {
     width: '100%',

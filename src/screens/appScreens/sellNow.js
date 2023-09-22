@@ -22,7 +22,7 @@ const SellNow = ({navigation, props}) => {
         <View style={styles.iconContainer}>
           <TouchableOpacity
             style={styles.iconSubContainer}
-            onPress={() => navigation.navigate('PostAdd', {type: 'Pet'})}>
+            onPress={() => navigation.navigate('ChooseAPlan', {type: 'Pet'})}>
             <Image
               resizeMode={'center'}
               style={styles.icon}
@@ -32,11 +32,7 @@ const SellNow = ({navigation, props}) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconSubContainer}
-            onPress={() =>
-              navigation.navigate('BasicInfo', {
-                cCity: '',
-              })
-            }>
+            onPress={() => navigation.navigate('ChooseAPlan', {type: 'Farm'})}>
             <Image
               resizeMode={'center'}
               style={styles.icon}

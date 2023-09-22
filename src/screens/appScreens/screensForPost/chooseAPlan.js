@@ -12,9 +12,9 @@ import {
 } from 'react-native';
 import Header from '../../../components/header';
 const screenHeight = Dimensions.get('window').height;
-const ChooseAPlan = ({route, navigation}) => {
-  console.log('Type>>>>', route);
-  const type = '';
+const ChooseAPlan = props => {
+  console.log('Type>>>>', props.route.params.type);
+  const type = props.route.params.type;
   return (
     <SafeAreaView>
       <StatusBar backgroundColor={'#b63439'} />
@@ -26,7 +26,7 @@ const ChooseAPlan = ({route, navigation}) => {
         <Header
           title="Choose a Plan"
           CrossIcon={false}
-          Navigation={navigation}
+          Navigation={props.navigation}
         />
       </View>
       {type === 'Pet' ? (
@@ -36,7 +36,7 @@ const ChooseAPlan = ({route, navigation}) => {
               How are you looking to list your pet?
             </Text>
             <TouchableOpacity
-              onPress={() => navigation.navigate('BasicInfo')}
+              onPress={() => props.navigation.navigate('BasicInfo')}
               style={styles.postContainer}>
               <View flex={1}>
                 <Text style={styles.postHeading}>Sell Your Pet!</Text>
@@ -55,7 +55,7 @@ const ChooseAPlan = ({route, navigation}) => {
             {/* Card 2 */}
 
             <TouchableOpacity
-              onPress={() => navigation.navigate('SellYourCar')}
+              onPress={() => props.navigation.navigate('SellYourCar')}
               style={styles.postContainer}>
               <View flex={1}>
                 <Text style={styles.postHeading}>Post Ad for Breeding!</Text>
@@ -84,7 +84,7 @@ const ChooseAPlan = ({route, navigation}) => {
             {/* 3rd card */}
 
             <TouchableOpacity
-              onPress={() => navigation.navigate('BasicInfo')}
+              onPress={() => props.navigation.navigate('BasicInfo')}
               style={styles.postContainer}>
               <View flex={1}>
                 <Text style={styles.postHeading}>Sell Your Farm Animal!</Text>
@@ -103,7 +103,7 @@ const ChooseAPlan = ({route, navigation}) => {
             {/* Card 4 */}
 
             <TouchableOpacity
-              onPress={() => navigation.navigate('SellYourCar')}
+              onPress={() => props.navigation.navigate('SellYourCar')}
               style={styles.postContainer}>
               <View flex={1}>
                 <Text style={styles.postHeading}>Post Ad for Breeding!</Text>

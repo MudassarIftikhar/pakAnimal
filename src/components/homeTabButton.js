@@ -6,8 +6,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import IonIcons from 'react-native-vector-icons/Ionicons';
-import Cross from 'react-native-vector-icons/Feather';
 
 const tabButton = [
   {

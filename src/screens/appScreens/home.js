@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -32,6 +39,7 @@ class Home extends Component {
     return (
       <View>
         <View style={styles.headerContainer}>
+          <StatusBar backgroundColor={'#b63439'} />
           <HomeTabButton />
           <View style={styles.searchBarContainer}>
             <AntDesign name="search1" size={20} color="#000" />
@@ -49,10 +57,16 @@ class Home extends Component {
             </View>
           </View>
         </View>
-        <ScrollView horizontal={false} marginBottom={120}>
+        <ScrollView
+          backgroundColor={'#fff'}
+          horizontal={false}
+          marginBottom={120}>
           <View marginBottom={20}>
             <Text style={styles.lbl1}>Browse Animal</Text>
-            <CategoryTab />
+            <View style={{width: '100%', height: 350}}>
+              <CategoryTab />
+            </View>
+            {/* <Categories /> */}
             <Text style={styles.lbl1}>PakWild Offerings</Text>
 
             <OferingCard />
@@ -93,7 +107,9 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginStart: 10,
     justifyContent: 'center',
-    alignSelf: 'center',
+    alignItems: 'center',
+    bottom: 0,
+    top: 2,
     borderEndWidth: 1,
     flex: 1,
   },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Dimensions,
   FlatList,
@@ -8,66 +8,74 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import IonIcons from 'react-native-vector-icons/Ionicons';
-import Cross from 'react-native-vector-icons/Feather';
-const categoryList = [
-  {
-    id: '1',
-    title: 'Pet',
-    lable: 'PakWild',
-    image: require('../assets/images/markhor.png'),
-  },
-  {
-    id: '2',
-    title: 'Farm Animal',
-    lable: 'PakWild',
-    image: require('../assets/images/markhor.png'),
-  },
-  {
-    id: '3',
-    title: 'Accessories',
-    lable: 'PakWild',
-    image: require('../assets/images/markhor.png'),
-  },
-  {
-    id: '4',
-    title: 'Text1',
-    lable: 'PakWild',
-    image: require('../assets/images/markhor.png'),
-  },
-];
+import PagerView from 'react-native-pager-view';
+import BrowsCategory from './browsCategory';
+import BrowsCategory2 from './browsCategory2';
+const screenWidth = Dimensions.get('window').width;
 const Categories = props => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [categoryList, setCategoryList] = useState([1, 1, 1]);
+
   return (
-    <FlatList
-      style={styles.FlatlistStyles}
-      data={categoryList}
-      horizontal={false}
-      numColumns={4}
-      renderItem={({item}) => (
-        <TouchableOpacity style={styles.categoryMainBox}>
-          <View style={{flexDirection: 'column'}}>
-            <Image style={styles.categoryImg} source={item.image} />
-            <Text numberOfLines={2} style={styles.titleTxt}>
-              {item.title}
-            </Text>
-          </View>
-        </TouchableOpacity>
-      )}
-      keyExtractor={this._keyExtractor}
-    />
+    <View style={styles().centerAlign}>
+      <PagerView
+        style={styles().pagerView}
+        initialPage={0}
+        orientation="horizontal"
+        scrollEnabled
+        onPageSelected={e => {
+          setCurrentIndex(e.nativeEvent.position);
+        }}>
+        <View key="1">
+          <BrowsCategory />
+        </View>
+        <View key="2">
+          <BrowsCategory2 />
+        </View>
+        <View key="3">
+          <BrowsCategory />
+        </View>
+      </PagerView>
+
+      <View style={styles().indicatorBox}>
+        {categoryList.map((items, index) => {
+          return <View style={styles(currentIndex, index).indicators}></View>;
+        })}
+      </View>
+    </View>
   );
 };
 const screenHeight = Dimensions.get('window').height;
-const styles = StyleSheet.create({
-  categoryMainBox: {
-    width: 40,
-    height: 70,
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-  },
-  categoryImg: {
-    width: '100%',
-    height: (screenHeight * 85) / 96,
-  },
-});
+const styles = (currentIndex, index) =>
+  StyleSheet.create({
+    pagerView: {
+      paddingStart: 200,
+      paddingEnd: 200,
+      flexWrap: 'wrap',
+      flexGrow: 1,
+      flex: 1,
+    },
+    centerAlign: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      alignSelf: 'center',
+    },
+    indicatorBox: {
+      flexDirection: 'row',
+      position: 'absolute',
+      bottom: 0,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    indicators: {
+      height: currentIndex === index ? 10 : 8,
+      width: currentIndex === index ? 16 : 8,
+      borderRadius: 20,
+      backgroundColor: currentIndex === index ? '#b63439' : '#d2d2d2',
+      flexDirection: 'column',
+      margin: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
 export default Categories;
