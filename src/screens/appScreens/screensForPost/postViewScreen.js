@@ -1,15 +1,11 @@
-import {useRoute} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Image,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
@@ -17,9 +13,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import PagerView from 'react-native-pager-view';
-const PostViewScreen = ({route, navigation}) => {
-  console.log('Type>>>>', route);
-  const type = route.params.postTitle;
+const PostViewScreen = props => {
+  // console.log('Type>>>>', route);
   return (
     <View flex={1}>
       <ScrollView>
@@ -30,15 +25,17 @@ const PostViewScreen = ({route, navigation}) => {
               <Image
                 key="1"
                 style={styles.itemImage}
-                source={route.params.postImage}
+                source={props.route.params.postImage}
               />
             </PagerView>
             {/* <Image style={styles.itemImage} source={route.params.postImage} /> */}
             <View style={styles.imageTxtContainer}>
-              <TouchableOpacity onPress={() => navigation.goBack()}>
+              <TouchableOpacity onPress={() => props.navigation.goBack()}>
                 <IonIcons name="chevron-back-sharp" size={30} color="#fff" />
               </TouchableOpacity>
-              <Text style={styles.itemName}>{route.params.postTitle}</Text>
+              <Text style={styles.itemName}>
+                {props.route.params.postTitle}
+              </Text>
             </View>
             <View style={styles.picQty}>
               <Text style={styles.picQtyTxt}>1/5</Text>
@@ -54,31 +51,33 @@ const PostViewScreen = ({route, navigation}) => {
                 style={styles.btnShare}
                 name="heart"
                 size={20}
-                color="#B2BEB5"
+                color={'#B2BEB5'}
               />
             </View>
           </View>
-          <Text style={styles.postTitle}>{route.params.postTitle}</Text>
-          <Text style={styles.postPrice}>PKR {route.params.postPrice}</Text>
+          <Text style={styles.postTitle}>{props.route.params.postTitle}</Text>
+          <Text style={styles.postPrice}>
+            PKR {props.route.params.postPrice}
+          </Text>
           <View style={styles.postCityContainer}>
-            <EvilIcons name="location" size={20} color="B2BEB5" />
-            <Text>{route.params.postCity}</Text>
+            <EvilIcons name="location" size={20} color={'#B2BEB5'} />
+            <Text>{props.route.params.postCity}</Text>
           </View>
           <View style={styles.horizontolLine} />
 
           <Text style={styles.lbl1}>Discription</Text>
           <Text style={styles.discriptionTxt}>
-            {route.params.postDiscription}
+            {props.route.params.postDiscription}
           </Text>
           <View style={styles.horizontolLine} />
           <Text style={styles.lbl1}>Seller Comment</Text>
           <Text style={styles.discriptionTxt}>
-            {route.params.postDiscription}
+            {props.route.params.postDiscription}
           </Text>
           <View style={styles.horizontolLine} />
           <Text style={styles.lbl1}>Seller Detail</Text>
           <Text style={styles.discriptionTxt}>
-            {route.params.postDiscription}
+            {props.route.params.postDiscription}
           </Text>
         </View>
       </ScrollView>
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
     right: 0,
     paddingTop: 5,
     position: 'absolute',
-    top: 40,
+    top: 30,
     left: 0,
   },
   itemName: {

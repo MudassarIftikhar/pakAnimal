@@ -29,6 +29,7 @@ const itemList = [
 ];
 
 const ItemList = props => {
+  console.log('Props', props);
   return (
     <ScrollView
       horizontal={true}
@@ -38,7 +39,7 @@ const ItemList = props => {
         <TouchableOpacity
           style={styles.itemListContaier}
           onPress={() =>
-            this.props.navigation.navigate('PostViewScreen', {
+            props.navigation.navigation.navigate('PostViewScreen', {
               postTitle: item.title,
               postPrice: item.price,
               postCity: item.city,

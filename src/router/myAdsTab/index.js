@@ -14,7 +14,7 @@ const BottomTab = ({navigation}) => {
       activeColor="#0000FF"
       inactiveColor="#000"
       barStyle={styles.tabBarStyle}
-      tabBarOptions={{
+      screenOptions={{
         labelStyle: {
           fontSize: 14,
           margin: 0,

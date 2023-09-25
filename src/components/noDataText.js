@@ -1,15 +1,13 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
-import NoDataFind from '../../../components/noDataText';
-
-const Pending = ({navigation}) => {
+const NoDataFind = props => {
   return (
     <SafeAreaView>
       <StatusBar backgroundColor={'#00AEEF'} />
-      <NoDataFind
-        title1="No Pending Ads"
-        title2="You haven't posted anything yet. Would you like to sell something."
-      />
+      <View style={styles.noData}>
+        <Text style={styles.txtNoAds}>{props.title1}</Text>
+        <Text style={styles.txtLbl2}>{props.title2}</Text>
+      </View>
     </SafeAreaView>
   );
 };
@@ -29,6 +27,7 @@ const styles = StyleSheet.create({
     color: 'grey',
     marginTop: -5,
     fontSize: 16,
+    margin: 10,
   },
 });
-export default Pending;
+export default NoDataFind;

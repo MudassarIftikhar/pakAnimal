@@ -66,6 +66,7 @@ const BrowsCategory = () => {
       <FlatList
         style={styles.FlatlistStyles}
         data={categoryList}
+        scrollEnabled={false}
         numColumns={4}
         renderItem={({item, index}) => (
           <TouchableOpacity disabled={true} style={styles.categoryMainBox}>

@@ -76,7 +76,7 @@ class Home extends Component {
               <Text style={styles.lbl1}>Managed By PakWild</Text>
               <Text style={styles.viewAll}>View All</Text>
             </View>
-            <ItemList />
+            <ItemList navigation={this.navigation} />
           </View>
         </ScrollView>
       </View>

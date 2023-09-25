@@ -12,16 +12,15 @@ import {
   View,
 } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import NoDataFind from '../../../components/noDataText';
 const Remove = ({navigation}) => {
   return (
     <SafeAreaView>
       <StatusBar backgroundColor={'#00AEEF'} />
-      <View style={styles.noData}>
-        <Text style={styles.txtNoAds}>No Removed Ads</Text>
-        <Text style={styles.txtLbl2}>
-          You haven't posted anything yet. Would you like to sell something
-        </Text>
-      </View>
+      <NoDataFind
+        title1="No Removed Ads"
+        title2="You haven't posted anything yet. Would you like to sell something."
+      />
     </SafeAreaView>
   );
 };

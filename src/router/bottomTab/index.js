@@ -18,13 +18,6 @@ const BottomTab = ({navigation}) => {
       activeColor="#b63439"
       inactiveColor="#000"
       barStyle={styles.barView}
-      tabBarOptions={{
-        labelStyle: {
-          fontSize: 14,
-          margin: 0,
-          padding: 0,
-        },
-      }}
       screenOptions={{
         headerStyle: {
           backgroundColor: '#b63439',
@@ -35,6 +28,12 @@ const BottomTab = ({navigation}) => {
           color: '#fff',
         },
         headerTitleAlign: 'center',
+        tabBarActiveTintColor: '#b63439',
+        labelStyle: {
+          fontSize: 14,
+          margin: 0,
+          padding: 0,
+        },
       }}>
       <Tab.Screen
         name="Home"
@@ -42,10 +41,16 @@ const BottomTab = ({navigation}) => {
         options={{
           headerShown: false,
           title: '',
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({focused, color, size}) => (
             <View style={styles.homeView}>
-              <Ionicons name="ios-home-outline" color={color} size={26} />
-              <Text width={'100%'}>Home</Text>
+              <Ionicons
+                name={focused ? 'home' : 'ios-home-outline'}
+                color={color}
+                size={26}
+              />
+              <Text style={{width: '100%', color: focused ? '#b63439' : color}}>
+                Home
+              </Text>
             </View>
           ),
         }}
@@ -54,13 +59,18 @@ const BottomTab = ({navigation}) => {
         name="MyAds"
         component={MyAdsTab}
         options={{
-          title: 'My Ads',
-          tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons
-              name="bullhorn-outline"
-              color={color}
-              size={26}
-            />
+          title: '',
+          tabBarIcon: ({focused, color}) => (
+            <View style={styles.homeView}>
+              <MaterialCommunityIcons
+                name={focused ? 'bullhorn' : 'bullhorn-outline'}
+                color={color}
+                size={28}
+              />
+              <Text style={{width: '100%', color: focused ? '#b63439' : color}}>
+                My Ads
+              </Text>
+            </View>
           ),
         }}
       />
@@ -68,11 +78,22 @@ const BottomTab = ({navigation}) => {
         options={{
           headerShown: false,
           tabBarStyle: {display: 'none'},
-          tabBarIcon: ({focused}) => (
-            <Image
-              style={styles.plusBtn}
-              source={require('../../assets/images/pluss.png')}
-            />
+          title: '',
+          tabBarIcon: ({focused, color}) => (
+            <View style={styles.homeView}>
+              <Image
+                style={styles.plusBtn}
+                source={require('../../assets/images/pluss.png')}
+              />
+              <Text
+                style={{
+                  width: '100%',
+                  color: focused ? '#b63439' : color,
+                  top: -21,
+                }}>
+                Sell Now
+              </Text>
+            </View>
           ),
         }}
         name="PostAdd"
@@ -82,8 +103,18 @@ const BottomTab = ({navigation}) => {
         name="Chat"
         component={Chat}
         options={{
-          tabBarIcon: ({color}) => (
-            <Ionicons name="ios-chatbox-ellipses" color={color} size={26} />
+          title: '',
+          tabBarIcon: ({focused, color}) => (
+            <View style={styles.homeView}>
+              <Ionicons
+                name={focused ? 'chatbox' : 'ios-chatbox-ellipses'}
+                color={color}
+                size={28}
+              />
+              <Text style={{width: '100%', color: focused ? '#b63439' : color}}>
+                Chat
+              </Text>
+            </View>
           ),
         }}
       />
@@ -92,8 +123,14 @@ const BottomTab = ({navigation}) => {
         component={MoreTab}
         options={{
           headerShown: false,
-          tabBarIcon: ({color}) => (
-            <Octicons name="three-bars" color={color} size={26} />
+          title: '',
+          tabBarIcon: ({focused, color}) => (
+            <View style={styles.homeView}>
+              <Octicons name="three-bars" color={color} size={28} />
+              <Text style={{width: '100%', color: focused ? '#b63439' : color}}>
+                More
+              </Text>
+            </View>
           ),
         }}
       />
@@ -114,9 +151,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   plusBtn: {
-    height: 50,
-    width: 50,
-    top: -10,
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+    resizeMode: 'center',
+    top: -25,
+    padding: 25,
   },
 });
 export default BottomTab;
