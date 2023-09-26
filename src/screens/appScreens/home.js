@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {
+  Image,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -15,17 +17,21 @@ import OferingCard from '../../components/oferingCard';
 import FeatureList from '../../components/featureList';
 import ItemList from '../../components/itemList';
 import CategoryTab from '../../router/homeCategoryTab';
+import {Modal} from 'react-native-paper';
 
+import Cross from 'react-native-vector-icons/Feather';
 class Home extends Component {
   // const [modalVisible, setModalVisible] = useState(false);
   // const route = useRoute();
   // console.log('Roter Name>>>>>>', route.name);
+
   constructor(navigation) {
     super();
     this.state = {
       data: [],
     };
     this.navigation = navigation;
+    this.ShowModal = false;
   }
   componentDidMount() {
     // this.getApiData();

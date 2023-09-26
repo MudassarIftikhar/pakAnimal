@@ -3,10 +3,11 @@ import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Modal} from 'react-native-paper';
 import Cross from 'react-native-vector-icons/Feather';
 const SellNow = ({navigation, props}) => {
-  // const [showModal, setShowModal] = useState(false);
+  //const [showModal, setShowModal] = useState(false);
 
   return (
     // <View style={styles.main}>
+
     <Modal
       style={styles.main}
       visible={true}

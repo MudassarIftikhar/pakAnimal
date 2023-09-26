@@ -1,10 +1,15 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import SellNow from '../screens/appScreens/sellNow';
 
 const OferingCard = props => {
   return (
-    <TouchableOpacity onPress={{}} style={styles.postContainer}>
+    <TouchableOpacity
+      onPress={() => {
+        <SellNow />;
+      }}
+      style={styles.postContainer}>
       <View style={styles.cardOutterBox}>
         <View style={styles.cardInnerBox}>
           <Text style={styles.postHeading}>Sell Your Pet!</Text>

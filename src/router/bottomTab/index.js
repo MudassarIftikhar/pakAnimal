@@ -1,7 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../../screens/appScreens/home';
@@ -10,7 +9,11 @@ import Chat from '../../screens/appScreens/chat';
 import SellNow from '../../screens/appScreens/sellNow';
 import MoreTab from '../moreTab';
 import PostAdd from '../postAdd';
+import SellNowTab from '../../components/sellNowTab';
 const Tab = createBottomTabNavigator();
+const ChatBase = () => {
+  return <View />;
+};
 const BottomTab = ({navigation}) => {
   return (
     <Tab.Navigator
@@ -21,7 +24,7 @@ const BottomTab = ({navigation}) => {
       screenOptions={{
         headerStyle: {
           backgroundColor: '#b63439',
-          height: 50,
+          height: 25,
         },
         headerTitleStyle: {
           fontWeight: 'bold',
@@ -29,11 +32,13 @@ const BottomTab = ({navigation}) => {
         },
         headerTitleAlign: 'center',
         tabBarActiveTintColor: '#b63439',
+        tabBarInactiveTintColor: '#000',
         labelStyle: {
           fontSize: 14,
           margin: 0,
           padding: 0,
         },
+        tabBarStyle: {height: 60, paddingTop: 3},
       }}>
       <Tab.Screen
         name="Home"
@@ -47,6 +52,7 @@ const BottomTab = ({navigation}) => {
                 name={focused ? 'home' : 'ios-home-outline'}
                 color={color}
                 size={26}
+                marginTop={1}
               />
               <Text style={{width: '100%', color: focused ? '#b63439' : color}}>
                 Home
@@ -65,7 +71,8 @@ const BottomTab = ({navigation}) => {
               <MaterialCommunityIcons
                 name={focused ? 'bullhorn' : 'bullhorn-outline'}
                 color={color}
-                size={28}
+                size={29}
+                style={{top: -2}}
               />
               <Text style={{width: '100%', color: focused ? '#b63439' : color}}>
                 My Ads
@@ -80,25 +87,17 @@ const BottomTab = ({navigation}) => {
           tabBarStyle: {display: 'none'},
           title: '',
           tabBarIcon: ({focused, color}) => (
-            <View style={styles.homeView}>
-              <Image
-                style={styles.plusBtn}
-                source={require('../../assets/images/pluss.png')}
-              />
-              <Text
-                style={{
-                  width: '100%',
-                  color: focused ? '#b63439' : color,
-                  top: -21,
-                }}>
-                Sell Now
-              </Text>
-            </View>
+            <SellNowTab focused={focused} color={color} />
           ),
         }}
         name="PostAdd"
         component={PostAdd}
-      />
+        listeners={({navigation}) => ({
+          tabpress: e => {
+            e.preventdefault();
+            navigation.navigate('PostAdd');
+          },
+        })}></Tab.Screen>
       <Tab.Screen
         name="Chat"
         component={Chat}
@@ -107,7 +106,7 @@ const BottomTab = ({navigation}) => {
           tabBarIcon: ({focused, color}) => (
             <View style={styles.homeView}>
               <Ionicons
-                name={focused ? 'chatbox' : 'ios-chatbox-ellipses'}
+                name={focused ? 'chatbox-ellipses' : 'chatbox-ellipses-outline'}
                 color={color}
                 size={28}
               />
@@ -119,14 +118,19 @@ const BottomTab = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="More"
+        name="MoreTab"
         component={MoreTab}
         options={{
           headerShown: false,
           title: '',
           tabBarIcon: ({focused, color}) => (
             <View style={styles.homeView}>
-              <Octicons name="three-bars" color={color} size={28} />
+              <Ionicons
+                name={focused ? 'reorder-three-sharp' : 'reorder-three-outline'}
+                color={color}
+                size={40}
+                style={{height: 30, top: -7}}
+              />
               <Text style={{width: '100%', color: focused ? '#b63439' : color}}>
                 More
               </Text>
@@ -143,7 +147,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#694fad',
     paddingBottom: 48,
     fontSize: 16,
-    activeColor: '#b63439',
   },
   homeView: {
     flex: 1,
