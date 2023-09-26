@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: '100%',
     alignItems: 'center',
-    marginTop: screenHeight * 0.03,
+    // marginTop: screenHeight * 0.03,
     backgroundColor: '#b63439',
   },
   headerBox: {
