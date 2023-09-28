@@ -87,7 +87,7 @@ const EmailLogin = ({navigation}) => {
         </View>
 
         <Text style={styles.txtForgotPassword}>Forgot Password?</Text>
-        <TouchableOpacity onPress={() => signinUser()}>
+        <TouchableOpacity style={styles.btnBox} onPress={() => signinUser()}>
           <Text style={styles.btnSignup}>Sign in</Text>
         </TouchableOpacity>
 
@@ -129,14 +129,18 @@ const styles = StyleSheet.create({
     color: '#808080',
     marginTop: 15,
   },
-  btnSignup: {
+  btnBox: {
     backgroundColor: '#00AEEF',
-    color: '#fff',
     height: 40,
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btnSignup: {
+    color: '#fff',
     fontSize: 18,
     textAlign: 'center',
-    textAlignVertical: 'center',
-    marginTop: 20,
+
     fontWeight: '600',
   },
   lblAlreadyAcc: {
@@ -155,7 +159,7 @@ const styles = StyleSheet.create({
   txtForgotPassword: {
     fontSize: 15,
     color: '#000',
-    fontWeight: '900',
+    fontWeight: '500',
     textDecorationLine: 'underline',
     marginTop: 20,
   },

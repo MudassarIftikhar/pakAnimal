@@ -1,13 +1,5 @@
 import React, {useState} from 'react';
-import {
-  Dimensions,
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import PagerView from 'react-native-pager-view';
 import BrowsCategory from './browsCategory';
 import BrowsCategory2 from './browsCategory2';

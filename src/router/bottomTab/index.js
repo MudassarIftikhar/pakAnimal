@@ -6,14 +6,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../../screens/appScreens/home';
 import MyAdsTab from '../myAdsTab';
 import Chat from '../../screens/appScreens/chat';
-import SellNow from '../../screens/appScreens/sellNow';
 import MoreTab from '../moreTab';
 import PostAdd from '../postAdd';
-import SellNowTab from '../../components/sellNowTab';
 const Tab = createBottomTabNavigator();
-const ChatBase = () => {
-  return <View />;
-};
 const BottomTab = ({navigation}) => {
   return (
     <Tab.Navigator
@@ -46,19 +41,15 @@ const BottomTab = ({navigation}) => {
         options={{
           headerShown: false,
           title: '',
-          tabBarIcon: ({focused, color, size}) => (
-            <View style={styles.homeView}>
-              <Ionicons
-                name={focused ? 'home' : 'ios-home-outline'}
-                color={color}
-                size={26}
-                marginTop={1}
-              />
-              <Text style={{width: '100%', color: focused ? '#b63439' : color}}>
-                Home
-              </Text>
-            </View>
-          ),
+          tabBarIcon: ({focused, color, size}) =>
+            tabBarIconComponent(
+              focused,
+              color,
+              27,
+              'Home',
+              focused ? 'home' : 'ios-home-outline',
+              0,
+            ),
         }}
       />
       <Tab.Screen
@@ -66,100 +57,135 @@ const BottomTab = ({navigation}) => {
         component={MyAdsTab}
         options={{
           title: '',
-          tabBarIcon: ({focused, color}) => (
-            <View style={styles.homeView}>
-              <MaterialCommunityIcons
-                name={focused ? 'bullhorn' : 'bullhorn-outline'}
-                color={color}
-                size={29}
-                style={{top: -2}}
-              />
-              <Text style={{width: '100%', color: focused ? '#b63439' : color}}>
-                My Ads
-              </Text>
-            </View>
-          ),
+          tabBarIcon: ({focused, color, size}) =>
+            tabbBarIconComponent(
+              focused,
+              color,
+              29,
+              'My Ads',
+              focused ? 'bullhorn' : 'bullhorn-outline',
+            ),
         }}
       />
       <Tab.Screen
         options={{
+          presentation: 'modal',
           headerShown: false,
           tabBarStyle: {display: 'none'},
           title: '',
-          tabBarIcon: ({focused, color}) => (
-            <SellNowTab focused={focused} color={color} />
-          ),
+          tabBarIcon: tabBarPlusBtn,
         }}
         name="PostAdd"
         component={PostAdd}
-        listeners={({navigation}) => ({
-          tabpress: e => {
-            e.preventdefault();
-            navigation.navigate('PostAdd');
-          },
-        })}></Tab.Screen>
+      />
       <Tab.Screen
         name="Chat"
         component={Chat}
         options={{
           title: '',
-          tabBarIcon: ({focused, color}) => (
-            <View style={styles.homeView}>
-              <Ionicons
-                name={focused ? 'chatbox-ellipses' : 'chatbox-ellipses-outline'}
-                color={color}
-                size={28}
-              />
-              <Text style={{width: '100%', color: focused ? '#b63439' : color}}>
-                Chat
-              </Text>
-            </View>
-          ),
+          tabBarIcon: ({focused, color, size}) =>
+            tabBarIconComponent(
+              focused,
+              color,
+              25,
+              'Chat',
+              focused ? 'chatbox-ellipses' : 'chatbox-ellipses-outline',
+              3,
+            ),
         }}
       />
       <Tab.Screen
         name="MoreTab"
         component={MoreTab}
         options={{
-          headerShown: false,
+          headerShown: true,
           title: '',
-          tabBarIcon: ({focused, color}) => (
-            <View style={styles.homeView}>
-              <Ionicons
-                name={focused ? 'reorder-three-sharp' : 'reorder-three-outline'}
-                color={color}
-                size={40}
-                style={{height: 30, top: -7}}
-              />
-              <Text style={{width: '100%', color: focused ? '#b63439' : color}}>
-                More
-              </Text>
-            </View>
-          ),
+          tabBarIcon: ({focused, color}) =>
+            tabBarIconComponent(
+              focused,
+              color,
+              35,
+              'More',
+              focused ? 'reorder-three-sharp' : 'reorder-three-outline',
+              -3,
+            ),
         }}
       />
     </Tab.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  barView: {
-    backgroundColor: '#694fad',
-    paddingBottom: 48,
-    fontSize: 16,
-  },
-  homeView: {
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: 'column',
-  },
-  plusBtn: {
-    height: 40,
-    width: 40,
-    borderRadius: 20,
-    resizeMode: 'center',
-    top: -25,
-    padding: 25,
-  },
-});
+const tabbBarIconComponent = (focused, color, size, title, iconName) => {
+  return (
+    <View style={styles().homeView}>
+      <MaterialCommunityIcons
+        name={iconName}
+        color={color}
+        size={size}
+        style={styles().ionIconsStyle}
+      />
+      <Text style={styles(focused, color).iconText}>{title}</Text>
+    </View>
+  );
+};
+const tabBarIconComponent = (
+  focused,
+  color,
+  size,
+  title,
+  iconName,
+  topMargin,
+) => {
+  return (
+    <View style={styles().homeView}>
+      <Ionicons
+        name={iconName}
+        color={color}
+        size={size}
+        top={topMargin}
+        style={styles().ionIconsStyle}
+      />
+      <Text style={styles(focused, color).iconText}>{title}</Text>
+    </View>
+  );
+};
+const tabBarPlusBtn = () => {
+  return (
+    <View style={styles().homeView}>
+      <Image
+        style={styles().plusBtn}
+        source={require('../../assets/images/pluss.png')}
+      />
+      <Text style={styles().textTitle}>Sell Now</Text>
+    </View>
+  );
+};
+const styles = (focused, color) =>
+  StyleSheet.create({
+    barView: {
+      backgroundColor: '#694fad',
+      paddingBottom: 48,
+      fontSize: 16,
+    },
+    homeView: {
+      alignItems: 'center',
+      flexDirection: 'column',
+      flex: 1,
+      marginTop: 2,
+    },
+    plusBtn: {
+      height: 40,
+      width: 40,
+      borderRadius: 20,
+      resizeMode: 'center',
+      top: -18,
+      padding: 25,
+    },
+    textTitle: {
+      width: '100%',
+      color: '#000',
+      top: -16,
+    },
+    ionIconsStyle: {height: 30, alignSelf: 'center'},
+    iconText: {width: '100%', color: focused ? '#b63439' : color},
+  });
 export default BottomTab;

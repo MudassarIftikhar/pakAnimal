@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
+  Dimensions,
   Image,
   SafeAreaView,
   ScrollView,
@@ -10,7 +11,7 @@ import {
   View,
 } from 'react-native';
 import Cross from 'react-native-vector-icons/Feather';
-import {SliderBox} from 'react-native-image-slider-box';
+import PagerView from 'react-native-pager-view';
 import Entypo from 'react-native-vector-icons/Entypo';
 // import statusCodes along with GoogleSignin
 import {
@@ -19,9 +20,21 @@ import {
 } from '@react-native-google-signin/google-signin';
 GoogleSignin.configure();
 const images = [
-  require('../assets/images/slider1.png'), // Local image
-  require('../assets/images/slider2.png'),
-  require('../assets/images/slider3.png'),
+  {
+    src: require('../assets/images/slider1.png'),
+    text: 'Create alerts quickly and get notified when new listing become available',
+    label: 'Create Quick Alerts',
+  }, // Local image
+  {
+    src: require('../assets/images/slider2.png'),
+    text: 'Easily save ads and accessories for a later time',
+    label: 'Save Your Favourite Ads',
+  },
+  {
+    src: require('../assets/images/slider3.png'),
+    text: 'You can connect with thousands of buyers and quick search',
+    label: 'Safely Connect with Buyers',
+  },
 ];
 
 const Login = ({navigation}) => {
@@ -46,25 +59,49 @@ const Login = ({navigation}) => {
       }
     }
   };
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const viewPagerRef = useRef(null);
+  const currentPageRef = useRef(0); // Create a ref to keep track of the current page
+
+  useEffect(() => {
+    // Your code to set up an interval and change pages programmatically
+    const interval = setInterval(() => {
+      if (viewPagerRef.current) {
+        const nextPage = (currentPageRef.current + 1) % images.length;
+        viewPagerRef.current.setPage(nextPage);
+        currentPageRef.current = nextPage;
+        setCurrentIndex(currentPageRef.current);
+      }
+    }, 3000); // Change image every 3 seconds (adjust as needed)
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <View style={styles.mainInnerConatiner}>
-        <View style={styles.CrossBtn}>
-          <Cross name="x" size={20} color="#000" />
-        </View>
-      </View>
       <ScrollView style={styles.scroll}>
+        <View style={styles.mainInnerConatiner}>
+          <View style={styles.CrossBtn}>
+            <Cross name="x" size={20} color="#000" />
+          </View>
+        </View>
         <Text style={styles.lblWelcom}>Welcome to PakAnimals</Text>
-        <SliderBox
-          images={images}
-          autoplay
-          circleLoop
-          resizeMode={'center'}
-          dotColor="#808080"
-          inactiveDotColor="#808080"
-          paginationBoxStyle={styles.pagination}
-          ImageComponentStyle={styles.imgComponent}
-        />
+        <PagerView style={styles.pagerView} initialPage={0} ref={viewPagerRef}>
+          {images.map((item, index) => (
+            <View key={index} style={styles.page}>
+              <Image source={item.src} style={styles.image} />
+              <Text style={styles.text}>{item.label}</Text>
+              <Text style={styles.text}>{item.text}</Text>
+            </View>
+          ))}
+        </PagerView>
+        <View style={styleIndicator().indicatorBox}>
+          {images.map((items, index) => {
+            return (
+              <View style={styleIndicator(currentIndex, index).indicators} />
+            );
+          })}
+        </View>
         <View style={styles.inputMainContainer}>
           <View style={styles.txt92Container}>
             <Text style={styles.txt92}>+92</Text>
@@ -73,7 +110,9 @@ const Login = ({navigation}) => {
             <TextInput placeholder="Phone number" fontSize={18} />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+        <TouchableOpacity
+          style={styles.btnBox}
+          onPress={() => navigation.navigate('Signup')}>
           <Text style={styles.btnWithMobile}>Continue with Mobile Number</Text>
         </TouchableOpacity>
         <View style={styles.horizontalLineContainer}>
@@ -122,22 +161,28 @@ const Login = ({navigation}) => {
     </SafeAreaView>
   );
 };
+const screenHeight = Dimensions.get('window').height;
+
+const styleIndicator = (currentIndex, index) =>
+  StyleSheet.create({
+    indicatorBox: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    indicators: {
+      height: currentIndex === index ? 10 : 8,
+      width: currentIndex === index ? 16 : 8,
+      borderRadius: 20,
+      backgroundColor: currentIndex === index ? '#b63439' : '#d2d2d2',
+      flexDirection: 'column',
+      margin: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
+
 const styles = StyleSheet.create({
-  signinBtn: {
-    flexDirection: 'row',
-    height: '100%',
-    alignItems: 'center',
-  },
-  btnContainer: {
-    borderWidth: 1,
-    borderColor: '#000',
-    height: 40,
-    marginHorizontal: 30,
-    borderRadius: 5,
-    marginTop: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   mainContainer: {backgroundColor: '#fff'},
   mainInnerConatiner: {height: 40},
   CrossBtn: {
@@ -156,6 +201,7 @@ const styles = StyleSheet.create({
   },
   pagination: {
     position: 'absolute',
+    height: screenHeight * 0.12,
     bottom: 0,
     padding: 0,
     alignItems: 'center',
@@ -165,8 +211,8 @@ const styles = StyleSheet.create({
   imgComponent: {
     borderRadius: 15,
     width: '90%',
-    marginTop: 35,
-    resizeMode: 'stretch',
+    height: screenHeight * 0.5,
+    resizeMode: 'center',
   },
   inputMainContainer: {
     flexDirection: 'row',
@@ -187,16 +233,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
   },
-  btnWithMobile: {
-    backgroundColor: '#00AEEF',
-    color: '#fff',
+  btnBox: {
+    alignItems: 'center',
+    backgroundColor: '#b63439',
     height: 40,
+    borderRadius: 3,
+    marginHorizontal: 30,
+    justifyContent: 'center',
+  },
+  btnWithMobile: {
+    color: '#fff',
     fontSize: 18,
     fontWeight: '500',
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    marginHorizontal: 30,
-    borderRadius: 3,
+    alignSelf: 'center',
   },
   horizontalLineContainer: {
     flexDirection: 'row',
@@ -207,12 +256,24 @@ const styles = StyleSheet.create({
   horizontalLine: {flex: 1, height: 1, backgroundColor: 'black'},
   txtOR: {width: 50, textAlign: 'center', color: '#000'},
   mobileInput: {paddingLeft: 17},
+  btnContainer: {
+    borderWidth: 1,
+    borderColor: '#000',
+    height: 40,
+    marginHorizontal: 30,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  signinBtn: {
+    flexDirection: 'row',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   btnGoogle: {
     color: '#000',
-    height: 40,
     fontSize: 18,
     marginLeft: 20,
-    textAlignVertical: 'center',
   },
   iconSize: {height: 25, width: 25},
   txtTermsCondition: {
@@ -221,12 +282,37 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginBottom: 30,
     color: '#808080',
+    paddingBottom: 10,
   },
   txtTermsCondition2: {fontWeight: '600', textDecorationLine: 'underline'},
   txtprivacyPolicy: {
     color: '#000',
     fontWeight: '600',
     textDecorationLine: 'underline',
+  },
+  pagerView: {
+    width: '100%',
+    height: 300,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  page: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: 300,
+    height: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 20,
+    marginTop: 10,
+
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 export default Login;
