@@ -4,7 +4,7 @@ import NoDataFind from '../../../components/noDataText';
 const MyAds = ({navigation}) => {
   return (
     <SafeAreaView>
-      <StatusBar backgroundColor={'#00AEEF'} />
+      <StatusBar backgroundColor={'#b63439'} />
       <NoDataFind
         title1="No Active Ads"
         title2="You haven't posted anything yet. Would you like to sell something."

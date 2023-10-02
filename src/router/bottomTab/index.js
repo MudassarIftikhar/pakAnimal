@@ -66,6 +66,7 @@ const BottomTab = ({navigation}) => {
         component={MyAdsTab}
         options={{
           title: '',
+          headerShown: false,
           tabBarIcon: ({focused, color}) => (
             <View style={styles.homeView}>
               <MaterialCommunityIcons
