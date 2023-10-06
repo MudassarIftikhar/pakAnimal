@@ -18,8 +18,8 @@ import FeatureList from '../../components/featureList';
 import ItemList from '../../components/itemList';
 import CategoryTab from '../../router/homeCategoryTab';
 import {Modal} from 'react-native-paper';
-
 import Cross from 'react-native-vector-icons/Feather';
+import axios from 'axios';
 class Home extends Component {
   // const [modalVisible, setModalVisible] = useState(false);
   // const route = useRoute();
@@ -37,9 +37,11 @@ class Home extends Component {
     // this.getApiData();
   }
   async getApiData() {
-    // let resp = await axios.get('http://192.168.1.16:3000/api/user/register');
-    // console.log('Response>>>>', resp.data);
-    // console.log('Data>>>>>',this.setState.data)
+    // let resp = await axios.get(
+    //   'https://www.dailyfaceoff.com/_next/data/QCbC4gwcIQPVQ4S4akU2O/teams/vancouver-canucks/line-combinations.json?slug=vancouver-canucks',
+    // ); //>>>>'http://192.168.1.16:3000/api/user/register'
+    // console.log('Response>>>>', resp);
+    // console.log('Data>>>>>', this.setState.data);
   }
   render() {
     return (

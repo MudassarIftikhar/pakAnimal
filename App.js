@@ -5,11 +5,17 @@
  * @format
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import {} from 'react-native';
 import Router from './src/router/index.js';
-const App = () => {
-  return <Router />;
-};
+import SplashScreen from 'react-native-splash-screen';
+class App extends Component {
+  componentDidMount() {
+    SplashScreen.hide();
+  }
+  render() {
+    return <Router />;
+  }
+}
 
 export default App;

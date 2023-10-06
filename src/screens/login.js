@@ -90,7 +90,7 @@ const Login = ({navigation}) => {
           {images.map((item, index) => (
             <View key={index} style={styles.page}>
               <Image source={item.src} style={styles.image} />
-              <Text style={styles.text}>{item.label}</Text>
+              <Text style={styles.textLable}>{item.label}</Text>
               <Text style={styles.text}>{item.text}</Text>
             </View>
           ))}
@@ -302,15 +302,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: 300,
+    width: 200,
     height: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+    resizeMode: 'center',
+  },
+  textLable: {
+    fontSize: 18,
+    fontWeight: '500',
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
-    fontSize: 20,
-    marginTop: 10,
-
+    fontSize: 15,
+    marginTop: 5,
+    marginStart: 30,
+    marginEnd: 30,
     alignItems: 'center',
     justifyContent: 'center',
   },
