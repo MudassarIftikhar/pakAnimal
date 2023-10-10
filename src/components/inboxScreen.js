@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
   SafeAreaView,
   View,
@@ -55,6 +55,12 @@ const InboxHeader = ({navigation}) => {
   );
 };
 const Inbox = ({navigation}) => {
+  // const flatListRef = useRef(null);
+  // useEffect(() => {
+  //   if (flatListRef.current) {
+  //     flatListRef.current.scrollToEnd({animated: true});
+  //   }
+  // }, [messageText]);
   const msgsList = [
     {id: '1', text: 'Hello!', isUser: true},
     {id: '2', text: 'Hi there!', isUser: false},
@@ -69,55 +75,12 @@ const Inbox = ({navigation}) => {
     {id: '11', text: 'How are you?', isUser: true},
     {id: '12', text: 'I am good. Thanks!', isUser: false},
 
-    // {
-    //   id: 1,
-    //   msg1: 'final price keya he. Last word what u demand',
-    //   msg2: '44000',
-    //   sendBy: 'sender',
-    // },
-    // {
-    //   id: 1,
-    //   msg1: 'final price keya he. Last word what u demand',
-    //   msg2: '44000',
-    //   sendBy: 'reciever',
-    // },
-    // {
-    //   id: 1,
-    //   msg1: 'final price keya he. Last word what u demand',
-    //   msg2: '44000',
-    //   sendBy: 'sender',
-    // },
-    // {
-    //   id: 1,
-    //   msg1: 'final price keya he. Last word what u demand',
-    //   msg2: '44000',
-    //   sendBy: 'reciever',
-    // },
-    // {
-    //   id: 1,
-    //   msg1: 'final price keya he. Last word what u demand',
-    //   msg2: '44000',
-    //   sendBy: 'sender',
-    // },
-    // {
-    //   id: 1,
-    //   msg1: 'final price keya he. Last word what u demand',
-    //   msg2: '44000',
-    //   sendBy: 'reciever',
-    // },
-    // {
-    //   id: 1,
-    //   msg1: 'final price keya he. Last word what u demand',
-    //   msg2: '44000',
-    //   sendBy: 'sender',
-    // },
-    // {
-    //   id: 1,
-    //   msg1: 'final price keya he. Last word what u demand',
-    //   msg2: '44000',
-    //   sendBy: 'reciever',
-    // },
+    {id: '13', text: 'Hello!', isUser: true},
+    {id: '14', text: 'Hi there!', isUser: false},
+    {id: '15', text: 'How are you?', isUser: true},
+    {id: '16', text: 'I am good. Thanks!', isUser: false},
   ];
+
   return (
     <SafeAreaView flex={1}>
       <InboxHeader />
@@ -135,20 +98,8 @@ const Inbox = ({navigation}) => {
         <FlatList
           data={msgsList}
           horizontal={false}
+          inverted={true}
           renderItem={({item}) => (
-            // <View style={{flexDirection: 'row'}}>
-            //   {item.sendBy == 'sender' ? (
-            //     <View style={styles.mesg1View}>
-            //       <Text style={styles.mesg1Text}>{item.msg1}</Text>
-            //       <Text style={styles.mesg1Text}>{item.sendBy}</Text>
-            //     </View>
-            //   ) : (
-            //     <View style={styles.mesg2View}>
-            //       <Text style={styles.mesg2Text}>{item.msg2}</Text>
-            //       <Text style={styles.mesg1Text}>{item.sendBy}</Text>
-            //     </View>
-            //   )}
-            // </View>
             <View
               style={item.isUser ? styles.userMessage : styles.otherMessage}>
               <Text style={styles.messageText}>{item.text}</Text>
@@ -212,30 +163,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
   },
-  // mesg1View: {
-  //   height: 50,
-  //   width: 250,
-  //   backgroundColor: '#0096FF',
-  //   borderRadius: 8,
-  //   position: 'absolute',
-  //   right: 0,
-  //   marginRight: 10,
-  // },
-  // mesg1Text: {
-  //   margin: 5,
-  //   fontSize: 15,
-  // },
-  // mesg2View: {
-  //   height: 40,
-  //   width: 70,
-  //   backgroundColor: '#D3D3D3',
-  //   borderRadius: 8,
-  //   marginTop: 50,
-  // },
-  // mesg2Text: {
-  //   margin: 8,
-  //   fontSize: 15,
-  // },
+
   inputcontainer: {
     backgroundColor: '#fff',
     width: '100%',

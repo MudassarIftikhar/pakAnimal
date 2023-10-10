@@ -29,7 +29,7 @@ const Router = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="Login">
+        initialRouteName="HomeActivity">
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={SignUp} />
         <Stack.Screen name="EmailLogin" component={EmailLogin} />
