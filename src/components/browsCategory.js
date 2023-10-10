@@ -8,9 +8,11 @@ import {
   View,
 } from 'react-native';
 import {Text} from 'react-native-paper';
+import SellNowModal from './sellNowModal';
 
 const screenWidth = Dimensions.get('window').width;
-const BrowsCategory = () => {
+const BrowsCategory = props => {
+  const [show, setShow] = useState(false);
   const [categoryList, setCategoryList] = useState([
     {
       id: '1',
@@ -61,6 +63,11 @@ const BrowsCategory = () => {
       image: require('../assets/images/goat.png'),
     },
   ]);
+  const handleClick = () => {
+    // Call a callback function passed as a prop to send the event to ComponentB
+    // this.props.onButtonClick();
+    //  console.log('brows>>>', props);
+  };
   return (
     <View>
       <FlatList
@@ -69,7 +76,7 @@ const BrowsCategory = () => {
         scrollEnabled={false}
         numColumns={4}
         renderItem={({item, index}) => (
-          <TouchableOpacity disabled={true} style={styles.categoryMainBox}>
+          <TouchableOpacity disabled={false} style={styles.categoryMainBox}>
             <Image style={styles.categoryImg} source={item.image} />
             <Text style={styles.titleTxt}>{item.title}</Text>
           </TouchableOpacity>

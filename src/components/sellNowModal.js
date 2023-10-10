@@ -1,10 +1,14 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {Modal} from 'react-native-paper';
+import {
+  Image,
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Cross from 'react-native-vector-icons/Feather';
-const SellNow = ({navigation, props}) => {
-  //const [showModal, setShowModal] = useState(false);
-
+const SellNowModal = ({navigation, props}) => {
   return (
     // <View style={styles.main}>
 
@@ -27,7 +31,7 @@ const SellNow = ({navigation, props}) => {
             <Image
               resizeMode={'center'}
               style={styles.icon}
-              source={require('../../assets/images/Dogs-01.png')}
+              source={require('../assets/images/Dogs-01.png')}
             />
             <Text style={styles.textIcon}>Pets</Text>
           </TouchableOpacity>
@@ -37,7 +41,7 @@ const SellNow = ({navigation, props}) => {
             <Image
               resizeMode={'center'}
               style={styles.icon}
-              source={require('../../assets/images/FarmAnimals-01.png')}
+              source={require('../assets/images/FarmAnimals-01.png')}
             />
             <Text style={styles.textIcon}>Farm Animals</Text>
           </TouchableOpacity>
@@ -47,14 +51,13 @@ const SellNow = ({navigation, props}) => {
             <Image
               resizeMode={'center'}
               style={styles.icon}
-              source={require('../../assets/images/PetAccessories-01.png')}
+              source={require('../assets/images/PetAccessories-01.png')}
             />
             <Text style={styles.textIcon}>Accessories</Text>
           </TouchableOpacity>
         </View>
       </View>
     </Modal>
-
     // </View>
   );
 };
@@ -121,4 +124,4 @@ const styles = StyleSheet.create({
     color: '#000',
   },
 });
-export default SellNow;
+export default SellNowModal;

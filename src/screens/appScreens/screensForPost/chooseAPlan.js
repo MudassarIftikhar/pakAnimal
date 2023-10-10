@@ -36,7 +36,7 @@ const ChooseAPlan = props => {
               How are you looking to list your pet?
             </Text>
             <TouchableOpacity
-              onPress={() => props.navigation.navigate('BasicInfo')}
+              onPress={() => props.navigation.navigate('SellYourCar')}
               style={styles.postContainer}>
               <View flex={1}>
                 <Text style={styles.postHeading}>Sell Your Pet!</Text>

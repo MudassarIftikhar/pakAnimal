@@ -20,10 +20,11 @@ import CategoryTab from '../../router/homeCategoryTab';
 import {Modal} from 'react-native-paper';
 import Cross from 'react-native-vector-icons/Feather';
 import axios from 'axios';
+import SellNowModal from '../../components/sellNowModal';
+import SellNow from './sellNow';
 class Home extends Component {
   // const [modalVisible, setModalVisible] = useState(false);
   // const route = useRoute();
-  // console.log('Roter Name>>>>>>', route.name);
 
   constructor(navigation) {
     super();
@@ -31,7 +32,7 @@ class Home extends Component {
       data: [],
     };
     this.navigation = navigation;
-    this.ShowModal = false;
+    // this.ShowModal = props.modal;
   }
   componentDidMount() {
     // this.getApiData();
@@ -43,7 +44,12 @@ class Home extends Component {
     // console.log('Response>>>>', resp);
     // console.log('Data>>>>>', this.setState.data);
   }
+  handleButtonClick = () => {
+    return <SellNowModal />;
+  };
   render() {
+    const {customProp} = this.props.route.params?.customProp || false;
+
     return (
       <View>
         <View style={styles.headerContainer}>
@@ -74,7 +80,6 @@ class Home extends Component {
             <View style={{width: '100%', height: 350}}>
               <CategoryTab />
             </View>
-            {/* <Categories /> */}
             <Text style={styles.lbl1}>PakWild Offerings</Text>
 
             <OferingCard />
@@ -87,126 +92,14 @@ class Home extends Component {
             <ItemList navigation={this.navigation} />
           </View>
         </ScrollView>
+        {/* <View style={{height: 500, width: '100%'}}>
+          {customProp && <SellNow />}
+        </View> */}
       </View>
     );
   }
 }
-const SellNoww = ({navigation, props}) => {
-  return (
-    // <View style={styles.main}>
 
-    <Modal
-      style={sellStyles.main}
-      visible={true}
-      transparent={true}
-      animationType="slide">
-      <View style={sellStyles.modalView}>
-        <TouchableOpacity
-          style={sellStyles.header}
-          onPress={() => navigation.navigate('Home')}>
-          <Cross name="x" size={30} color="#000" />
-        </TouchableOpacity>
-        <Text style={sellStyles.text1}>What do you want to sell?</Text>
-        <View style={sellStyles.iconContainer}>
-          <TouchableOpacity
-            style={sellStyles.iconSubContainer}
-            onPress={() => navigation.navigate('ChooseAPlan', {type: 'Pet'})}>
-            <Image
-              resizeMode={'center'}
-              style={sellStyles.icon}
-              source={require('../../assets/images/Dogs-01.png')}
-            />
-            <Text style={styles.textIcon}>Pets</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={sellStyles.iconSubContainer}
-            onPress={() => navigation.navigate('ChooseAPlan', {type: 'Farm'})}>
-            <Image
-              resizeMode={'center'}
-              style={sellStyles.icon}
-              source={require('../../assets/images/FarmAnimals-01.png')}
-            />
-            <Text style={sellStyles.textIcon}>Farm Animals</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={sellStyles.iconSubContainer}
-            onPress={() => navigation.navigate('SellYourCar')}>
-            <Image
-              resizeMode={'center'}
-              style={sellStyles.icon}
-              source={require('../../assets/images/PetAccessories-01.png')}
-            />
-            <Text style={sellStyles.textIcon}>Accessories</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </Modal>
-    // </View>
-  );
-};
-
-const sellStyles = StyleSheet.create({
-  main: {
-    backgroundColor: 'rgba(52, 52, 52, 0.1)',
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
-  subContainer: {
-    backgroundColor: '#fff',
-  },
-  header: {
-    backgroundColor: '#eee',
-    borderRadius: 30,
-    textAlign: 'right',
-    alignSelf: 'flex-end',
-    margin: 15,
-    padding: 5,
-  },
-  text1: {
-    fontSize: 23,
-    color: '#000',
-    fontWeight: '600',
-    textAlign: 'center',
-  },
-
-  modalView: {
-    elevation: 3,
-    shadowColor: 'black',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    justifyContent: 'flex-end',
-    bottom: 0,
-    backgroundColor: '#fff',
-  },
-  iconContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 30,
-  },
-  iconSubContainer: {
-    flexDirection: 'column',
-    marginTop: 30,
-    marginBottom: 40,
-    marginStart: 10,
-  },
-  icon: {
-    backgroundColor: '#eee',
-    borderRadius: 30,
-    padding: 10,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 50,
-    width: 50,
-  },
-  textIcon: {
-    justifyContent: 'center',
-    fontSize: 14,
-    textAlign: 'center',
-    fontWeight: '500',
-    color: '#000',
-  },
-});
 const styles = StyleSheet.create({
   headerContainer: {
     height: 125,

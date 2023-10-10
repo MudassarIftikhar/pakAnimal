@@ -1,22 +1,10 @@
-import React, {useState} from 'react';
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  useColorScheme,
-  View,
-} from 'react-native';
-import IonIcons from 'react-native-vector-icons/Ionicons';
+import React from 'react';
+import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import NoDataFind from '../../../components/noDataText';
 const Remove = ({navigation}) => {
   return (
     <SafeAreaView>
-      <StatusBar backgroundColor={'#00AEEF'} />
+      <StatusBar backgroundColor={'#b63439'} />
       <NoDataFind
         title1="No Removed Ads"
         title2="You haven't posted anything yet. Would you like to sell something."

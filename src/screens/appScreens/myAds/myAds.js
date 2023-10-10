@@ -1,10 +1,10 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 import NoDataFind from '../../../components/noDataText';
-const MyAds = ({navigation}) => {
+const ActiveAds = ({navigation}) => {
   return (
     <SafeAreaView>
-      <StatusBar backgroundColor={'#00AEEF'} />
+      <StatusBar backgroundColor={'#b63439'} />
       <NoDataFind
         title1="No Active Ads"
         title2="You haven't posted anything yet. Would you like to sell something."
@@ -13,4 +13,4 @@ const MyAds = ({navigation}) => {
   );
 };
 
-export default MyAds;
+export default ActiveAds;

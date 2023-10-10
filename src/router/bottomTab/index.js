@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,8 +8,10 @@ import MyAdsTab from '../myAdsTab';
 import Chat from '../../screens/appScreens/chat';
 import MoreTab from '../moreTab';
 import PostAdd from '../postAdd';
+import SellNowModal from '../../components/sellNowModal';
 const Tab = createBottomTabNavigator();
 const BottomTab = ({navigation}) => {
+  const [show, setShow] = useState('false');
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -75,9 +77,21 @@ const BottomTab = ({navigation}) => {
           title: '',
           tabBarIcon: tabBarPlusBtn,
         }}
-        name="PostAdd"
+        name="PostAdd" //"PostAdd"
         component={PostAdd}
+        // eslint-disable-next-line no-shadow
+        // listeners={({navigation}) => ({
+        //   tabPress: e => {
+        //     e.preventDefault(); // Prevents navigation
+        //     setShow(!show);
+        //     // Use navigation.navigate to navigate to the Home screen with the modal prop
+        //     navigation.navigate('Home', {customProp: {show}});
+        //   },
+        // })}
       />
+      {/* {() => null} */}
+      {/* </Tab.Screen> */}
+
       <Tab.Screen
         name="Chat"
         component={Chat}

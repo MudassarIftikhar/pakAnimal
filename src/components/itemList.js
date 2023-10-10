@@ -29,7 +29,7 @@ const itemList = [
 ];
 
 const ItemList = props => {
-  console.log('Props', props);
+  // console.log('Props>>>', props);
   return (
     <ScrollView
       horizontal={true}

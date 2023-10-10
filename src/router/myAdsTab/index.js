@@ -4,10 +4,10 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 
 const Tab = createMaterialTopTabNavigator();
 
-import MyAds from '../../screens/appScreens/myAds/myAds';
 import Pending from '../../screens/appScreens/myAds/pending';
 import Remove from '../../screens/appScreens/myAds/remove';
-const BottomTab = ({navigation}) => {
+import ActiveAds from '../../screens/appScreens/myAds/myAds';
+const TopTab = ({navigation}) => {
   return (
     <Tab.Navigator
       initialRouteName="Active (0)"
@@ -15,13 +15,12 @@ const BottomTab = ({navigation}) => {
       inactiveColor="#000"
       barStyle={styles.tabBarStyle}
       screenOptions={{
-        labelStyle: {
-          fontSize: 14,
-          margin: 0,
-          padding: 0,
-        },
+        // labelStyle: {
+        //   fontSize: 14,
+        // },
+        headerShown: false,
       }}>
-      <Tab.Screen name="Active (0)" component={MyAds} options={{}} />
+      <Tab.Screen name="Active (0)" component={ActiveAds} options={{}} />
       <Tab.Screen name="Pending (0)" component={Pending} options={{}} />
       <Tab.Screen name="Removed (0)" component={Remove} options={{}} />
     </Tab.Navigator>
@@ -29,10 +28,9 @@ const BottomTab = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  tabBarStyle: {
-    backgroundColor: '#694fad',
-    paddingBottom: 48,
-    fontSize: 16,
-  },
+  // tabBarStyle: {
+  //   backgroundColor: '#694fad',
+  //   fontSize: 46,
+  // },
 });
-export default BottomTab;
+export default TopTab;
