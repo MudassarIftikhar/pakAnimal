@@ -12,6 +12,7 @@ import {
 import Cross from 'react-native-vector-icons/Feather';
 import {SliderBox} from 'react-native-image-slider-box';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Icon from 'react-native-vector-icons/AntDesign';
 // import statusCodes along with GoogleSignin
 import {
   GoogleSignin,
@@ -53,18 +54,25 @@ const Login = ({navigation}) => {
           <Cross name="x" size={20} color="#000" />
         </View>
       </View>
+
       <ScrollView style={styles.scroll}>
-        <Text style={styles.lblWelcom}>Welcome to PakAnimals</Text>
-        <SliderBox
-          images={images}
-          autoplay
-          circleLoop
-          resizeMode={'center'}
-          dotColor="#808080"
-          inactiveDotColor="#808080"
-          paginationBoxStyle={styles.pagination}
-          ImageComponentStyle={styles.imgComponent}
-        />
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Icon name="left" size={40} />
+          <View style={{flexDirection: 'column'}}>
+            <Text style={styles.lblWelcom}>Welcome to PakAnimals</Text>
+            <SliderBox
+              images={images}
+              autoplay
+              circleLoop
+              resizeMode={'center'}
+              dotColor="#808080"
+              inactiveDotColor="#808080"
+              paginationBoxStyle={styles.pagination}
+              ImageComponentStyle={styles.imgComponent}
+            />
+          </View>
+          <Icon name="right" size={40} />
+        </View>
         <View style={styles.inputMainContainer}>
           <View style={styles.txt92Container}>
             <Text style={styles.txt92}>+92</Text>
