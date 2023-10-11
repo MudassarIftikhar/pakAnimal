@@ -8,7 +8,7 @@
 import React, {Component} from 'react';
 import {} from 'react-native';
 import Router from './src/router/index.js';
-import SplashScreen from 'react-native-splash-screen';
+// import SplashScreen from 'react-native-splash-screen';
 class App extends Component {
   componentDidMount() {
     // SplashScreen.hide();
