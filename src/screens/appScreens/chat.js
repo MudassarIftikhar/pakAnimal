@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import Header from '../../components/header';
+import Inbox from '../../components/inboxScreen';
 
 const Chat = ({navigation}) => {
   const chatList = [
@@ -36,7 +37,7 @@ const Chat = ({navigation}) => {
         numColumns={1}
         horizontal={false}
         renderItem={({item}) => (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Inbox')}>
             <View style={styles.chatlist}>
               <Image
                 source={require('../../assets/images/man.png')}
@@ -50,7 +51,7 @@ const Chat = ({navigation}) => {
               <TouchableOpacity>
                 <Icon
                   name="dots-three-vertical"
-                  size={24}
+                  size={20}
                   style={styles.threedoticon}
                 />
               </TouchableOpacity>

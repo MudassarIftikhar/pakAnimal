@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import Cross from 'react-native-vector-icons/Feather';
+
 const Header = props => {
   return (
     <View style={styles.header}>

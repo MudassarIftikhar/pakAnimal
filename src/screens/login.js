@@ -13,6 +13,7 @@ import {
 import Cross from 'react-native-vector-icons/Feather';
 import PagerView from 'react-native-pager-view';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Icon from 'react-native-vector-icons/AntDesign';
 // import statusCodes along with GoogleSignin
 import {
   GoogleSignin,
@@ -91,6 +92,18 @@ const Login = ({navigation}) => {
             <View key={index} style={styles.page}>
               <Image source={item.src} style={styles.image} />
               <Text style={styles.textLable}>{item.label}</Text>
+
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <TouchableOpacity>
+                  <Icon name="left" size={30} />
+                </TouchableOpacity>
+                <Image source={item.src} style={styles.image} />
+                <TouchableOpacity>
+                  <Icon name="right" size={30} />
+                </TouchableOpacity>
+              </View>
+              <Text style={styles.text}>{item.label}</Text>
+
               <Text style={styles.text}>{item.text}</Text>
             </View>
           ))}

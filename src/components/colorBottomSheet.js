@@ -16,12 +16,8 @@ const ColorBottomSheet = props => {
   const refRBSheet = useRef();
   const colorsList = [
     {
-      imag: require('../assets/images/white.png'),
-      name: 'White',
-    },
-    {
       imag: require('../assets/images/silver.png'),
-      name: 'Silver',
+      name: 'White',
     },
     {
       imag: require('../assets/images/black.png'),
@@ -29,7 +25,7 @@ const ColorBottomSheet = props => {
     },
     {
       imag: require('../assets/images/grey.png'),
-      name: 'Grey',
+      name: 'Gray',
     },
     {
       imag: require('../assets/images/blue.png'),
@@ -45,55 +41,20 @@ const ColorBottomSheet = props => {
     },
     {
       imag: require('../assets/images/gold.png'),
-      name: 'Gold',
+      name: 'Golden',
     },
     {
       imag: require('../assets/images/maroon.png'),
-      name: 'Maroon',
-    },
-    {
-      imag: require('../assets/images/beige.png'),
-      name: 'Beige',
-    },
-    {
-      imag: require('../assets/images/pink.png'),
-      name: 'Pink',
+      name: 'Cream',
     },
     {
       imag: require('../assets/images/brown.png'),
       name: 'Brown',
     },
-    {
-      imag: require('../assets/images/burgundy.png'),
-      name: 'Burgundy',
-    },
-    {
-      imag: require('../assets/images/yellow.png'),
-      name: 'Yellow',
-    },
-    {
-      imag: require('../assets/images/bronze.png'),
-      name: 'Bronze',
-    },
-    {
-      imag: require('../assets/images/purple.png'),
-      name: 'Purple',
-    },
-    {
-      imag: require('../assets/images/turquoise.png'),
-      name: 'Turquoise',
-    },
+
     {
       imag: require('../assets/images/orange.png'),
       name: 'Orange',
-    },
-    {
-      imag: require('../assets/images/indigo.png'),
-      name: 'Indigo',
-    },
-    {
-      imag: require('../assets/images/magneta.png'),
-      name: 'Magneta',
     },
   ];
   return (
@@ -117,7 +78,6 @@ const ColorBottomSheet = props => {
             <View style={styles.flatlist}>
               <FlatList
                 data={colorsList}
-                numColumns={5}
                 horizontal={false}
                 renderItem={({item}) => (
                   <TouchableOpacity style={styles.colornname}>
@@ -196,24 +156,23 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   colornname: {
-    flexDirection: 'column',
     paddingTop: 20,
-    alignItems: 'center',
     margin: 15,
   },
   colorimage: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 50,
+    height: 50,
+    borderRadius: 30,
   },
   colorandnameview: {
-    justifyContent: 'center',
+    flexDirection: 'row',
     alignItems: 'center',
-    maxHeight: 60,
-    maxWidth: 40,
   },
   namesofcolors: {
-    paddingTop: 3,
+    alignItems: 'center',
+    marginLeft: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   flatlist: {
     padding: 35,
