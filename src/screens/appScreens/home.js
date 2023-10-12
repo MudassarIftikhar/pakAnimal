@@ -70,7 +70,7 @@ class Home extends Component {
           <View marginBottom={20}>
             <Text style={styles.lbl1}>Browse Animal</Text>
             <View style={{width: '100%', height: 350}}>
-              <CategoryTab />
+              <CategoryTab navigation={this.navigation} />
             </View>
             {/* <Categories /> */}
             <Text style={styles.lbl1}>PakWild Offerings</Text>

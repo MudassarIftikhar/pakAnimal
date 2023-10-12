@@ -10,7 +10,8 @@ import {
 import {Text} from 'react-native-paper';
 
 const screenWidth = Dimensions.get('window').width;
-const BrowsCategory = () => {
+const BrowsCategory = (props, {navigation}) => {
+  console.log('browsCategotu>>>>', props);
   const [categoryList, setCategoryList] = useState([
     {
       id: '1',
@@ -69,7 +70,10 @@ const BrowsCategory = () => {
         scrollEnabled={false}
         numColumns={4}
         renderItem={({item, index}) => (
-          <TouchableOpacity disabled={true} style={styles.categoryMainBox}>
+          <TouchableOpacity
+            style={styles.categoryMainBox}
+            // onPress={() => props.navigation.navigate('BrowsePost')}
+          >
             <Image style={styles.categoryImg} source={item.image} />
             <Text style={styles.titleTxt}>{item.title}</Text>
           </TouchableOpacity>

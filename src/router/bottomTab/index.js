@@ -10,6 +10,7 @@ import SellNow from '../../screens/appScreens/sellNow';
 import MoreTab from '../moreTab';
 import PostAdd from '../postAdd';
 import SellNowTab from '../../components/sellNowTab';
+import BrowsePost from '../../screens/browsePost';
 const Tab = createBottomTabNavigator();
 const ChatBase = () => {
   return <View />;
@@ -120,7 +121,7 @@ const BottomTab = ({navigation}) => {
       />
       <Tab.Screen
         name="MoreTab"
-        component={MoreTab}
+        component={BrowsePost}
         options={{
           headerShown: false,
           title: '',
