@@ -11,8 +11,15 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import DiscriptionSvg from '../assets/images/Description-01.svg';
-import AnimalTypeSvg from '../assets/images/Animal Type-01.svg';
+import DiscriptionSvg from '../assets/SVGIcon/Description.svg';
+import AnimalTypeSvg from '../assets/SVGIcon/Animal Type.svg';
+import LocationSvg from '../assets/SVGIcon/Location.svg';
+import GenderSvg from '../assets/SVGIcon/Gender.svg';
+import TrainingLevelSvg from '../assets/SVGIcon/Training Level.svg';
+import NameSvg from '../assets/SVGIcon/Name.svg';
+import MobileNoSvg from '../assets/SVGIcon/Mobile Number.svg';
+import PriceSvg from '../assets/SVGIcon/Price.svg';
+import VaccinatedSvg from '../assets/SVGIcon/Vaccination.svg';
 import ColorBottomSheet from './colorBottomSheet';
 
 const BreedingPostInfo = props => {
@@ -53,8 +60,7 @@ const BreedingPostInfo = props => {
 
       <View style={styles.infoContainer}>
         <View style={styles.iconBack}>
-          {/* <DiscriptionSvg height={120} width={120} color={'#000'} /> */}
-          {/* <DiscriptionSvg height={200} width={200} /> */}
+          <DiscriptionSvg height={30} width={240} />
         </View>
         <View flex={1} paddingStart={13}>
           <Text style={styles.text1}>Description</Text>
@@ -71,7 +77,7 @@ const BreedingPostInfo = props => {
         style={styles.infoContainer}
         onPress={() => props.Navigation.navigate('SelectCity')}>
         <View style={styles.iconBack}>
-          <MaterialIcons name={'location-city'} size={25} color={'#808080'} />
+          <LocationSvg height={30} width={240} />
         </View>
         <View flex={1} paddingStart={13}>
           <Text style={styles.text1}>Location</Text>
@@ -91,7 +97,7 @@ const BreedingPostInfo = props => {
           setOpen1(!open1);
         }}>
         <View style={styles.iconBack}>
-          {/* <AnimalTypeSvg width={20} height={20} /> */}
+          <AnimalTypeSvg width={30} height={240} />
         </View>
         <View flex={1} paddingStart={13}>
           <Text style={styles.text1}>Animal Type</Text>
@@ -123,7 +129,7 @@ const BreedingPostInfo = props => {
           setOpen2(!open2);
         }}>
         <View style={styles.iconBack}>
-          <MaterialIcons name={'location-city'} size={25} color={'#808080'} />
+          <GenderSvg height={30} width={240} />
         </View>
         <View flex={1} paddingStart={13}>
           <Text style={styles.text1}>Gender</Text>
@@ -155,7 +161,7 @@ const BreedingPostInfo = props => {
           setOpen3(!open3);
         }}>
         <View style={styles.iconBack}>
-          <MaterialIcons name={'location-city'} size={25} color={'#808080'} />
+          <TrainingLevelSvg height={35} width={260} />
         </View>
         <View flex={1} paddingStart={13}>
           <Text style={styles.text1}>Training level</Text>
@@ -187,7 +193,7 @@ const BreedingPostInfo = props => {
           setOpen4(!open4);
         }}>
         <View style={styles.iconBack}>
-          <MaterialIcons name={'location-city'} size={25} color={'#808080'} />
+          <VaccinatedSvg height={30} width={240} />
         </View>
         <View flex={1} paddingStart={13}>
           <Text style={styles.text1}>Vaccination</Text>
@@ -219,7 +225,7 @@ const BreedingPostInfo = props => {
 
       <View style={styles.infoContainer}>
         <View style={styles.iconBack}>
-          <MaterialCommunityIcon name={'tag'} size={20} color={'#808080'} />
+          <PriceSvg width={30} height={240} />
         </View>
         <View flex={1} paddingStart={13}>
           <Text style={styles.text1}>Price</Text>
@@ -233,11 +239,7 @@ const BreedingPostInfo = props => {
 
       <View style={styles.infoContainer}>
         <View style={styles.iconBack}>
-          <MaterialCommunityIcon
-            name={'face-man'}
-            size={25}
-            color={'#808080'}
-          />
+          <NameSvg height={30} width={240} />
         </View>
         <View flex={1} paddingStart={13}>
           <Text style={styles.text1}>Name</Text>
@@ -248,11 +250,7 @@ const BreedingPostInfo = props => {
 
       <View style={styles.infoContainer}>
         <View style={styles.iconBack}>
-          <IonIcons
-            name={'phone-portrait-outline'}
-            size={25}
-            color={'#808080'}
-          />
+          <MobileNoSvg height={30} width={240} />
         </View>
         <View flex={1} paddingStart={13}>
           <Text style={styles.text1}>Mobile Number</Text>
@@ -267,7 +265,7 @@ const BreedingPostInfo = props => {
         </View>
         <Text style={styles.text3}>Allow WhatsApp Contact</Text>
         <Switch
-          trackColor={{false: '#eee', true: '#81b0ff'}}
+          trackColor={{false: '#eee', true: '#b63439'}}
           thumbColor={isEnabled ? '#fff' : '#fff'}
           ios_backgroundColor="#3e3e3e"
           onValueChange={toggleSwitch}
@@ -344,7 +342,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 50,
     alignItems: 'center',
-    backgroundColor: '#00AEEF',
+    backgroundColor: '#b63439',
     justifyContent: 'center',
     paddingRight: 20,
     marginStart: 20,

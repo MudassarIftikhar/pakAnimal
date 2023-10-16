@@ -21,19 +21,19 @@ const Categories = props => {
         <View key="1">
           <BrowsCategory />
         </View>
-        <View key="2">
+        {/* <View key="2">
           <BrowsCategory2 />
         </View>
         <View key="3">
           <BrowsCategory />
-        </View>
+        </View> */}
       </PagerView>
 
-      <View style={styles().indicatorBox}>
+      {/* <View style={styles().indicatorBox}>
         {categoryList.map((items, index) => {
           return <View style={styles(currentIndex, index).indicators}></View>;
         })}
-      </View>
+      </View> */}
     </View>
   );
 };

@@ -77,7 +77,7 @@ class Home extends Component {
           marginBottom={120}>
           <View marginBottom={20}>
             <Text style={styles.lbl1}>Browse Animal</Text>
-            <View style={{width: '100%', height: 350}}>
+            <View style={{width: '100%', height: 220}}>
               <CategoryTab />
             </View>
             <Text style={styles.lbl1}>PakWild Offerings</Text>

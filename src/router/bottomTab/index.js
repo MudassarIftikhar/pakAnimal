@@ -8,10 +8,21 @@ import MyAdsTab from '../myAdsTab';
 import Chat from '../../screens/appScreens/chat';
 import MoreTab from '../moreTab';
 import PostAdd from '../postAdd';
-import SellNowModal from '../../components/sellNowModal';
+import HomeOutlineSvg from '../../assets/images/Dogs-01.png';
+import HomeFillSvg from '../../assets/images/chat.png';
+import MyadsSvg from '../../assets/SVGIcon/My Ads.svg';
+import ChatSvg from '../../assets/SVGIcon/Chat.svg';
+import MoreSvg from '../../assets/SVGIcon/More.svg';
+import {SvgXml} from 'react-native-svg';
 const Tab = createBottomTabNavigator();
 const BottomTab = ({navigation}) => {
   const [show, setShow] = useState('false');
+
+  const myAdsOutline = require('../../assets/images/chat.png'); //My Ads Outline-01-01
+  const myAdsFill = require('../../assets/images/My Ads Fill-01-01.png');
+
+  const homeFill = require('../../assets/images/Home Fill-01-01.png');
+  const homeOutline = require('../../assets/images/Home Outline-01-01.png');
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -47,9 +58,10 @@ const BottomTab = ({navigation}) => {
             tabBarIconComponent(
               focused,
               color,
-              27,
+              40,
+              40,
               'Home',
-              focused ? 'home' : 'ios-home-outline',
+              focused ? homeFill : homeOutline,
               0,
             ),
         }}
@@ -60,16 +72,25 @@ const BottomTab = ({navigation}) => {
         options={{
           title: '',
           tabBarIcon: ({focused, color, size}) =>
-            tabbBarIconComponent(
+            tabBarIconComponent(
               focused,
               color,
-              29,
-              'My Ads',
-              focused ? 'bullhorn' : 'bullhorn-outline',
+              40,
+              40,
+              'Home',
+              focused ? myAdsFill : myAdsOutline,
+              0,
             ),
+          // tabbBarIconComponent(
+          //   focused,
+          //   color,
+          //   29,
+          //   'My Ads',
+          //   focused ? 'bullhorn' : 'bullhorn-outline',
+          // ),
         }}
       />
-      <Tab.Screen
+      {/*} <Tab.Screen
         options={{
           presentation: 'modal',
           headerShown: false,
@@ -92,7 +113,7 @@ const BottomTab = ({navigation}) => {
       {/* {() => null} */}
       {/* </Tab.Screen> */}
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Chat"
         component={Chat}
         options={{
@@ -124,7 +145,7 @@ const BottomTab = ({navigation}) => {
               -3,
             ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };
@@ -144,19 +165,34 @@ const tabbBarIconComponent = (focused, color, size, title, iconName) => {
 const tabBarIconComponent = (
   focused,
   color,
-  size,
+  width,
+  height,
   title,
   iconName,
   topMargin,
 ) => {
   return (
     <View style={styles().homeView}>
-      <Ionicons
+      {/* <SvgXml
+        xml={iconName}
+        width={width}
+        height={height}
+        color={color}
+        style={styles().ionIconsStyle}
+      /> */}
+      {/* <Ionicons
         name={iconName}
         color={color}
         size={size}
         top={topMargin}
         style={styles().ionIconsStyle}
+      /> */}
+      <Image
+        style={styles().ionIconsStyle}
+        source={iconName}
+        width={width}
+        height={height}
+        resizeMode="center"
       />
       <Text style={styles(focused, color).iconText}>{title}</Text>
     </View>
@@ -199,7 +235,12 @@ const styles = (focused, color) =>
       color: '#000',
       top: -16,
     },
-    ionIconsStyle: {height: 30, alignSelf: 'center'},
+    ionIconsStyle: {
+      height: 30,
+      width: 40,
+      alignSelf: 'center',
+      backgroundColor: 'yellow',
+    },
     iconText: {width: '100%', color: focused ? '#b63439' : color},
   });
 export default BottomTab;

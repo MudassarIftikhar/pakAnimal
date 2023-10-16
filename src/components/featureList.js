@@ -6,6 +6,7 @@ import {
   View,
   Image,
   FlatList,
+  Dimensions,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -66,15 +67,16 @@ const FeatureList = props => {
     </View>
   );
 };
-
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   FlatlistStyles: {
     width: '100%',
-    margin: 10,
+    margin: (screenWidth * 0.055) / 1.9,
   },
   featuredListContainer: {
-    height: 170,
-    width: '45%',
+    height: (screenHeight * 0.4) / 2, //170,
+    width: screenWidth * 0.45, //'45%',
     borderRadius: 15,
     backgroundColor: '#fff',
     margin: 5,
@@ -82,8 +84,8 @@ const styles = StyleSheet.create({
   },
   featureImg: {
     width: '100%',
-    height: 100,
-    resizeMode: 'stretch',
+    height: (screenHeight * 0.3) / 2.5,
+    resizeMode: 'center',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },

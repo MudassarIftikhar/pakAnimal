@@ -16,7 +16,7 @@ const CategoryTab = props => {
       barStyle={styles.tabBarStyle}
       tabBarOptions={{
         labelStyle: {
-          fontSize: 13,
+          fontSize: 18,
           margin: 0,
           padding: 0,
         },
@@ -27,6 +27,7 @@ const CategoryTab = props => {
           backgroundColor: '#b63439',
           height: 1,
         },
+        tabBarItemStyle: {alignItems: 'flex-start', marginStart: 7},
         swipeEnabled: false,
       }}
       sceneContainerStyle={{backgroundColor: 'white'}}>
@@ -35,8 +36,8 @@ const CategoryTab = props => {
         component={() => <Categories myProp={'trus'} />}
         options={{}}
       />
-      <Tab.Screen name="Pet" component={BrowsCategory} options={{}} />
-      <Tab.Screen name="Farm Animal" component={Categories} options={{}} />
+      {/* <Tab.Screen name="Pet" component={BrowsCategory} options={{}} />
+      <Tab.Screen name="Farm Animal" component={Categories} options={{}} /> */}
     </Tab.Navigator>
   );
 };
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#694fad',
     paddingBottom: 48,
     fontWeight: '600',
+    textAlign: 'left',
   },
 });
 export default CategoryTab;

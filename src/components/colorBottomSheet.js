@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import ColorSvg from '../assets/SVGIcon/Color.svg';
 
 import RBSheet from 'react-native-raw-bottom-sheet';
 
@@ -99,7 +100,7 @@ const ColorBottomSheet = props => {
           refRBSheet.current.open();
         }}>
         <View style={styles.iconBack}>
-          <MaterialCommunityIcon name={'tag'} size={20} color={'#808080'} />
+          <ColorSvg height={30} width={240} />
         </View>
         <View flex={1} paddingStart={13}>
           <Text style={styles.text1}>Color</Text>

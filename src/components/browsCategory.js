@@ -32,36 +32,6 @@ const BrowsCategory = props => {
       lable: 'PakWild',
       image: require('../assets/images/goat.png'),
     },
-    {
-      id: '4',
-      title: 'Page1',
-      lable: 'PakWild',
-      image: require('../assets/images/goat.png'),
-    },
-    {
-      id: '5',
-      title: 'Pet',
-      lable: 'PakWild',
-      image: require('../assets/images/goat.png'),
-    },
-    {
-      id: '6',
-      title: 'Farm Animal',
-      lable: 'PakWild',
-      image: require('../assets/images/goat.png'),
-    },
-    {
-      id: '7',
-      title: 'Accessories',
-      lable: 'PakWild',
-      image: require('../assets/images/goat.png'),
-    },
-    {
-      id: '8',
-      title: 'Page1',
-      lable: 'PakWild',
-      image: require('../assets/images/goat.png'),
-    },
   ]);
   const handleClick = () => {
     // Call a callback function passed as a prop to send the event to ComponentB
@@ -74,12 +44,14 @@ const BrowsCategory = props => {
         style={styles.FlatlistStyles}
         data={categoryList}
         scrollEnabled={false}
-        numColumns={4}
+        numColumns={3}
         renderItem={({item, index}) => (
-          <TouchableOpacity disabled={false} style={styles.categoryMainBox}>
-            <Image style={styles.categoryImg} source={item.image} />
-            <Text style={styles.titleTxt}>{item.title}</Text>
-          </TouchableOpacity>
+          <View style={styles.mainBox}>
+            <TouchableOpacity disabled={false} style={styles.categoryMainBox}>
+              <Image style={styles.categoryImg} source={item.image} />
+              <Text style={styles.titleTxt}>{item.title}</Text>
+            </TouchableOpacity>
+          </View>
         )}
         keyExtractor={this._keyExtractor}
       />
@@ -119,36 +91,11 @@ const styles = StyleSheet.create({
     marginStart: 6,
     marginEnd: 6,
   },
-  centerAlign: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
+  mainBox: {
+    width: '35%',
+    justifyContent: 'space-between',
+    marginStart: 5,
   },
 });
-//   return (
-//     <View style={styles.outerBox}>
-//       <Image
-//         style={{
-//           height: 80,
-//           width: 80,
-//           alignItems: 'center',
-//           justifyContent: 'center',
-//           alignSelf: 'center',
-//         }}
-//         source={require('../assets/images/MarkhorHunts.png')}
-//       />
-//       <Text style={styles.titleTxt}>Pet</Text>
-//     </View>
-//   );
 
-// };
-// const styles = StyleSheet.create({
-//   outerBox: {
-//     borderRadius: 10,
-//     flexDirection: 'column',
-//   },
-//   titleTxt: {
-//     textAlign: 'center',
-//   },
-// });
 export default BrowsCategory;
