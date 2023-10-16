@@ -15,6 +15,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import RadioButton from 'radio-buttons-react-native';
 
 const BrowsePostHeader = ({navigation}) => {
   return (
@@ -80,7 +81,34 @@ const BrowsePost = ({navigation}) => {
       location: 'Faisalabad',
     },
   ];
+  const data = [
+    {
+      label: 'Date updated (New to Old)',
+    },
+    {
+      label: 'Date updated (Old to New)',
+    },
+    {
+      label: 'Price high to Low',
+    },
+    {
+      label: 'Price Low to High',
+    },
+    {
+      label: 'Manufectured year (New to Old)',
+    },
+    {
+      label: 'Manufectured year (Old to New)',
+    },
+    {
+      label: 'Milage (Hight to Low)',
+    },
+    {
+      label: 'Milage (Low to High)',
+    },
+  ];
   const refRBSheet = useRef();
+
   return (
     <SafeAreaView>
       <BrowsePostHeader />
@@ -108,6 +136,9 @@ const BrowsePost = ({navigation}) => {
             <Text style={styles.sortby}>Sort by</Text>
             <Text style={styles.cancel}>cancel</Text>
           </View>
+          <ScrollView>
+            <RadioButton data={data} style={{padding: 20}} />
+          </ScrollView>
         </RBSheet>
         <FlatList
           data={FiltersList}
@@ -302,7 +333,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   cancel: {
-    fontSize: 14,
+    fontSize: 16,
+    color: '#b63439',
   },
 });
 export default BrowsePost;
