@@ -10,6 +10,10 @@ import {
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesom from 'react-native-vector-icons/FontAwesome';
+import SaveSvg from '../../assets/SVGIcon/Saved.svg';
+import LanguageSvg from '../../assets/SVGIcon/Language.svg';
+import VideoSvg from '../../assets/SVGIcon/Video.svg';
+import LogOutSvg from '../../assets/SVGIcon/Logout.svg';
 
 const More = ({navigation}) => {
   return (
@@ -55,7 +59,8 @@ const More = ({navigation}) => {
         </TouchableOpacity> */}
 
         <View style={styles.listContainer}>
-          <EvilIcons name="heart" size={25} color="#808080" />
+          {/* <EvilIcons name="heart" size={25} color="#808080" /> */}
+          <SaveSvg height={25} width={25} />
           <Text style={styles.listLblText}>Saved</Text>
           <MaterialIcons
             name="keyboard-arrow-right"
@@ -75,7 +80,7 @@ const More = ({navigation}) => {
         </View> */}
 
         <View style={styles.listContainer}>
-          <FontAwesom name="language" size={20} color="#808080" />
+          <LanguageSvg height={25} width={25} />
           <Text style={styles.listLblText}>Language</Text>
           <Text style={styles.language}>English</Text>
         </View>
@@ -83,7 +88,7 @@ const More = ({navigation}) => {
         <Text style={styles.lblText}>Others</Text>
 
         <View style={styles.listContainer}>
-          <FontAwesom name="opencart" size={20} color="#808080" />
+          <VideoSvg height={25} width={25} />
           <Text style={styles.listLblText}>Videos</Text>
           <MaterialIcons
             name="keyboard-arrow-right"
@@ -113,7 +118,7 @@ const More = ({navigation}) => {
         </View>
 
         <View style={styles.listContainer}>
-          <FontAwesom name="opencart" size={20} color="red" />
+          <LogOutSvg height={25} width={25} />
           <Text style={styles.listLblText}>Logout</Text>
         </View>
       </SafeAreaView>
@@ -153,11 +158,11 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 17,
     color: '#000',
-    marginLeft: 20,
-    bottom: 2,
+    marginLeft: 15,
+    bottom: 1,
   },
   listContainer: {
-    paddingStart: 20,
+    paddingStart: 15,
     marginTop: 10,
     paddingBottom: 10,
     marginEnd: 10,

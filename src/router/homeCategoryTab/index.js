@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Categories from '../../components/categories';
 import BrowsCategory from '../../components/browsCategory';
@@ -30,10 +30,10 @@ const CategoryTab = props => {
         tabBarItemStyle: {alignItems: 'flex-start', marginStart: 7},
         swipeEnabled: false,
       }}
-      sceneContainerStyle={{backgroundColor: 'white'}}>
+      sceneContainerStyle={{backgroundColor: '#eee'}}>
       <Tab.Screen
         name="Category"
-        component={() => <Categories myProp={'trus'} />}
+        component={() => <BrowsCategory />}
         options={{}}
       />
       {/* <Tab.Screen name="Pet" component={BrowsCategory} options={{}} />
@@ -49,5 +49,10 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'left',
   },
+  centeredContent: {
+    alignSelf: 'center',
+    justifyContent: 'center',
+  },
 });
+
 export default CategoryTab;

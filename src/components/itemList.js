@@ -74,6 +74,8 @@ const styles = StyleSheet.create({
     margin: 8,
     flexGrow: 1,
     elevation: 5,
+    borderWidth: 2,
+    borderColor: '#eee',
   },
   itemImage: {
     width: '100%',

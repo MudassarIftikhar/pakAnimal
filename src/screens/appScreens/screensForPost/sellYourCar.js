@@ -13,11 +13,13 @@ import {useFocusEffect} from '@react-navigation/native';
 import AddImagePicker from '../../../components/addImagePicker';
 import BreedingPostInfo from '../../../components/breedingPostInfo';
 
-const SellYourCar = ({navigation}) => {
+const SellYourCar = props => {
+  // console.log('SellType>>>>', props);
+  const type = props.route.params?.type ?? 'other';
   useFocusEffect(
     React.useCallback(() => {
       const onBackPress = () => {
-        navigation.goBack();
+        this.props.navigation.goBack();
         return true;
       };
 
@@ -39,12 +41,12 @@ const SellYourCar = ({navigation}) => {
           style
           title="Sell your pet"
           CrossIcon={false}
-          Navigation={navigation}
+          Navigation={props.navigation}
         />
       </View>
       <ScrollView>
         <AddImagePicker />
-        <BreedingPostInfo Navigation={navigation} />
+        <BreedingPostInfo type={type} Navigation={props.navigation} />
       </ScrollView>
     </SafeAreaView>
   );

@@ -66,20 +66,17 @@ const styles = StyleSheet.create({
   },
   categoryMainBox: {
     flexDirection: 'column',
-    width: 90,
-    height: 120,
+    width: 110,
+    height: 140,
     borderRadius: 10,
     margin: 5,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 3,
   },
   categoryImg: {
     width: '50%',
     height: '50%', //(screenHeight * 85) / 96,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
     resizeMode: 'center',
     justifyContent: 'center',
     alignItems: 'center',
@@ -88,13 +85,13 @@ const styles = StyleSheet.create({
   titleTxt: {
     textAlign: 'center',
     numberOfLines: 2,
-    marginStart: 6,
-    marginEnd: 6,
+    marginStart: 5,
+    marginEnd: 5,
   },
   mainBox: {
-    width: '35%',
-    justifyContent: 'space-between',
+    width: '31%',
     marginStart: 5,
+    alignItems: 'center',
   },
 });
 

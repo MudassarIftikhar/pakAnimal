@@ -56,7 +56,7 @@ const FeatureList = props => {
                 <Ionicons
                   style={styles.btnNext}
                   name="chevron-forward-sharp"
-                  size={25}
+                  size={20}
                 />
               </View>
             </View>
@@ -75,12 +75,14 @@ const styles = StyleSheet.create({
     margin: (screenWidth * 0.055) / 1.9,
   },
   featuredListContainer: {
-    height: (screenHeight * 0.4) / 2, //170,
+    height: (screenHeight * 0.45) / 2, //170,
     width: screenWidth * 0.45, //'45%',
     borderRadius: 15,
     backgroundColor: '#fff',
     margin: 5,
     elevation: 5,
+    borderWidth: 2,
+    borderColor: '#eee',
   },
   featureImg: {
     width: '100%',
@@ -101,7 +103,7 @@ const styles = StyleSheet.create({
   },
   titleTxt: {
     color: '#000',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '600',
     paddingStart: 10,
     marginEnd: 10,

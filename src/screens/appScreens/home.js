@@ -22,6 +22,7 @@ import Cross from 'react-native-vector-icons/Feather';
 import axios from 'axios';
 import SellNowModal from '../../components/sellNowModal';
 import SellNow from './sellNow';
+import BrowsCategory from '../../components/browsCategory';
 class Home extends Component {
   // const [modalVisible, setModalVisible] = useState(false);
   // const route = useRoute();
@@ -77,7 +78,10 @@ class Home extends Component {
           marginBottom={120}>
           <View marginBottom={20}>
             <Text style={styles.lbl1}>Browse Animal</Text>
-            <View style={{width: '100%', height: 220}}>
+            <View
+              style={{
+                height: 240,
+              }}>
               <CategoryTab />
             </View>
             <Text style={styles.lbl1}>PakWild Offerings</Text>

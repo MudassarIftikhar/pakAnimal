@@ -5,11 +5,7 @@ import SellNow from '../screens/appScreens/sellNow';
 
 const OferingCard = props => {
   return (
-    <TouchableOpacity
-      onPress={() => {
-        <SellNow />;
-      }}
-      style={styles.postContainer}>
+    <TouchableOpacity style={styles.postContainer}>
       <View style={styles.cardOutterBox}>
         <View style={styles.cardInnerBox}>
           <Text style={styles.postHeading}>Sell Your Pet!</Text>
@@ -57,6 +53,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
     paddingBottom: 10,
     flexWrap: 'wrap',
+    borderColor: '#eee',
+    borderWidth: 2,
   },
   postHeading: {
     fontSize: 20,

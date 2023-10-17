@@ -1,28 +1,26 @@
 import React, {useState} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../../screens/appScreens/home';
 import MyAdsTab from '../myAdsTab';
 import Chat from '../../screens/appScreens/chat';
 import MoreTab from '../moreTab';
 import PostAdd from '../postAdd';
-import HomeOutlineSvg from '../../assets/images/Dogs-01.png';
-import HomeFillSvg from '../../assets/images/chat.png';
-import MyadsSvg from '../../assets/SVGIcon/My Ads.svg';
-import ChatSvg from '../../assets/SVGIcon/Chat.svg';
-import MoreSvg from '../../assets/SVGIcon/More.svg';
-import {SvgXml} from 'react-native-svg';
 const Tab = createBottomTabNavigator();
 const BottomTab = ({navigation}) => {
   const [show, setShow] = useState('false');
 
-  const myAdsOutline = require('../../assets/images/chat.png'); //My Ads Outline-01-01
-  const myAdsFill = require('../../assets/images/My Ads Fill-01-01.png');
+  const myAdsOutline = require('../../assets/images/MyAdsOutline.png'); //My Ads Outline-01-01
+  const myAdsFill = require('../../assets/images/MyAdsFill.png');
 
-  const homeFill = require('../../assets/images/Home Fill-01-01.png');
-  const homeOutline = require('../../assets/images/Home Outline-01-01.png');
+  const homeFill = require('../../assets/images/HomeFill.png');
+  const homeOutline = require('../../assets/images/HomeOutline.png');
+
+  const chatFill = require('../../assets/images/ChatFill.png');
+  const chatOutline = require('../../assets/images/ChatOutline.png');
+
+  const moreFill = require('../../assets/images/MoreFill.png');
+  const moreOutline = require('../../assets/images/MoreOutline.png');
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -77,20 +75,13 @@ const BottomTab = ({navigation}) => {
               color,
               40,
               40,
-              'Home',
+              'My Ads',
               focused ? myAdsFill : myAdsOutline,
               0,
             ),
-          // tabbBarIconComponent(
-          //   focused,
-          //   color,
-          //   29,
-          //   'My Ads',
-          //   focused ? 'bullhorn' : 'bullhorn-outline',
-          // ),
         }}
       />
-      {/*} <Tab.Screen
+      <Tab.Screen
         options={{
           presentation: 'modal',
           headerShown: false,
@@ -113,7 +104,7 @@ const BottomTab = ({navigation}) => {
       {/* {() => null} */}
       {/* </Tab.Screen> */}
 
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Chat"
         component={Chat}
         options={{
@@ -122,9 +113,10 @@ const BottomTab = ({navigation}) => {
             tabBarIconComponent(
               focused,
               color,
-              25,
+              40,
+              40,
               'Chat',
-              focused ? 'chatbox-ellipses' : 'chatbox-ellipses-outline',
+              focused ? chatFill : chatOutline,
               3,
             ),
         }}
@@ -139,29 +131,18 @@ const BottomTab = ({navigation}) => {
             tabBarIconComponent(
               focused,
               color,
-              35,
+              40,
+              40,
               'More',
-              focused ? 'reorder-three-sharp' : 'reorder-three-outline',
-              -3,
+              focused ? moreFill : moreOutline,
+              5,
             ),
         }}
-      /> */}
+      />
     </Tab.Navigator>
   );
 };
-const tabbBarIconComponent = (focused, color, size, title, iconName) => {
-  return (
-    <View style={styles().homeView}>
-      <MaterialCommunityIcons
-        name={iconName}
-        color={color}
-        size={size}
-        style={styles().ionIconsStyle}
-      />
-      <Text style={styles(focused, color).iconText}>{title}</Text>
-    </View>
-  );
-};
+
 const tabBarIconComponent = (
   focused,
   color,
@@ -173,20 +154,6 @@ const tabBarIconComponent = (
 ) => {
   return (
     <View style={styles().homeView}>
-      {/* <SvgXml
-        xml={iconName}
-        width={width}
-        height={height}
-        color={color}
-        style={styles().ionIconsStyle}
-      /> */}
-      {/* <Ionicons
-        name={iconName}
-        color={color}
-        size={size}
-        top={topMargin}
-        style={styles().ionIconsStyle}
-      /> */}
       <Image
         style={styles().ionIconsStyle}
         source={iconName}
@@ -237,9 +204,9 @@ const styles = (focused, color) =>
     },
     ionIconsStyle: {
       height: 30,
-      width: 40,
+      width: 30,
       alignSelf: 'center',
-      backgroundColor: 'yellow',
+      resizeMode: 'center',
     },
     iconText: {width: '100%', color: focused ? '#b63439' : color},
   });

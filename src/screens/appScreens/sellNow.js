@@ -43,7 +43,9 @@ const SellNow = ({navigation, props}) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconSubContainer}
-            onPress={() => navigation.navigate('SellYourCar')}>
+            onPress={() =>
+              navigation.navigate('SellYourCar', {type: 'Accessories'})
+            }>
             <Image
               resizeMode={'center'}
               style={styles.icon}

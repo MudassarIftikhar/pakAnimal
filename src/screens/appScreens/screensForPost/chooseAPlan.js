@@ -84,7 +84,7 @@ const ChooseAPlan = props => {
             {/* 3rd card */}
 
             <TouchableOpacity
-              onPress={() => props.navigation.navigate('BasicInfo')}
+              onPress={() => props.navigation.navigate('SellYourCar')}
               style={styles.postContainer}>
               <View flex={1}>
                 <Text style={styles.postHeading}>Sell Your Farm Animal!</Text>

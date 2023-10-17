@@ -20,14 +20,6 @@ const tabButton = [
     id: '3',
     name: 'Accessories',
   },
-  {
-    id: '4',
-    name: 'Pets',
-  },
-  {
-    id: '5',
-    name: 'Farm Animal',
-  },
 ];
 const HomeTabButton = props => {
   return (

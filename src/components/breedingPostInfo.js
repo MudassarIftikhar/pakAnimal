@@ -16,7 +16,7 @@ import AnimalTypeSvg from '../assets/SVGIcon/Animal Type.svg';
 import LocationSvg from '../assets/SVGIcon/Location.svg';
 import GenderSvg from '../assets/SVGIcon/Gender.svg';
 import TrainingLevelSvg from '../assets/SVGIcon/Training Level.svg';
-import NameSvg from '../assets/SVGIcon/Name.svg';
+import NameSvg from '../assets/SVGIcon/Name01.svg';
 import MobileNoSvg from '../assets/SVGIcon/Mobile Number.svg';
 import PriceSvg from '../assets/SVGIcon/Price.svg';
 import VaccinatedSvg from '../assets/SVGIcon/Vaccination.svg';
@@ -52,7 +52,7 @@ const BreedingPostInfo = props => {
   ]);
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
+  console.log('Post>>>>', props.type);
   return (
     <View>
       {/* Info List */}
@@ -90,133 +90,136 @@ const BreedingPostInfo = props => {
         />
       </TouchableOpacity>
       <View style={styles.horizontolLine2} />
+      {props.type !== 'Accessories' ? (
+        <View>
+          <TouchableOpacity
+            style={styles.infoContainer}
+            onPress={() => {
+              setOpen1(!open1);
+            }}>
+            <View style={styles.iconBack}>
+              <AnimalTypeSvg width={30} height={240} />
+            </View>
+            <View flex={1} paddingStart={13}>
+              <Text style={styles.text1}>Animal Type</Text>
+              {open1 ? (
+                dropItems.map(dropValue => (
+                  <TouchableOpacity
+                    style={{}}
+                    onPress={() => (
+                      setValue(dropValue.label), setOpen1(!open1)
+                    )}>
+                    <Text style={styles.listText}>{dropValue.label}</Text>
+                  </TouchableOpacity>
+                ))
+              ) : (
+                <Text style={styles.text2}>{value}</Text>
+              )}
+            </View>
 
-      <TouchableOpacity
-        style={styles.infoContainer}
-        onPress={() => {
-          setOpen1(!open1);
-        }}>
-        <View style={styles.iconBack}>
-          <AnimalTypeSvg width={30} height={240} />
+            <MaterialIcons
+              name={'keyboard-arrow-down'}
+              size={30}
+              color={'#808080'}
+            />
+          </TouchableOpacity>
+          <View style={styles.horizontolLine2} />
+          <TouchableOpacity
+            style={styles.infoContainer}
+            onPress={() => {
+              setOpen2(!open2);
+            }}>
+            <View style={styles.iconBack}>
+              <GenderSvg height={30} width={240} />
+            </View>
+            <View flex={1} paddingStart={13}>
+              <Text style={styles.text1}>Gender</Text>
+              {open2 ? (
+                genderType.map(dropValue => (
+                  <TouchableOpacity
+                    style={styles.listBox}
+                    onPress={() => (
+                      setValueGender(dropValue.label), setOpen2(!open2)
+                    )}>
+                    <Text style={styles.listText}>{dropValue.label}</Text>
+                  </TouchableOpacity>
+                ))
+              ) : (
+                <Text style={styles.text2}>{valueGender}</Text>
+              )}
+            </View>
+            <MaterialIcons
+              name={'keyboard-arrow-down'}
+              size={30}
+              color={'#808080'}
+            />
+          </TouchableOpacity>
+          <View style={styles.horizontolLine2} />
+          <TouchableOpacity
+            style={styles.infoContainer}
+            onPress={() => {
+              setOpen3(!open3);
+            }}>
+            <View style={styles.iconBack}>
+              <TrainingLevelSvg height={35} width={260} />
+            </View>
+            <View flex={1} paddingStart={13}>
+              <Text style={styles.text1}>Training level</Text>
+              {open3 ? (
+                trainingType.map(dropValue => (
+                  <TouchableOpacity
+                    style={{}}
+                    onPress={() => (
+                      setValueTraining(dropValue.label), setOpen3(!open3)
+                    )}>
+                    <Text style={styles.listText}>{dropValue.label}</Text>
+                  </TouchableOpacity>
+                ))
+              ) : (
+                <Text style={styles.text2}>{valueTraining}</Text>
+              )}
+            </View>
+            <MaterialIcons
+              name={'keyboard-arrow-down'}
+              size={30}
+              color={'#808080'}
+            />
+          </TouchableOpacity>
+          <View style={styles.horizontolLine2} />
+          <TouchableOpacity
+            style={styles.infoContainer}
+            onPress={() => {
+              setOpen4(!open4);
+            }}>
+            <View style={styles.iconBack}>
+              <VaccinatedSvg height={30} width={240} />
+            </View>
+            <View flex={1} paddingStart={13}>
+              <Text style={styles.text1}>Vaccination</Text>
+              {open4 ? (
+                vaccinated.map(dropValue => (
+                  <TouchableOpacity
+                    style={{}}
+                    onPress={() => (
+                      setValueVaccinated(dropValue.label), setOpen4(!open4)
+                    )}>
+                    <Text style={styles.listText}>{dropValue.label}</Text>
+                  </TouchableOpacity>
+                ))
+              ) : (
+                <Text style={styles.text2}>{valueVaccinated}</Text>
+              )}
+            </View>
+            <MaterialIcons
+              name={'keyboard-arrow-down'}
+              size={30}
+              color={'#808080'}
+            />
+          </TouchableOpacity>
         </View>
-        <View flex={1} paddingStart={13}>
-          <Text style={styles.text1}>Animal Type</Text>
-          {open1 ? (
-            dropItems.map(dropValue => (
-              <TouchableOpacity
-                style={{}}
-                onPress={() => (setValue(dropValue.label), setOpen1(!open1))}>
-                <Text style={styles.listText}>{dropValue.label}</Text>
-              </TouchableOpacity>
-            ))
-          ) : (
-            <Text style={styles.text2}>{value}</Text>
-          )}
-        </View>
-
-        <MaterialIcons
-          name={'keyboard-arrow-down'}
-          size={30}
-          color={'#808080'}
-        />
-      </TouchableOpacity>
-
-      <View style={styles.horizontolLine2} />
-
-      <TouchableOpacity
-        style={styles.infoContainer}
-        onPress={() => {
-          setOpen2(!open2);
-        }}>
-        <View style={styles.iconBack}>
-          <GenderSvg height={30} width={240} />
-        </View>
-        <View flex={1} paddingStart={13}>
-          <Text style={styles.text1}>Gender</Text>
-          {open2 ? (
-            genderType.map(dropValue => (
-              <TouchableOpacity
-                style={styles.listBox}
-                onPress={() => (
-                  setValueGender(dropValue.label), setOpen2(!open2)
-                )}>
-                <Text style={styles.listText}>{dropValue.label}</Text>
-              </TouchableOpacity>
-            ))
-          ) : (
-            <Text style={styles.text2}>{valueGender}</Text>
-          )}
-        </View>
-        <MaterialIcons
-          name={'keyboard-arrow-down'}
-          size={30}
-          color={'#808080'}
-        />
-      </TouchableOpacity>
-      <View style={styles.horizontolLine2} />
-
-      <TouchableOpacity
-        style={styles.infoContainer}
-        onPress={() => {
-          setOpen3(!open3);
-        }}>
-        <View style={styles.iconBack}>
-          <TrainingLevelSvg height={35} width={260} />
-        </View>
-        <View flex={1} paddingStart={13}>
-          <Text style={styles.text1}>Training level</Text>
-          {open3 ? (
-            trainingType.map(dropValue => (
-              <TouchableOpacity
-                style={{}}
-                onPress={() => (
-                  setValueTraining(dropValue.label), setOpen3(!open3)
-                )}>
-                <Text style={styles.listText}>{dropValue.label}</Text>
-              </TouchableOpacity>
-            ))
-          ) : (
-            <Text style={styles.text2}>{valueTraining}</Text>
-          )}
-        </View>
-        <MaterialIcons
-          name={'keyboard-arrow-down'}
-          size={30}
-          color={'#808080'}
-        />
-      </TouchableOpacity>
-      <View style={styles.horizontolLine2} />
-
-      <TouchableOpacity
-        style={styles.infoContainer}
-        onPress={() => {
-          setOpen4(!open4);
-        }}>
-        <View style={styles.iconBack}>
-          <VaccinatedSvg height={30} width={240} />
-        </View>
-        <View flex={1} paddingStart={13}>
-          <Text style={styles.text1}>Vaccination</Text>
-          {open4 ? (
-            vaccinated.map(dropValue => (
-              <TouchableOpacity
-                style={{}}
-                onPress={() => (
-                  setValueVaccinated(dropValue.label), setOpen4(!open4)
-                )}>
-                <Text style={styles.listText}>{dropValue.label}</Text>
-              </TouchableOpacity>
-            ))
-          ) : (
-            <Text style={styles.text2}>{valueVaccinated}</Text>
-          )}
-        </View>
-        <MaterialIcons
-          name={'keyboard-arrow-down'}
-          size={30}
-          color={'#808080'}
-        />
-      </TouchableOpacity>
+      ) : (
+        ''
+      )}
       <View style={styles.horizontolLine2} />
 
       <ColorBottomSheet />
