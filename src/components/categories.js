@@ -19,7 +19,7 @@ const Categories = props => {
           setCurrentIndex(e.nativeEvent.position);
         }}>
         <View key="1">
-          <BrowsCategory />
+          <BrowsCategory navigation={props.navigation} />
         </View>
         {/* <View key="2">
           <BrowsCategory2 />

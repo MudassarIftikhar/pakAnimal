@@ -46,12 +46,10 @@ const BrowsCategory = props => {
         scrollEnabled={false}
         numColumns={3}
         renderItem={({item, index}) => (
-          <View style={styles.mainBox}>
-            <TouchableOpacity disabled={false} style={styles.categoryMainBox}>
-              <Image style={styles.categoryImg} source={item.image} />
-              <Text style={styles.titleTxt}>{item.title}</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity disabled={true} style={styles.categoryMainBox}>
+            <Image style={styles.categoryImg} source={item.image} />
+            <Text style={styles.titleTxt}>{item.title}</Text>
+          </TouchableOpacity>
         )}
         keyExtractor={this._keyExtractor}
       />

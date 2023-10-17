@@ -55,12 +55,6 @@ const InboxHeader = ({navigation}) => {
   );
 };
 const Inbox = ({navigation}) => {
-  // const flatListRef = useRef(null);
-  // useEffect(() => {
-  //   if (flatListRef.current) {
-  //     flatListRef.current.scrollToEnd({animated: true});
-  //   }
-  // }, [messageText]);
   const msgsList = [
     {id: '1', text: 'Hello!', isUser: true},
     {id: '2', text: 'Hi there!', isUser: false},
