@@ -318,7 +318,9 @@ const styles = StyleSheet.create({
     marginLeft: 14,
   },
   hearticon: {
-    margin: 9,
+    position: 'absolute',
+    right: 12,
+    top: 14,
   },
   topview: {
     flexDirection: 'row',

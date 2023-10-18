@@ -6,12 +6,8 @@ import BrowsCategory from '../../components/browsCategory';
 
 const Tab = createMaterialTopTabNavigator();
 // const Tab = createBottomTabNavigator();
-<<<<<<< HEAD
 const CategoryTab = props => {
   // console.log('Category Tab>>>>>', props);
-=======
-const CategoryTab = (props, {navigation}) => {
->>>>>>> zaidbranch
   return (
     <Tab.Navigator
       initialRouteName="Category"

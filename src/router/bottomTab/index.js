@@ -6,7 +6,8 @@ import MyAdsTab from '../myAdsTab';
 import Chat from '../../screens/appScreens/chat';
 import MoreTab from '../moreTab';
 import PostAdd from '../postAdd';
-import SellNowTab from '../../components/sellNowTab';
+import BrowsePost from '../../screens/browsePost';
+
 const Tab = createBottomTabNavigator();
 const BottomTab = ({navigation}) => {
   const [show, setShow] = useState('false');
