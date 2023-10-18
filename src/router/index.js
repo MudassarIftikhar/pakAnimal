@@ -20,6 +20,7 @@ import BrowsCategory from '../components/browsCategory';
 import BrowsCategory2 from '../components/browsCategory2';
 import Inbox from '../components/inboxScreen';
 import BrowsePost from '../screens/browsePost';
+import PostBrowsTab from './postBrowsTab';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +40,7 @@ const Router = () => {
         <Stack.Screen name="SellYourCar" component={SellYourCar} />
         <Stack.Screen name="PostViewScreen" component={PostViewScreen} />
         <Stack.Screen name="Inbox" component={Inbox} />
-        <Stack.Screen name="BrowsePost" component={BrowsePost} />
+        <Stack.Screen name="PostBrowseTab" component={PostBrowsTab} />
       </Stack.Navigator>
     </NavigationContainer>
     // <ChooseAPlan />

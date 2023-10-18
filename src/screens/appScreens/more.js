@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -23,7 +24,7 @@ const More = ({navigation}) => {
           <Image
             style={styles.image}
             source={require('../../assets/images/user.png')}
-            resizeMode={'cover'} // <- needs to be "cover" for borderRadius to take effect on Android
+            resizeMode={'cover'}
           />
           <View style={styles.imageInnerContaier}>
             <Text style={styles.userName}>user name</Text>
@@ -58,7 +59,9 @@ const More = ({navigation}) => {
           />
         </TouchableOpacity> */}
 
-        <View style={styles.listContainer}>
+        <TouchableOpacity
+          style={styles.listContainer}
+          onPress={() => navigation.navigate('Saved')}>
           {/* <EvilIcons name="heart" size={25} color="#808080" /> */}
           <SaveSvg height={25} width={25} />
           <Text style={styles.listLblText}>Saved</Text>
@@ -67,7 +70,7 @@ const More = ({navigation}) => {
             size={25}
             color="#808080"
           />
-        </View>
+        </TouchableOpacity>
 
         {/* <View style={styles.listContainer}>
           <MaterialCommunityIcon name="garage" size={20} color="#808080" />
@@ -146,7 +149,7 @@ const styles = StyleSheet.create({
   viewProfile: {
     fontSize: 16,
     fontWeight: '500',
-    color: '#00AEEF',
+    color: '#b63439',
   },
   lblText: {
     fontSize: 18,
@@ -172,7 +175,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.2,
   },
   language: {
-    color: '#00AEEF',
+    color: '#b63439',
     fontWeight: '600',
     textDecorationLine: 'underline',
   },

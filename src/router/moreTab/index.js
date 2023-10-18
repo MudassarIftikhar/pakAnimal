@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import More from '../../screens/appScreens/more';
 import Cart from '../../screens/appScreens/screenForMore/cart';
 import MyOrders from '../../screens/appScreens/screenForMore/myOrder';
+import Saved from '../../screens/appScreens/screenForMore/saved';
 const Stack = createNativeStackNavigator();
 const MoreTab = props => {
   return (
@@ -14,8 +15,8 @@ const MoreTab = props => {
       }}
       initialRouteName="More">
       <Stack.Screen name="More" component={More} />
-      {/* <Stack.Screen name="Cart" component={Cart} />
-      <Stack.Screen name="MyOrders" component={MyOrders} /> */}
+      <Stack.Screen name="Saved" component={Saved} />
+      {/* <Stack.Screen name="MyOrders" component={MyOrders} /> */}
     </Stack.Navigator>
   );
 };
