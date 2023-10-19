@@ -17,7 +17,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import RadioButton from 'radio-buttons-react-native';
 
-const BrowsePostHeader = ({navigation}) => {
+const BrowsePostHeader = (props, {route, navigation}) => {
   return (
     <View style={styles.headerview}>
       <TouchableOpacity>
@@ -26,6 +26,7 @@ const BrowsePostHeader = ({navigation}) => {
           size={30}
           color="#fff"
           style={styles.backarrow}
+          onPress={() => props.navigation.navigation.goBack()}
         />
       </TouchableOpacity>
       <View style={styles.searchBarContainer}>
@@ -40,7 +41,7 @@ const BrowsePostHeader = ({navigation}) => {
     </View>
   );
 };
-const BrowsePost = ({navigation}) => {
+const BrowsePost = props => {
   const FiltersList = [
     {
       id: 3,
@@ -111,7 +112,7 @@ const BrowsePost = ({navigation}) => {
 
   return (
     <SafeAreaView>
-      <BrowsePostHeader />
+      <BrowsePostHeader navigation={props.navigation} />
       <ScrollView horizontal={true}>
         <TouchableOpacity
           style={{flexDirection: 'row'}}

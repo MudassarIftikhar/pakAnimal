@@ -8,7 +8,6 @@ import {
   View,
 } from 'react-native';
 import {Text} from 'react-native-paper';
-import SellNowModal from './sellNowModal';
 
 const screenWidth = Dimensions.get('window').width;
 const BrowsCategory = props => {
@@ -46,7 +45,14 @@ const BrowsCategory = props => {
         scrollEnabled={false}
         numColumns={3}
         renderItem={({item, index}) => (
-          <TouchableOpacity disabled={true} style={styles.categoryMainBox}>
+          <TouchableOpacity
+            disabled={false}
+            style={styles.categoryMainBox}
+            onPress={() =>
+              props.navigation.navigate('PostBrowseTab', {
+                navigation: props.navigation,
+              })
+            }>
             <Image style={styles.categoryImg} source={item.image} />
             <Text style={styles.titleTxt}>{item.title}</Text>
           </TouchableOpacity>

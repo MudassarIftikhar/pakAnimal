@@ -7,7 +7,6 @@ import Chat from '../../screens/appScreens/chat';
 import MoreTab from '../moreTab';
 import PostAdd from '../postAdd';
 import BrowsePost from '../../screens/browsePost';
-
 const Tab = createBottomTabNavigator();
 const BottomTab = ({navigation}) => {
   const [show, setShow] = useState('false');
@@ -125,7 +124,7 @@ const BottomTab = ({navigation}) => {
       />
       <Tab.Screen
         name="MoreTab"
-        component={BrowsePost}
+        component={MoreTab}
         options={{
           headerShown: true,
           title: '',

@@ -5,9 +5,10 @@ import Categories from '../../components/categories';
 import BrowsCategory from '../../components/browsCategory';
 
 const Tab = createMaterialTopTabNavigator();
-// const Tab = createBottomTabNavigator();
+
 const CategoryTab = props => {
   // console.log('Category Tab>>>>>', props);
+
   return (
     <Tab.Navigator
       initialRouteName="Category"
@@ -33,7 +34,16 @@ const CategoryTab = props => {
       sceneContainerStyle={{backgroundColor: '#eee'}}>
       <Tab.Screen
         name="Category"
-        component={() => <BrowsCategory />}
+        // eslint-disable-next-line react/no-unstable-nested-components
+        component={() => (
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <BrowsCategory navigation={props.navigation.navigation} />
+          </View>
+        )}
         options={{}}
       />
       {/* <Tab.Screen name="Pet" component={BrowsCategory} options={{}} />
