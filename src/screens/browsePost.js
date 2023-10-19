@@ -16,8 +16,9 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import RadioButton from 'radio-buttons-react-native';
+import Filter from '../components/filter';
 
-const BrowsePostHeader = (props, {route, navigation}) => {
+const BrowsePostHeader = props => {
   return (
     <View style={styles.headerview}>
       <TouchableOpacity>
@@ -41,7 +42,7 @@ const BrowsePostHeader = (props, {route, navigation}) => {
     </View>
   );
 };
-const BrowsePost = props => {
+const BrowsePost = (props, {navigation}) => {
   const FiltersList = [
     {
       id: 3,
@@ -120,7 +121,9 @@ const BrowsePost = props => {
           <MaterialIcons name="sort" size={25} style={styles.sorticon} />
           <Text style={styles.sort}>Sort</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{flexDirection: 'row'}}>
+        <TouchableOpacity
+          style={{flexDirection: 'row'}}
+          onPress={() => props.navigation.navigation.navigate('Filter')}>
           <MaterialIcons name="sort" size={25} style={styles.sorticon} />
           <Text style={styles.filter}>filter</Text>
         </TouchableOpacity>
