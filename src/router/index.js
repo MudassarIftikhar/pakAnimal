@@ -16,8 +16,6 @@ import BottomTab from './bottomTab';
 import PostAdd from './postAdd';
 import SellYourCar from '../screens/appScreens/screensForPost/sellYourCar';
 import PostViewScreen from '../screens/appScreens/screensForPost/postViewScreen';
-import BrowsCategory from '../components/browsCategory';
-import BrowsCategory2 from '../components/browsCategory2';
 import Inbox from '../components/inboxScreen';
 import BrowsePost from '../screens/browsePost';
 import PostBrowsTab from './postBrowsTab';

@@ -5,7 +5,10 @@ import Categories from '../../components/categories';
 import BrowsCategory from '../../components/browsCategory';
 
 const Tab = createMaterialTopTabNavigator();
+
 const CategoryTab = props => {
+  // console.log('Category Tab>>>>>', props);
+
   return (
     <Tab.Navigator
       initialRouteName="Category"
