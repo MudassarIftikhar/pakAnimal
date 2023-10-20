@@ -1,18 +1,17 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 import NoDataFind from '../../../components/noDataText';
-
-const Pending = ({navigation}) => {
+const ActiveAds = ({navigation}) => {
   return (
     <View style={styles.container}>
       <NoDataFind
-        title1="No Pending Ads"
+        title1="No Active Ads"
         title2="You haven't posted anything yet. Would you like to sell something."
+        screen="others"
       />
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -22,4 +21,4 @@ const styles = StyleSheet.create({
     top: -120,
   },
 });
-export default Pending;
+export default ActiveAds;

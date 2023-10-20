@@ -52,7 +52,7 @@ const BreedingPostInfo = props => {
   ]);
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  console.log('Post>>>>', props.type);
+  // console.log('Post>>>>', props.type);
   return (
     <View>
       {/* Info List */}
@@ -124,6 +124,39 @@ const BreedingPostInfo = props => {
             />
           </TouchableOpacity>
           <View style={styles.horizontolLine2} />
+          <TouchableOpacity
+            style={styles.infoContainer}
+            onPress={() => {
+              // setOpen1(!open1);
+            }}>
+            <View style={styles.iconBack}>
+              <AnimalTypeSvg width={30} height={240} />
+            </View>
+            <View flex={1} paddingStart={13}>
+              <Text style={styles.text1}>Age</Text>
+              {/* {open1 ? (
+                dropItems.map(dropValue => (
+                  <TouchableOpacity
+                    style={{}}
+                    onPress={() => (
+                      setValue(dropValue.label), setOpen1(!open1)
+                    )}>
+                    <Text style={styles.listText}>{dropValue.label}</Text>
+                  </TouchableOpacity>
+                ))
+              ) : (
+                <Text style={styles.text2}>{value}</Text>
+              )} */}
+            </View>
+
+            <MaterialIcons
+              name={'keyboard-arrow-down'}
+              size={30}
+              color={'#808080'}
+            />
+          </TouchableOpacity>
+          <View style={styles.horizontolLine2} />
+
           <TouchableOpacity
             style={styles.infoContainer}
             onPress={() => {

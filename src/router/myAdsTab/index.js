@@ -6,19 +6,17 @@ const Tab = createMaterialTopTabNavigator();
 
 import Pending from '../../screens/appScreens/myAds/pending';
 import Remove from '../../screens/appScreens/myAds/remove';
-import ActiveAds from '../../screens/appScreens/myAds/myAds';
-const TopTab = ({navigation}) => {
+import ActiveAds from '../../screens/appScreens/myAds/ActiveAds';
+const MyAdsTab = ({navigation}) => {
   return (
     <Tab.Navigator
       initialRouteName="Active (0)"
-      activeColor="#0000FF"
-      inactiveColor="#000"
-      barStyle={styles.tabBarStyle}
       screenOptions={{
-        // labelStyle: {
-        //   fontSize: 14,
-        // },
-        headerShown: false,
+        tabBarActiveTintColor: '#b63439',
+        tabBarInactiveTintColor: '#000',
+        tabBarLabelStyle: {textTransform: 'capitalize', fontSize: 17},
+        tabBarIndicatorStyle: {backgroundColor: '#b63439', height: 1},
+        headerShown: true,
       }}>
       <Tab.Screen name="Active (0)" component={ActiveAds} options={{}} />
       <Tab.Screen name="Pending (0)" component={Pending} options={{}} />
@@ -27,10 +25,5 @@ const TopTab = ({navigation}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  // tabBarStyle: {
-  //   backgroundColor: '#694fad',
-  //   fontSize: 46,
-  // },
-});
-export default TopTab;
+const styles = StyleSheet.create({});
+export default MyAdsTab;

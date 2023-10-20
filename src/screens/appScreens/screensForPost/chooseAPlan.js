@@ -36,7 +36,9 @@ const ChooseAPlan = props => {
               How are you looking to list your pet?
             </Text>
             <TouchableOpacity
-              onPress={() => props.navigation.navigate('SellYourCar')}
+              onPress={() =>
+                props.navigation.navigate('SellYourCar', {type: 'Pet Animal'})
+              }
               style={styles.postContainer}>
               <View flex={1}>
                 <Text style={styles.postHeading}>Sell Your Pet!</Text>
@@ -55,7 +57,11 @@ const ChooseAPlan = props => {
             {/* Card 2 */}
 
             <TouchableOpacity
-              onPress={() => props.navigation.navigate('SellYourCar')}
+              onPress={() =>
+                props.navigation.navigate('SellYourCar', {
+                  type: 'Pet Breed Animal',
+                })
+              }
               style={styles.postContainer}>
               <View flex={1}>
                 <Text style={styles.postHeading}>Post Ad for Breeding!</Text>
@@ -84,7 +90,9 @@ const ChooseAPlan = props => {
             {/* 3rd card */}
 
             <TouchableOpacity
-              onPress={() => props.navigation.navigate('SellYourCar')}
+              onPress={() =>
+                props.navigation.navigate('SellYourCar', {type: 'Farm Animal'})
+              }
               style={styles.postContainer}>
               <View flex={1}>
                 <Text style={styles.postHeading}>Sell Your Farm Animal!</Text>
@@ -103,7 +111,11 @@ const ChooseAPlan = props => {
             {/* Card 4 */}
 
             <TouchableOpacity
-              onPress={() => props.navigation.navigate('SellYourCar')}
+              onPress={() =>
+                props.navigation.navigate('SellYourCar', {
+                  type: 'Farm Breed Animal',
+                })
+              }
               style={styles.postContainer}>
               <View flex={1}>
                 <Text style={styles.postHeading}>Post Ad for Breeding!</Text>

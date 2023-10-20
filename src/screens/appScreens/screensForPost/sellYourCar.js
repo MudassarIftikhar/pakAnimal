@@ -39,7 +39,7 @@ const SellYourCar = props => {
       <View style={styles.headerBox}>
         <Header
           style
-          title="Sell your pet"
+          title={`Sell your ${type}`}
           CrossIcon={false}
           Navigation={props.navigation}
         />

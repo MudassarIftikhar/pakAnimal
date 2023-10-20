@@ -1,36 +1,31 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  View,
-} from 'react-native';
+import React, {useEffect} from 'react';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import Header from '../../../components/header';
+import SavedTab from '../../../router/savedTab';
 
 const Saved = ({navigation}) => {
-  const chatList = [
-    {
-      id: 1,
-      name: 'zaid',
-      msg: 'hello i am on the way',
-      date: '10 sep 19',
-    },
-    {
-      id: 2,
-      name: 'zaid',
-      msg: 'hello i am on the way',
-      date: '10 sep 19',
-    },
-  ];
+  useEffect(() => {
+    navigation.getParent()?.setOptions({
+      tabBarStyle: {
+        display: 'none',
+      },
+    });
+    return () => {
+      navigation.getParent()?.setOptions({
+        tabBarStyle: {
+          display: 'flex',
+        },
+      });
+    };
+  }, []);
+
   return (
     <SafeAreaView>
-      <StatusBar backgroundColor={'#b63439'} />
       <Header title="Saved" CrossIcon={false} Navigation={navigation} />
+      <View style={{width: '100%', height: '100%'}}>
+        <SavedTab />
+      </View>
     </SafeAreaView>
   );
 };

@@ -8,18 +8,28 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesom from 'react-native-vector-icons/FontAwesome';
-import SaveSvg from '../../assets/SVGIcon/Saved.svg';
-import LanguageSvg from '../../assets/SVGIcon/Language.svg';
-import VideoSvg from '../../assets/SVGIcon/Video.svg';
-import LogOutSvg from '../../assets/SVGIcon/Logout.svg';
-
+import NoDataFind from '../../../components/noDataText';
 const Ads = ({navigation}) => {
-  return <Text>Ads</Text>;
+  return (
+    <View style={styles.container}>
+      <NoDataFind
+        title1="No Saved Ads"
+        title2="Tab the heart on a listing to save the ad here."
+        Button={true}
+        screen="Ads"
+      />
+    </View>
+  );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    top: -120,
+  },
+});
 
 export default Ads;

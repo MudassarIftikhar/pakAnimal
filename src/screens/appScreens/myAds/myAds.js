@@ -1,16 +1,21 @@
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import NoDataFind from '../../../components/noDataText';
-const ActiveAds = ({navigation}) => {
+import Header from '../../../components/header';
+import MyAdsTab from '../../../router/myAdsTab';
+const MyAds = ({navigation}) => {
   return (
-    <SafeAreaView>
-      <StatusBar backgroundColor={'#b63439'} />
-      <NoDataFind
-        title1="No Active Ads"
-        title2="You haven't posted anything yet. Would you like to sell something."
-      />
-    </SafeAreaView>
+    <View backgroundColor={'#fff'}>
+      <Header title="My Ads" CrossIcon={false} Navigation={navigation} />
+      <View
+        style={{
+          width: '100%',
+          height: '100%',
+        }}>
+        <MyAdsTab />
+      </View>
+    </View>
   );
 };
 
-export default ActiveAds;
+export default MyAds;

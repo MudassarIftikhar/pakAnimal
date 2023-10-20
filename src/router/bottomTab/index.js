@@ -7,6 +7,7 @@ import Chat from '../../screens/appScreens/chat';
 import MoreTab from '../moreTab';
 import PostAdd from '../postAdd';
 import BrowsePost from '../../screens/browsePost';
+import MyAds from '../../screens/appScreens/myAds/myAds';
 const Tab = createBottomTabNavigator();
 const BottomTab = ({navigation}) => {
   const [show, setShow] = useState('false');
@@ -31,7 +32,7 @@ const BottomTab = ({navigation}) => {
       screenOptions={{
         headerStyle: {
           backgroundColor: '#b63439',
-          height: 25,
+          // height: 25,
         },
         headerTitleStyle: {
           fontWeight: 'bold',
@@ -67,8 +68,9 @@ const BottomTab = ({navigation}) => {
       />
       <Tab.Screen
         name="MyAds"
-        component={MyAdsTab}
+        component={MyAds}
         options={{
+          headerShown: false,
           title: '',
           tabBarIcon: ({focused, color, size}) =>
             tabBarIconComponent(
@@ -92,23 +94,13 @@ const BottomTab = ({navigation}) => {
         }}
         name="PostAdd" //"PostAdd"
         component={PostAdd}
-        // eslint-disable-next-line no-shadow
-        // listeners={({navigation}) => ({
-        //   tabPress: e => {
-        //     e.preventDefault(); // Prevents navigation
-        //     setShow(!show);
-        //     // Use navigation.navigate to navigate to the Home screen with the modal prop
-        //     navigation.navigate('Home', {customProp: {show}});
-        //   },
-        // })}
       />
-      {/* {() => null} */}
-      {/* </Tab.Screen> */}
 
       <Tab.Screen
         name="Chat"
         component={Chat}
         options={{
+          headerShown: false,
           title: '',
           tabBarIcon: ({focused, color, size}) =>
             tabBarIconComponent(
@@ -126,7 +118,9 @@ const BottomTab = ({navigation}) => {
         name="MoreTab"
         component={MoreTab}
         options={{
-          headerShown: true,
+          tabBarVisible: false,
+
+          headerShown: false,
           title: '',
           tabBarIcon: ({focused, color}) =>
             tabBarIconComponent(

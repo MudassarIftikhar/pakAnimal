@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesom from 'react-native-vector-icons/FontAwesome';
 import SaveSvg from '../../assets/SVGIcon/Saved.svg';
@@ -28,9 +27,9 @@ const More = ({navigation}) => {
           />
           <View style={styles.imageInnerContaier}>
             <Text style={styles.userName}>user name</Text>
-            <View>
+            <TouchableOpacity onPress={() => navigation.navigate('MyProfile')}>
               <Text style={styles.viewProfile}>View Profile {'>'}</Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
         <Text style={styles.lblText}>Personal</Text>

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 const Search = ({navigation}) => {
-  return <Text>Search</Text>;
+  return <Text>0 Saved Searchs</Text>;
 };
 
 const styles = StyleSheet.create({});
