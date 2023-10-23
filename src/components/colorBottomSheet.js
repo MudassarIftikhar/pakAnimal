@@ -78,6 +78,7 @@ const ColorBottomSheet = props => {
             </View>
             <View style={styles.flatlist}>
               <FlatList
+                showsVerticalScrollIndicator={false}
                 data={colorsList}
                 horizontal={false}
                 renderItem={({item}) => (

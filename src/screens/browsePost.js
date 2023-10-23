@@ -114,7 +114,7 @@ const BrowsePost = (props, {navigation}) => {
   return (
     <SafeAreaView>
       <BrowsePostHeader navigation={props.navigation} />
-      <ScrollView horizontal={true}>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <TouchableOpacity
           style={{flexDirection: 'row'}}
           onPress={() => refRBSheet.current.open()}>
@@ -144,7 +144,7 @@ const BrowsePost = (props, {navigation}) => {
             <Text style={styles.sortby}>Sort by</Text>
             <Text style={styles.cancel}>cancel</Text>
           </View>
-          <ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <RadioButton data={data} style={{padding: 20}} />
           </ScrollView>
         </RBSheet>
