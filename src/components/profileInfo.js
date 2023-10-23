@@ -123,8 +123,10 @@ const ProfileInfo = (props, {navigation}) => {
           </View>
           <View flex={1} paddingStart={13}>
             <Text style={styles.text1}>Gender</Text>
+
             {open2 ? (
               genderType.map(dropValue => (
+                // <View style={styles.dropDownBox}>
                 <TouchableOpacity
                   style={styles.listBox}
                   onPress={() => (
@@ -132,6 +134,7 @@ const ProfileInfo = (props, {navigation}) => {
                   )}>
                   <Text style={styles.listText}>{dropValue.label}</Text>
                 </TouchableOpacity>
+                // </View>
               ))
             ) : (
               <Text style={styles.text2}>{valueGender}</Text>
@@ -252,10 +255,18 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     borderBottomColor: '#686A6C',
-    borderBottomWidth: 0.4,
-    borderLeftWidth: 0.4,
-    borderRightWidth: 0.4,
+    // borderBottomWidth: 0.4,
+    // borderLeftWidth: 0.4,
+    // borderRightWidth: 0.4,
     marginTop: 4,
+    textAlignVertical: 'bottom',
   },
+  listBox: {
+    height: 40,
+    justifyContent: 'flex-end',
+    backgroundColor: '#ffff',
+    elevation: 3,
+  },
+  dropDownBox: {},
 });
 export default ProfileInfo;

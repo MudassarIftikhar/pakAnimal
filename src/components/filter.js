@@ -11,11 +11,13 @@ import LocationSvg from '../assets/SVGIcon/Location.svg';
 import ColorSvg from '../assets/SVGIcon/Color.svg';
 import PriceSvg from '../assets/SVGIcon/Price.svg';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import RangeSlider from './rangeSlider';
 
-const FilterHeader = () => {
+const FilterHeader = props => {
+  console.log('PropsFileter', props);
   return (
     <View style={styles.headerview}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => props.navigation.navigation.goBack()}>
         <Icon
           name="arrowleft"
           size={30}
@@ -29,10 +31,10 @@ const FilterHeader = () => {
 };
 const Filter = navigation => {
   return (
-    <View flex={1}>
+    <View flex={1} backgroundColor={'#fff'}>
       <FilterHeader />
       <ScrollView>
-        <View style={styles.horizontolLine2} />
+        <View style={styles.horizontolLine} />
 
         <TouchableOpacity style={styles.infoContainer}>
           <View style={styles.iconBack}>
@@ -47,6 +49,8 @@ const Filter = navigation => {
             color={'#808080'}
           />
         </TouchableOpacity>
+        <View style={styles.horizontolLine2} />
+
         <TouchableOpacity style={styles.infoContainer}>
           <View style={styles.iconBack}>
             <LocationSvg height={30} width={240} />
@@ -60,6 +64,8 @@ const Filter = navigation => {
             color={'#808080'}
           />
         </TouchableOpacity>
+        <View style={styles.horizontolLine2} />
+
         <TouchableOpacity style={styles.infoContainer}>
           <View style={styles.iconBack}>
             <LocationSvg height={30} width={240} />
@@ -73,19 +79,19 @@ const Filter = navigation => {
             color={'#808080'}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.infoContainer}>
-          <View style={styles.iconBack}>
-            <PriceSvg height={30} width={240} />
+        <View style={styles.horizontolLine2} />
+
+        <View style={styles.RangePickerContainer}>
+          <View style={styles.priceContainer}>
+            <View style={styles.iconBack}>
+              <PriceSvg height={30} width={240} />
+            </View>
+            <Text style={styles.textPrice}>Price Range (PKR)</Text>
           </View>
-          <View flex={1} paddingStart={13}>
-            <Text style={styles.text1}>Price Range (PKR)</Text>
-          </View>
-          <MaterialIcons
-            name={'keyboard-arrow-down'}
-            size={30}
-            color={'#808080'}
-          />
-        </TouchableOpacity>
+          <RangeSlider />
+        </View>
+        <View style={styles.horizontolLine2} />
+
         <TouchableOpacity style={styles.infoContainer}>
           <View style={styles.iconBack}>
             <ColorSvg height={30} width={240} />
@@ -99,6 +105,7 @@ const Filter = navigation => {
             color={'#808080'}
           />
         </TouchableOpacity>
+        <View style={styles.horizontolLine2} />
       </ScrollView>
       <View style={styles.buttonsview}>
         <TouchableOpacity style={[styles.appButtonContainer]}>
@@ -151,8 +158,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#e7e7e8',
     height: 70,
+    backgroundColor: '#fff',
+    borderTopColor: '#eee',
+    borderTopWidth: 1,
   },
   appButtonContainer: {
     backgroundColor: 'white',
@@ -178,6 +187,31 @@ const styles = StyleSheet.create({
   },
   appButton2Text: {
     color: 'white',
+  },
+  horizontolLine: {
+    borderBottomColor: '#eee',
+    borderBottomWidth: 1,
+    marginTop: 15,
+  },
+  priceContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  textPrice: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#000',
+    paddingStart: 13,
+  },
+  text1: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#000',
+  },
+  RangePickerContainer: {
+    flexDirection: 'column',
+    marginHorizontal: 10,
+    paddingVertical: 20,
   },
 });
 export default Filter;

@@ -17,19 +17,19 @@ const BrowsCategory = props => {
       id: '1',
       title: 'Pet',
       lable: 'PakWild',
-      image: require('../assets/images/goat.png'),
+      image: require('../assets/images/Dogs-01.png'),
     },
     {
       id: '2',
       title: 'Farm Animal',
       lable: 'PakWild',
-      image: require('../assets/images/goat.png'),
+      image: require('../assets/images/FarmAnimals-01.png'),
     },
     {
       id: '3',
       title: 'Accessories',
       lable: 'PakWild',
-      image: require('../assets/images/goat.png'),
+      image: require('../assets/images/PetAccessories-01.png'),
     },
   ]);
   const handleClick = () => {
