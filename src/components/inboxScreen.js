@@ -90,6 +90,7 @@ const Inbox = ({navigation}) => {
       </View>
       <View style={{flex: 0.9, padding: 10}}>
         <FlatList
+          showsVerticalScrollIndicator={false}
           data={msgsList}
           horizontal={false}
           inverted={true}

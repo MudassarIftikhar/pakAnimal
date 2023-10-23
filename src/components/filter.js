@@ -5,6 +5,8 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  FlatList,
+  Image,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import LocationSvg from '../assets/SVGIcon/Location.svg';
@@ -29,6 +31,49 @@ const FilterHeader = props => {
   );
 };
 const Filter = navigation => {
+  const colorsList = [
+    {
+      imag: require('../assets/images/silver.png'),
+      name: 'White',
+    },
+    {
+      imag: require('../assets/images/black.png'),
+      name: 'Black',
+    },
+    {
+      imag: require('../assets/images/grey.png'),
+      name: 'Gray',
+    },
+    {
+      imag: require('../assets/images/blue.png'),
+      name: 'Blue',
+    },
+    {
+      imag: require('../assets/images/green.png'),
+      name: 'Green',
+    },
+    {
+      imag: require('../assets/images/red.png'),
+      name: 'Red',
+    },
+    {
+      imag: require('../assets/images/gold.png'),
+      name: 'Golden',
+    },
+    {
+      imag: require('../assets/images/maroon.png'),
+      name: 'Cream',
+    },
+    {
+      imag: require('../assets/images/brown.png'),
+      name: 'Brown',
+    },
+
+    {
+      imag: require('../assets/images/orange.png'),
+      name: 'Orange',
+    },
+  ];
   return (
     <View flex={1} backgroundColor={'#fff'}>
       <FilterHeader navigation={navigation} />
@@ -65,19 +110,15 @@ const Filter = navigation => {
         </TouchableOpacity>
         <View style={styles.horizontolLine2} />
 
-        <TouchableOpacity style={styles.infoContainer}>
-          <View style={styles.iconBack}>
-            <LocationSvg height={30} width={240} />
+        <View style={styles.RangePickerContainer}>
+          <View style={styles.AgeContainer}>
+            <View style={styles.iconBack}>
+              <LocationSvg height={30} width={240} />
+            </View>
+            <Text style={styles.textPrice}>Age</Text>
           </View>
-          <View flex={1} paddingStart={13}>
-            <Text style={styles.text1}>Age</Text>
-          </View>
-          <MaterialIcons
-            name={'keyboard-arrow-down'}
-            size={30}
-            color={'#808080'}
-          />
-        </TouchableOpacity>
+          <RangeSlider />
+        </View>
         <View style={styles.horizontolLine2} />
 
         <View style={styles.RangePickerContainer}>
@@ -98,13 +139,22 @@ const Filter = navigation => {
           <View flex={1} paddingStart={13}>
             <Text style={styles.text1}>color</Text>
           </View>
-          <MaterialIcons
-            name={'keyboard-arrow-down'}
-            size={30}
-            color={'#808080'}
-          />
         </TouchableOpacity>
-        <View style={styles.horizontolLine2} />
+        <View style={styles.flatlist}>
+          <FlatList
+            showsHorizontalScrollIndicator={false}
+            data={colorsList}
+            horizontal={true}
+            renderItem={({item}) => (
+              <TouchableOpacity style={styles.colornname}>
+                <View style={styles.colorandnameview}>
+                  <Image source={item.imag} style={styles.colorimage} />
+                  <Text style={styles.namesofcolors}>{item.name}</Text>
+                </View>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
       </ScrollView>
       <View style={styles.buttonsview}>
         <TouchableOpacity style={[styles.appButtonContainer]}>
@@ -196,6 +246,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  AgeContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   textPrice: {
     fontSize: 16,
     fontWeight: '600',
@@ -211,6 +265,23 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginHorizontal: 10,
     paddingVertical: 20,
+  },
+  colorimage: {
+    width: 45,
+    height: 45,
+    borderRadius: 30,
+    marginLeft: 22,
+  },
+  colorandnameview: {
+    alignItems: 'center',
+  },
+  flatlist: {
+    marginStart: 40,
+  },
+  namesofcolors: {
+    alignItems: 'center',
+    marginLeft: 20,
+    fontSize: 12,
   },
 });
 export default Filter;
