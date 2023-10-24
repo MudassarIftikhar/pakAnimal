@@ -18,10 +18,7 @@ const PostBrowsTab = props => {
         // eslint-disable-next-line react/no-unstable-nested-components
         component={() => <BrowsePost navigation={props.route.params} />}
       />
-      <Stack.Screen
-        name="Filter"
-        component={() => <Filter navigation={props.route.params} />}
-      />
+      <Stack.Screen name="Filter" component={Filter} />
     </Stack.Navigator>
   );
 };
