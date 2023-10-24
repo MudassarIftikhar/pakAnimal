@@ -123,11 +123,7 @@ const BrowsePost = (props, {navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{flexDirection: 'row'}}
-          onPress={() =>
-            props.navigation.navigation.navigate('Filter', {
-              navigation: props.navigation,
-            })
-          }>
+          onPress={() => props.navigation.navigation.navigate('Filter')}>
           <MaterialIcons name="sort" size={25} style={styles.sorticon} />
           <Text style={styles.filter}>filter</Text>
         </TouchableOpacity>
