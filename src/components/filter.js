@@ -16,7 +16,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RangeSlider from './rangeSlider';
 
 const FilterHeader = props => {
-  console.log('PropsFileter', props);
   return (
     <View style={styles.headerview}>
       <TouchableOpacity onPress={() => props.navigation.navigation.goBack()}>
@@ -77,7 +76,7 @@ const Filter = navigation => {
   ];
   return (
     <View flex={1} backgroundColor={'#fff'}>
-      <FilterHeader />
+      <FilterHeader navigation={navigation} />
       <ScrollView>
         <View style={styles.horizontolLine} />
 
