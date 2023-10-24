@@ -209,6 +209,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 60,
     backgroundColor: '#b63439',
+    paddingRight: 10,
   },
   backarrow: {
     marginLeft: 13,
@@ -222,7 +223,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingStart: 15,
     height: 40,
-    width: 300,
+    flex: 1,
   },
   txtInput: {
     fontSize: 18,
@@ -275,7 +276,7 @@ const styles = StyleSheet.create({
   savesearchview: {
     flexDirection: 'row',
     marginTop: 20,
-    marginLeft: 20,
+    paddingRight: 20,
     fontSize: 15,
   },
   savesearch: {

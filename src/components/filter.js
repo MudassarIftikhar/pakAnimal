@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,6 +7,7 @@ import {
   ScrollView,
   FlatList,
   Image,
+  Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import LocationSvg from '../assets/SVGIcon/Location.svg';
@@ -14,6 +15,7 @@ import ColorSvg from '../assets/SVGIcon/Color.svg';
 import PriceSvg from '../assets/SVGIcon/Price.svg';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RangeSlider from './rangeSlider';
+import SelectCity from '../screens/appScreens/screensForPost/selectCity';
 
 const FilterHeader = props => {
   console.log('PropsFileter', props);
@@ -75,25 +77,13 @@ const Filter = navigation => {
       name: 'Orange',
     },
   ];
+
   return (
     <View flex={1} backgroundColor={'#fff'}>
       <FilterHeader />
       <ScrollView>
         <View style={styles.horizontolLine} />
-
-        <TouchableOpacity style={styles.infoContainer}>
-          <View style={styles.iconBack}>
-            <LocationSvg height={30} width={240} />
-          </View>
-          <View flex={1} paddingStart={13}>
-            <Text style={styles.text1}>Location</Text>
-          </View>
-          <MaterialIcons
-            name={'keyboard-arrow-down'}
-            size={30}
-            color={'#808080'}
-          />
-        </TouchableOpacity>
+        <SelectCity />
         <View style={styles.horizontolLine2} />
 
         <TouchableOpacity style={styles.infoContainer}>
@@ -283,6 +273,58 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 20,
     fontSize: 12,
+  },
+  main: {
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    backgroundColor: '#fff',
+    elevation: 7,
+  },
+  horizontolLine: {
+    borderBottomColor: '#707070',
+    borderBottomWidth: 1,
+    margin: 10,
+  },
+  header: {
+    backgroundColor: '#eee',
+    borderRadius: 30,
+    textAlign: 'right',
+    alignSelf: 'flex-end',
+    margin: 15,
+    padding: 5,
+  },
+  text1: {
+    fontSize: 18,
+    color: '#000',
+    fontWeight: '600',
+    textAlign: 'left',
+    margin: 10,
+  },
+
+  modalView: {
+    elevation: 3,
+    shadowColor: 'black',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    bottom: 0,
+    backgroundColor: '#fff',
+  },
+  searchBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#eee',
+    margin: 20,
+    height: 40,
+    borderRadius: 5,
+    paddingLeft: 15,
+  },
+  innerContainer: {
+    marginBottom: 1,
+    textAlign: 'center',
+  },
+  item: {
+    fontSize: 16,
+    marginStart: 10,
   },
 });
 export default Filter;

@@ -254,7 +254,6 @@ const BreedingPostInfo = props => {
         ''
       )}
       <View style={styles.horizontolLine2} />
-
       <ColorBottomSheet />
 
       <View style={styles.horizontolLine2} />
