@@ -12,6 +12,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import GenderSvg from '../assets/SVGIcon/Gender.svg';
 import LocationSvg from '../assets/SVGIcon/Location.svg';
+import Contactus from '../assets/SVGIcon/Contactus.svg';
 import RangeSlider from './rangeSlider';
 const ProfileInfo = (props, {navigation}) => {
   const [open2, setOpen2] = useState(false);
@@ -89,7 +90,7 @@ const ProfileInfo = (props, {navigation}) => {
 
         <TouchableOpacity style={styles.infoContainer}>
           <View style={styles.iconBack}>
-            <LocationSvg height={30} width={240} />
+            <Contactus height={30} width={240} />
           </View>
           <View flex={1} paddingStart={13}>
             <Text style={styles.textEmail}>Email Address</Text>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -14,11 +14,13 @@ import ColorSvg from '../assets/SVGIcon/Color.svg';
 import PriceSvg from '../assets/SVGIcon/Price.svg';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RangeSlider from './rangeSlider';
+import SelectedTags from './selectedTags';
+import ColorsComponent from './colorsComponent';
 
 const FilterHeader = props => {
   return (
     <View style={styles.headerview}>
-      <TouchableOpacity onPress={() => props.navigation.navigation.goBack()}>
+      <TouchableOpacity onPress={() => props.navigation.goBack()}>
         <Icon
           name="arrowleft"
           size={30}
@@ -30,7 +32,8 @@ const FilterHeader = props => {
     </View>
   );
 };
-const Filter = navigation => {
+const Filter = (props, navigation) => {
+  // ColorList Code
   const colorsList = [
     {
       imag: require('../assets/images/silver.png'),
@@ -74,9 +77,46 @@ const Filter = navigation => {
       name: 'Orange',
     },
   ];
+  const [checked, setChecked] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
+  //   const handleColorPress = index => {
+  //     setSelectedIndex(index);
+  //   };
+  const [selectedIndices, setSelectedIndices] = useState([]);
+
+  const handleColorPress = index => {
+    // Check if the index is already selected
+    if (selectedIndices.includes(index)) {
+      // If selected, remove it from the selectedIndices array
+      setSelectedIndices(selectedIndices.filter(item => item !== index));
+    } else {
+      // If not selected, add it to the selectedIndices array
+      setSelectedIndices([...selectedIndices, index]);
+    }
+  };
+
+  // Color List Code end
+
+  const [tagLable, setTagLable] = useState([]);
+  const [newItem, setNewItem] = useState(props.route.params.lable); // State to hold the new item
+
+  const addItemToList = () => {
+    if (newItem) {
+      // Make sure newItem is not empty
+      setTagLable([...tagLable, newItem]); // Add the new item to the list
+      setNewItem(''); // Clear the input field
+    }
+  };
+
   return (
     <View flex={1} backgroundColor={'#fff'}>
-      <FilterHeader navigation={navigation} />
+      <FilterHeader navigation={props.navigation} />
+      <View>
+        {items.map((item, index) => (
+          <SelectedTags Lable={tagLable} />
+        ))}
+      </View>
       <ScrollView>
         <View style={styles.horizontolLine} />
 
@@ -140,16 +180,26 @@ const Filter = navigation => {
             <Text style={styles.text1}>color</Text>
           </View>
         </TouchableOpacity>
+        {/* <ColorsComponent /> */}
         <View style={styles.flatlist}>
           <FlatList
             showsHorizontalScrollIndicator={false}
             data={colorsList}
             horizontal={true}
-            renderItem={({item}) => (
-              <TouchableOpacity style={styles.colornname}>
-                <View style={styles.colorandnameview}>
-                  <Image source={item.imag} style={styles.colorimage} />
-                  <Text style={styles.namesofcolors}>{item.name}</Text>
+            renderItem={({item, index}) => (
+              <TouchableOpacity
+                style={styles().colornname}
+                onPress={
+                  (() => handleColorPress(index),
+                  setNewItem(item.name),
+                  addItemToList)
+                }>
+                <View style={styles().colorandnameview}>
+                  <Image
+                    source={item.imag}
+                    style={styles(selectedIndices.includes(index)).colorimage}
+                  />
+                  <Text style={styles().namesofcolors}>{item.name}</Text>
                 </View>
               </TouchableOpacity>
             )}
@@ -157,10 +207,10 @@ const Filter = navigation => {
         </View>
       </ScrollView>
       <View style={styles.buttonsview}>
-        <TouchableOpacity style={[styles.appButtonContainer]}>
+        <TouchableOpacity style={styles.appButtonContainer}>
           <Text style={styles.appButtonText}>Reset All</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.appButton2Container]}>
+        <TouchableOpacity style={styles.appButton2Container}>
           <Text style={styles.appButton2Text}>Apply Filters</Text>
         </TouchableOpacity>
       </View>
@@ -221,6 +271,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
+    marginStart: 20,
   },
   appButton2Container: {
     backgroundColor: '#b63439',
@@ -230,6 +281,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 20,
+    marginEnd: 20,
   },
   appButtonText: {
     color: 'black',

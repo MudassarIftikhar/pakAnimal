@@ -14,7 +14,7 @@ import SaveSvg from '../../assets/SVGIcon/Saved.svg';
 import LanguageSvg from '../../assets/SVGIcon/Language.svg';
 import VideoSvg from '../../assets/SVGIcon/Video.svg';
 import LogOutSvg from '../../assets/SVGIcon/Logout.svg';
-
+import Contactus from '../../assets/SVGIcon/Contactus.svg';
 const More = ({navigation}) => {
   return (
     <ScrollView>
@@ -99,7 +99,7 @@ const More = ({navigation}) => {
           />
         </View>
 
-        <View style={styles.listContainer}>
+        {/* <View style={styles.listContainer}>
           <FontAwesom name="opencart" size={20} color="#808080" />
           <Text style={styles.listLblText}>Blog</Text>
           <MaterialIcons
@@ -107,10 +107,10 @@ const More = ({navigation}) => {
             size={25}
             color="#808080"
           />
-        </View>
+        </View> */}
 
         <View style={styles.listContainer}>
-          <FontAwesom name="opencart" size={20} color="#808080" />
+          <Contactus height={25} width={25} />
           <Text style={styles.listLblText}>Contact Us</Text>
           <MaterialIcons
             name="keyboard-arrow-right"

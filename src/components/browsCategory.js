@@ -51,6 +51,7 @@ const BrowsCategory = props => {
             onPress={() =>
               props.navigation.navigate('PostBrowseTab', {
                 navigation: props.navigation,
+                lable: item.title,
               })
             }>
             <Image style={styles.categoryImg} source={item.image} />

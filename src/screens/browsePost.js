@@ -43,6 +43,7 @@ const BrowsePostHeader = props => {
   );
 };
 const BrowsePost = (props, {navigation}) => {
+  // console.log('BrowsPost>>>>', props.navigation.lable);
   const FiltersList = [
     {
       id: 3,
@@ -123,7 +124,11 @@ const BrowsePost = (props, {navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{flexDirection: 'row'}}
-          onPress={() => props.navigation.navigation.navigate('Filter')}>
+          onPress={() =>
+            props.navigation.navigation.navigate('Filter', {
+              lable: props.navigation.lable,
+            })
+          }>
           <MaterialIcons name="sort" size={25} style={styles.sorticon} />
           <Text style={styles.filter}>filter</Text>
         </TouchableOpacity>

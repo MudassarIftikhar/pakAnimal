@@ -34,7 +34,7 @@ const RangeSlider = () => {
         allowOverlap={false}
         snapped
         selectedStyle={styles.sliderStyle}
-        sliderLength={350}
+        sliderLength={340}
         markerStyle={styles.markerStyle}
         trackStyle={styles.trackStyle} // Change track style
         unselectedStyle={styles.unselectedStyle}
