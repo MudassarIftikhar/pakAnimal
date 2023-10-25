@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,6 +7,7 @@ import {
   ScrollView,
   FlatList,
   Image,
+  Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import LocationSvg from '../assets/SVGIcon/Location.svg';
@@ -14,13 +15,12 @@ import ColorSvg from '../assets/SVGIcon/Color.svg';
 import PriceSvg from '../assets/SVGIcon/Price.svg';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RangeSlider from './rangeSlider';
-import SelectedTags from './selectedTags';
-import ColorsComponent from './colorsComponent';
+import SelectCity from '../screens/appScreens/screensForPost/selectCity';
 
 const FilterHeader = props => {
   return (
     <View style={styles.headerview}>
-      <TouchableOpacity onPress={() => props.navigation.goBack()}>
+      <TouchableOpacity onPress={() => props.navigation.navigation.goBack()}>
         <Icon
           name="arrowleft"
           size={30}
@@ -32,8 +32,7 @@ const FilterHeader = props => {
     </View>
   );
 };
-const Filter = (props, navigation) => {
-  // ColorList Code
+const Filter = navigation => {
   const colorsList = [
     {
       imag: require('../assets/images/silver.png'),
@@ -77,6 +76,10 @@ const Filter = (props, navigation) => {
       name: 'Orange',
     },
   ];
+
+  return (
+    <View flex={1} backgroundColor={'#fff'}>
+      <FilterHeader navigation={navigation} />
   const [checked, setChecked] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -98,41 +101,38 @@ const Filter = (props, navigation) => {
 
   // Color List Code end
 
-  const [tagLable, setTagLable] = useState([]);
-  const [newItem, setNewItem] = useState(props.route.params.lable); // State to hold the new item
+  const [tagLable, setTagLable] = useState([props.route.params.lable]);
+  const [newItem, setNewItem] = useState(''); // State to hold the new item
 
   const addItemToList = () => {
     if (newItem) {
       // Make sure newItem is not empty
-      setTagLable([...tagLable, newItem]); // Add the new item to the list
-      setNewItem(''); // Clear the input field
+      console.log('NewItem>>>', newItem);
+      if (tagLable.includes(newItem)) {
+        // If selected, remove it from the selectedIndices array
+        setTagLable(tagLable.filter(item => item !== newItem));
+      } else {
+        // If not selected, add it to the selectedIndices array
+        setTagLable([...tagLable, newItem]);
+        // setNewItem('');
+      }
+      // setTagLable([...tagLable, newItem]); // Add the new item to the list
+      // setNewItem(''); // Clear the input field
     }
   };
 
   return (
     <View flex={1} backgroundColor={'#fff'}>
       <FilterHeader navigation={props.navigation} />
-      <View>
-        {items.map((item, index) => (
-          <SelectedTags Lable={tagLable} />
+      <View style={styles.selectedTagsRow}>
+        {tagLable.map((tag, index) => (
+          <SelectedTags key={index} Lable={tag} />
         ))}
       </View>
+
       <ScrollView>
         <View style={styles.horizontolLine} />
-
-        <TouchableOpacity style={styles.infoContainer}>
-          <View style={styles.iconBack}>
-            <LocationSvg height={30} width={240} />
-          </View>
-          <View flex={1} paddingStart={13}>
-            <Text style={styles.text1}>Location</Text>
-          </View>
-          <MaterialIcons
-            name={'keyboard-arrow-down'}
-            size={30}
-            color={'#808080'}
-          />
-        </TouchableOpacity>
+        <SelectCity />
         <View style={styles.horizontolLine2} />
 
         <TouchableOpacity style={styles.infoContainer}>
@@ -180,43 +180,85 @@ const Filter = (props, navigation) => {
             <Text style={styles.text1}>color</Text>
           </View>
         </TouchableOpacity>
-        {/* <ColorsComponent /> */}
         <View style={styles.flatlist}>
+          {/* {colorsList.map((item, index) => {
+            return (
+              <TouchableOpacity
+                style={styles2().colornname}
+                onPress={() => {
+                  setNewItem(item.name);
+                  addItemToList();
+                  handleColorPress(index);
+                }}>
+                <View style={styles2().colorandnameview}>
+                  <Image
+                    source={item.imag}
+                    style={styles2(selectedIndices.includes(index)).colorimage}
+                  />
+                  <Text style={styles2().namesofcolors}>{item.name}</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          })} */}
           <FlatList
             showsHorizontalScrollIndicator={false}
             data={colorsList}
             horizontal={true}
             renderItem={({item, index}) => (
               <TouchableOpacity
-                style={styles().colornname}
-                onPress={
-                  (() => handleColorPress(index),
-                  setNewItem(item.name),
-                  addItemToList)
-                }>
-                <View style={styles().colorandnameview}>
+                style={styles2().colornname}
+                onPress={() => {
+                  setNewItem(item.name);
+                  addItemToList();
+                  handleColorPress(index);
+                }}>
+                <View style={styles2().colorandnameview}>
                   <Image
                     source={item.imag}
-                    style={styles(selectedIndices.includes(index)).colorimage}
+                    style={styles2(selectedIndices.includes(index)).colorimage}
                   />
-                  <Text style={styles().namesofcolors}>{item.name}</Text>
+                  <Text style={styles2().namesofcolors}>{item.name}</Text>
                 </View>
               </TouchableOpacity>
             )}
+            keyExtractor={(item, index) => index.toString()}
           />
         </View>
       </ScrollView>
       <View style={styles.buttonsview}>
-        <TouchableOpacity style={styles.appButtonContainer}>
+        <TouchableOpacity style={[styles.appButtonContainer]}>
           <Text style={styles.appButtonText}>Reset All</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.appButton2Container}>
+        <TouchableOpacity style={[styles.appButton2Container]}>
           <Text style={styles.appButton2Text}>Apply Filters</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
+const styles2 = checked =>
+  StyleSheet.create({
+    colorimage: {
+      width: 45,
+      height: 45,
+      borderRadius: 30,
+      marginLeft: 22,
+
+      borderWidth: checked ? 2 : 0,
+      borderColor: checked ? '#b63439' : '',
+    },
+    colorandnameview: {
+      alignItems: 'center',
+    },
+    namesofcolors: {
+      alignItems: 'center',
+      marginLeft: 20,
+      fontSize: 12,
+    },
+    colornname: {
+      // Add other styles for the color item
+    },
+  });
 const styles = StyleSheet.create({
   headerview: {
     flexDirection: 'row',
@@ -271,7 +313,6 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
-    marginStart: 20,
   },
   appButton2Container: {
     backgroundColor: '#b63439',
@@ -281,7 +322,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 20,
-    marginEnd: 20,
   },
   appButtonText: {
     color: 'black',
@@ -334,6 +374,74 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 20,
     fontSize: 12,
+  },
+<<<<<<< Updated upstream
+  main: {
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    backgroundColor: '#fff',
+    elevation: 7,
+  },
+  horizontolLine: {
+    borderBottomColor: '#707070',
+    borderBottomWidth: 1,
+    margin: 10,
+  },
+  header: {
+    backgroundColor: '#eee',
+    borderRadius: 30,
+    textAlign: 'right',
+    alignSelf: 'flex-end',
+    margin: 15,
+    padding: 5,
+  },
+  text1: {
+    fontSize: 18,
+    color: '#000',
+    fontWeight: '600',
+    textAlign: 'left',
+    margin: 10,
+  },
+
+  modalView: {
+    elevation: 3,
+    shadowColor: 'black',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    bottom: 0,
+    backgroundColor: '#fff',
+  },
+  searchBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#eee',
+    margin: 20,
+    height: 40,
+    borderRadius: 5,
+    paddingLeft: 15,
+  },
+  innerContainer: {
+    marginBottom: 1,
+    textAlign: 'center',
+  },
+  item: {
+    fontSize: 16,
+    marginStart: 10,
+=======
+  selectedTagsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 10,
+  },
+  selectedTag: {
+    backgroundColor: '#b63439',
+    borderRadius: 10,
+    padding: 5,
+    margin: 5,
+  },
+  selectedTagText: {
+    color: 'white',
+>>>>>>> Stashed changes
   },
 });
 export default Filter;
