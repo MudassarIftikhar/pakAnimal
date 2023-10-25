@@ -76,10 +76,46 @@ const Filter = navigation => {
       name: 'Orange',
     },
   ];
+  const [checked, setChecked] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
+  //   const handleColorPress = index => {
+  //     setSelectedIndex(index);
+  //   };
+  const [selectedIndices, setSelectedIndices] = useState([]);
+
+  const handleColorPress = index => {
+    // Check if the index is already selected
+    if (selectedIndices.includes(index)) {
+      // If selected, remove it from the selectedIndices array
+      setSelectedIndices(selectedIndices.filter(item => item !== index));
+    } else {
+      // If not selected, add it to the selectedIndices array
+      setSelectedIndices([...selectedIndices, index]);
+    }
+  };
+
+  // Color List Code end
+
+  const [tagLable, setTagLable] = useState([]);
+  const [newItem, setNewItem] = useState(props.route.params.lable); // State to hold the new item
+
+  const addItemToList = () => {
+    if (newItem) {
+      // Make sure newItem is not empty
+      setTagLable([...tagLable, newItem]); // Add the new item to the list
+      setNewItem(''); // Clear the input field
+    }
+  };
 
   return (
     <View flex={1} backgroundColor={'#fff'}>
-      <FilterHeader navigation={navigation} />
+      <FilterHeader navigation={props.navigation} />
+      <View>
+        {items.map((item, index) => (
+          <SelectedTags Lable={tagLable} />
+        ))}
+      </View>
       <ScrollView>
         <View style={styles.horizontolLine} />
         <SelectCity />
@@ -131,18 +167,47 @@ const Filter = navigation => {
           </View>
         </TouchableOpacity>
         <View style={styles.flatlist}>
+          {/* {colorsList.map((item, index) => {
+            return (
+              <TouchableOpacity
+                style={styles2().colornname}
+                onPress={() => {
+                  setNewItem(item.name);
+                  addItemToList();
+                  handleColorPress(index);
+                }}>
+                <View style={styles2().colorandnameview}>
+                  <Image
+                    source={item.imag}
+                    style={styles2(selectedIndices.includes(index)).colorimage}
+                  />
+                  <Text style={styles2().namesofcolors}>{item.name}</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          })} */}
           <FlatList
             showsHorizontalScrollIndicator={false}
             data={colorsList}
             horizontal={true}
-            renderItem={({item}) => (
-              <TouchableOpacity style={styles.colornname}>
-                <View style={styles.colorandnameview}>
-                  <Image source={item.imag} style={styles.colorimage} />
-                  <Text style={styles.namesofcolors}>{item.name}</Text>
+            renderItem={({item, index}) => (
+              <TouchableOpacity
+                style={styles().colornname}
+                onPress={
+                  (() => handleColorPress(index),
+                  setNewItem(item.name),
+                  addItemToList)
+                }>
+                <View style={styles().colorandnameview}>
+                  <Image
+                    source={item.imag}
+                    style={styles(selectedIndices.includes(index)).colorimage}
+                  />
+                  <Text style={styles().namesofcolors}>{item.name}</Text>
                 </View>
               </TouchableOpacity>
             )}
+            keyExtractor={(item, index) => index.toString()}
           />
         </View>
       </ScrollView>
@@ -157,6 +222,29 @@ const Filter = navigation => {
     </View>
   );
 };
+const styles2 = checked =>
+  StyleSheet.create({
+    colorimage: {
+      width: 45,
+      height: 45,
+      borderRadius: 30,
+      marginLeft: 22,
+
+      borderWidth: checked ? 2 : 0,
+      borderColor: checked ? '#b63439' : '',
+    },
+    colorandnameview: {
+      alignItems: 'center',
+    },
+    namesofcolors: {
+      alignItems: 'center',
+      marginLeft: 20,
+      fontSize: 12,
+    },
+    colornname: {
+      // Add other styles for the color item
+    },
+  });
 const styles = StyleSheet.create({
   headerview: {
     flexDirection: 'row',
@@ -272,58 +360,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 20,
     fontSize: 12,
-  },
-  main: {
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    backgroundColor: '#fff',
-    elevation: 7,
-  },
-  horizontolLine: {
-    borderBottomColor: '#707070',
-    borderBottomWidth: 1,
-    margin: 10,
-  },
-  header: {
-    backgroundColor: '#eee',
-    borderRadius: 30,
-    textAlign: 'right',
-    alignSelf: 'flex-end',
-    margin: 15,
-    padding: 5,
-  },
-  text1: {
-    fontSize: 18,
-    color: '#000',
-    fontWeight: '600',
-    textAlign: 'left',
-    margin: 10,
-  },
-
-  modalView: {
-    elevation: 3,
-    shadowColor: 'black',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    bottom: 0,
-    backgroundColor: '#fff',
-  },
-  searchBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#eee',
-    margin: 20,
-    height: 40,
-    borderRadius: 5,
-    paddingLeft: 15,
-  },
-  innerContainer: {
-    marginBottom: 1,
-    textAlign: 'center',
-  },
-  item: {
-    fontSize: 16,
-    marginStart: 10,
   },
 });
 export default Filter;
