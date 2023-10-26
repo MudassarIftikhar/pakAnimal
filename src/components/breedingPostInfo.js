@@ -21,6 +21,7 @@ import MobileNoSvg from '../assets/SVGIcon/Mobile Number.svg';
 import PriceSvg from '../assets/SVGIcon/Price.svg';
 import VaccinatedSvg from '../assets/SVGIcon/Vaccination.svg';
 import ColorBottomSheet from './colorBottomSheet';
+import AnimalTypes from './animalTypes';
 
 const BreedingPostInfo = props => {
   const [open1, setOpen1] = useState(false);
@@ -28,7 +29,6 @@ const BreedingPostInfo = props => {
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
   const [open5, setOpen5] = useState(false);
-  const [value, setValue] = useState('Pet');
   const [valueGender, setValueGender] = useState('Male');
   const [valueTraining, setValueTraining] = useState('No Training');
   const [valueVaccinated, setValueVaccinated] = useState('No Vaccinated');
@@ -57,6 +57,21 @@ const BreedingPostInfo = props => {
     <View>
       {/* Info List */}
       <View style={styles.horizontolLine} />
+
+      <View style={styles.infoContainer}>
+        <View style={styles.iconBack}>
+          <DiscriptionSvg height={30} width={240} />
+        </View>
+        <View flex={1} paddingStart={13}>
+          <Text style={styles.text1}>Title</Text>
+          <TextInput
+            style={styles.text2}
+            placeholder="eg. Labrador Retriever puppy"
+          />
+        </View>
+      </View>
+
+      <View style={styles.horizontolLine2} />
 
       <View style={styles.infoContainer}>
         <View style={styles.iconBack}>
@@ -92,37 +107,8 @@ const BreedingPostInfo = props => {
       <View style={styles.horizontolLine2} />
       {props.type !== 'Accessories' ? (
         <View>
-          <TouchableOpacity
-            style={styles.infoContainer}
-            onPress={() => {
-              setOpen1(!open1);
-            }}>
-            <View style={styles.iconBack}>
-              <AnimalTypeSvg width={30} height={240} />
-            </View>
-            <View flex={1} paddingStart={13}>
-              <Text style={styles.text1}>Animal Type</Text>
-              {open1 ? (
-                dropItems.map(dropValue => (
-                  <TouchableOpacity
-                    style={{}}
-                    onPress={() => (
-                      setValue(dropValue.label), setOpen1(!open1)
-                    )}>
-                    <Text style={styles.listText}>{dropValue.label}</Text>
-                  </TouchableOpacity>
-                ))
-              ) : (
-                <Text style={styles.text2}>{value}</Text>
-              )}
-            </View>
+          <AnimalTypes />
 
-            <MaterialIcons
-              name={'keyboard-arrow-down'}
-              size={30}
-              color={'#808080'}
-            />
-          </TouchableOpacity>
           <View style={styles.horizontolLine2} />
           <TouchableOpacity
             style={styles.infoContainer}
@@ -406,11 +392,13 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 14,
     color: '#000',
+    top: -2,
   },
   text2: {
     fontSize: 14,
     fontWeight: '500',
     color: '#000',
+    top: 2,
   },
   text3: {
     fontSize: 18,
