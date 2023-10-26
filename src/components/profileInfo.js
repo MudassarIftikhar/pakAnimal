@@ -10,9 +10,10 @@ import {
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import GenderSvg from '../assets/SVGIcon/Gender.svg';
+import GenderSvg from '../assets/SVGIcon/Human Gender.svg';
 import LocationSvg from '../assets/SVGIcon/Location.svg';
 import Contactus from '../assets/SVGIcon/Contactus.svg';
+import BirthDay from '../assets/SVGIcon/Birthday.svg';
 import RangeSlider from './rangeSlider';
 const ProfileInfo = (props, {navigation}) => {
   const [open2, setOpen2] = useState(false);
@@ -100,7 +101,7 @@ const ProfileInfo = (props, {navigation}) => {
         <View style={styles.horizontolLine2} />
         <TouchableOpacity style={styles.infoContainer} onPress={showDatePicker}>
           <View style={styles.iconBack}>
-            <LocationSvg height={30} width={240} />
+            <BirthDay height={30} width={240} />
           </View>
           <View flex={1} paddingStart={13}>
             <Text style={styles.text3}>

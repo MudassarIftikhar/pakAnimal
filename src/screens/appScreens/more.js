@@ -9,12 +9,12 @@ import {
   View,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesom from 'react-native-vector-icons/FontAwesome';
 import SaveSvg from '../../assets/SVGIcon/Saved.svg';
 import LanguageSvg from '../../assets/SVGIcon/Language.svg';
 import VideoSvg from '../../assets/SVGIcon/Video.svg';
 import LogOutSvg from '../../assets/SVGIcon/Logout.svg';
 import Contactus from '../../assets/SVGIcon/Contactus.svg';
+import CartSvg from '../../assets/SVGIcon/Cart.svg';
 const More = ({navigation}) => {
   return (
     <ScrollView>
@@ -34,10 +34,10 @@ const More = ({navigation}) => {
         </View>
         <Text style={styles.lblText}>Personal</Text>
 
-        {/* <TouchableOpacity
+        <TouchableOpacity
           style={styles.listContainer}
           onPress={() => navigation.navigate('Cart')}>
-          <FontAwesom name="opencart" size={20} color="#808080" />
+          <CartSvg height={25} width={25} />
           <Text style={styles.listLblText}>My Cart</Text>
           <MaterialIcons
             name="keyboard-arrow-right"
@@ -49,14 +49,14 @@ const More = ({navigation}) => {
         <TouchableOpacity
           style={styles.listContainer}
           onPress={() => navigation.navigate('MyOrders')}>
-          <FontAwesom name="opencart" size={20} color="#808080" />
+          <LanguageSvg height={25} width={25} />
           <Text style={styles.listLblText}>My Orders</Text>
           <MaterialIcons
             name="keyboard-arrow-right"
             size={25}
             color="#808080"
           />
-        </TouchableOpacity> */}
+        </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.listContainer}

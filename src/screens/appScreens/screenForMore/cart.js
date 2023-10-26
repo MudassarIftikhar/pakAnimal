@@ -12,7 +12,7 @@ import Feather from 'react-native-vector-icons/Feather';
 const Cart = ({navigation}) => {
   return (
     <SafeAreaView>
-      <StatusBar backgroundColor={'#00AEEF'} />
+      <StatusBar backgroundColor={'#b63439'} />
       <View style={styles.header}>
         <View style={styles.headerBox}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -36,7 +36,7 @@ const Cart = ({navigation}) => {
 
 const styles = StyleSheet.create({
   btnShopNow: {
-    backgroundColor: '#00AEEF',
+    backgroundColor: '#b63439',
     width: '100%',
     height: 40,
     borderRadius: 5,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#808080',
   },
-  header: {height: 50, backgroundColor: '#00AEEF', alignItems: 'center'},
+  header: {height: 50, backgroundColor: '#b63439', alignItems: 'center'},
   headerBox: {
     flexDirection: 'row',
     height: 40,

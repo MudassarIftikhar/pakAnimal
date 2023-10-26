@@ -19,6 +19,8 @@ const MoreTab = props => {
       <Stack.Screen name="More" component={More} />
       <Stack.Screen name="Saved" component={Saved} options={{}} />
       <Stack.Screen name="MyProfile" component={MyProfile} />
+      <Stack.Screen name="Cart" component={Cart} />
+      <Stack.Screen name="MyOrders" component={MyOrders} />
     </Stack.Navigator>
   );
 };

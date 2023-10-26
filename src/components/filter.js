@@ -16,11 +16,12 @@ import PriceSvg from '../assets/SVGIcon/Price.svg';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RangeSlider from './rangeSlider';
 import SelectCity from '../screens/appScreens/screensForPost/selectCity';
+import SelectedTags from './selectedTags';
 
 const FilterHeader = props => {
   return (
     <View style={styles.headerview}>
-      <TouchableOpacity onPress={() => props.navigation.navigation.goBack()}>
+      <TouchableOpacity onPress={() => props.navigation.goBack()}>
         <Icon
           name="arrowleft"
           size={30}
@@ -32,7 +33,7 @@ const FilterHeader = props => {
     </View>
   );
 };
-const Filter = navigation => {
+const Filter = props => {
   const colorsList = [
     {
       imag: require('../assets/images/silver.png'),
@@ -77,15 +78,9 @@ const Filter = navigation => {
     },
   ];
 
-  return (
-    <View flex={1} backgroundColor={'#fff'}>
-      <FilterHeader navigation={navigation} />
   const [checked, setChecked] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-  //   const handleColorPress = index => {
-  //     setSelectedIndex(index);
-  //   };
   const [selectedIndices, setSelectedIndices] = useState([]);
 
   const handleColorPress = index => {
@@ -375,14 +370,13 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     fontSize: 12,
   },
-<<<<<<< Updated upstream
   main: {
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     backgroundColor: '#fff',
     elevation: 7,
   },
-  horizontolLine: {
+  horizontolLine1: {
     borderBottomColor: '#707070',
     borderBottomWidth: 1,
     margin: 10,
@@ -395,7 +389,7 @@ const styles = StyleSheet.create({
     margin: 15,
     padding: 5,
   },
-  text1: {
+  text11: {
     fontSize: 18,
     color: '#000',
     fontWeight: '600',
@@ -427,7 +421,7 @@ const styles = StyleSheet.create({
   item: {
     fontSize: 16,
     marginStart: 10,
-=======
+  },
   selectedTagsRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -441,7 +435,6 @@ const styles = StyleSheet.create({
   },
   selectedTagText: {
     color: 'white',
->>>>>>> Stashed changes
   },
 });
 export default Filter;

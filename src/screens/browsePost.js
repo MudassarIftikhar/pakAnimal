@@ -116,48 +116,52 @@ const BrowsePost = (props, {navigation}) => {
     <SafeAreaView>
       <BrowsePostHeader navigation={props.navigation} />
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        <TouchableOpacity
-          style={{flexDirection: 'row'}}
-          onPress={() => refRBSheet.current.open()}>
-          <MaterialIcons name="sort" size={25} style={styles.sorticon} />
-          <Text style={styles.sort}>Sort</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{flexDirection: 'row'}}
-          onPress={() =>
-            props.navigation.navigation.navigate('Filter', {
-              lable: props.navigation.lable,
-            })
-          }>
-          <MaterialIcons name="sort" size={25} style={styles.sorticon} />
-          <Text style={styles.filter}>filter</Text>
-        </TouchableOpacity>
-        <RBSheet
-          ref={refRBSheet}
-          closeOnDragDown={true}
-          height={550}
-          customStyles={{
-            draggableIcon: {
-              backgroundColor: 'white',
-            },
-          }}>
-          <View style={styles.topview}>
-            <Text style={styles.sortby}>Sort by</Text>
-            <Text style={styles.cancel}>cancel</Text>
-          </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <RadioButton data={data} style={{padding: 20}} />
-          </ScrollView>
-        </RBSheet>
-        <FlatList
-          data={FiltersList}
-          horizontal={true}
-          renderItem={({item}) => (
-            <View>
-              <Text style={styles.filterlist}>{item.title}</Text>
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity
+            style={{flexDirection: 'row'}}
+            onPress={() => refRBSheet.current.open()}>
+            <MaterialIcons name="sort" size={25} style={styles.sorticon} />
+            <Text style={styles.sort}>Sort</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{flexDirection: 'row'}}
+            onPress={() =>
+              props.navigation.navigation.navigate('Filter', {
+                lable: props.navigation.lable,
+              })
+            }>
+            <MaterialIcons name="sort" size={25} style={styles.sorticon} />
+            <Text style={styles.filter}>filter</Text>
+          </TouchableOpacity>
+          <RBSheet
+            ref={refRBSheet}
+            closeOnDragDown={true}
+            height={550}
+            customStyles={{
+              draggableIcon: {
+                backgroundColor: 'white',
+              },
+            }}>
+            <View style={styles.topview}>
+              <Text style={styles.sortby}>Sort by</Text>
+              <Text style={styles.cancel}>cancel</Text>
             </View>
-          )}
-        />
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <RadioButton data={data} style={{padding: 20}} />
+            </ScrollView>
+          </RBSheet>
+          <View style={{alignSelf: 'baseline'}}>
+            <FlatList
+              data={FiltersList}
+              horizontal={true}
+              renderItem={({item}) => (
+                <View style={styles.txtContainer}>
+                  <Text style={styles.filterlist}>{item.title}</Text>
+                </View>
+              )}
+            />
+          </View>
+        </View>
       </ScrollView>
       <View>
         <View style={styles.savesearchview}>
@@ -234,7 +238,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     top: 2,
     height: 80,
-    borderEndWidth: 1,
     flex: 1,
   },
   sorticon: {
@@ -253,22 +256,22 @@ const styles = StyleSheet.create({
     marginLeft: 3,
     fontWeight: 'bold',
   },
-  filterlist: {
-    color: '#000',
-    fontSize: 17,
-    padding: 6,
-    paddingStart: 15,
-    paddingEnd: 15,
-    textAlign: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
-    alignItems: 'center',
-    marginStart: 15,
-    marginTop: 10,
-    backgroundColor: 'white',
+  txtContainer: {
     borderRadius: 20,
     borderColor: 'black',
     borderWidth: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 5,
+    alignSelf: 'center',
+  },
+  filterlist: {
+    color: '#000',
+    fontSize: 17,
+    textAlign: 'center',
+    margin: 5,
+    marginStart: 10,
+    marginEnd: 10,
   },
   resultcounting: {
     fontSize: 15,

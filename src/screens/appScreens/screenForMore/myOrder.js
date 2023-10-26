@@ -13,7 +13,7 @@ const MyOrders = ({navigation}) => {
   return (
     <SafeAreaView>
       <StatusBar backgroundColor={'#00AEEF'} />
-      <Header title="My Orders" />
+      <Header title="My Orders" Navigation={navigation} />
       {/* <View
         style={{height: 50, backgroundColor: '#00AEEF', alignItems: 'center'}}>
         <View
