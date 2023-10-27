@@ -7,7 +7,7 @@ import Saved from '../../screens/appScreens/screenForMore/saved';
 
 const Tab = createMaterialTopTabNavigator();
 
-const SavedTab = ({navigation}) => {
+const SavedTab = props => {
   return (
     <Tab.Navigator
       initialRouteName="Search"
@@ -18,8 +18,8 @@ const SavedTab = ({navigation}) => {
         tabBarIndicatorStyle: {backgroundColor: '#b63439', height: 1},
         headerShown: true,
       }}>
-      <Tab.Screen name="Searches" component={Search} options={{}} />
-      <Tab.Screen name="Ads" component={Ads} options={{}} />
+      <Tab.Screen name={props.tab1} component={Search} options={{}} />
+      <Tab.Screen name={props.tab2} component={Ads} options={{}} />
     </Tab.Navigator>
   );
 };

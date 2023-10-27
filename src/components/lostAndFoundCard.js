@@ -1,19 +1,19 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import AdoptionRescue from '../assets/SVGIcon/AdoptionRescue.svg';
+import PetAd from '../assets/SVGIcon/PetAd.svg';
 
-const OferingCard = props => {
+const LostAndFoundCard = props => {
   return (
     <TouchableOpacity style={styles.postContainer}>
       <View style={styles.cardOutterBox}>
         <View style={styles.cardInnerBox}>
-          <Text style={styles.postHeading}>Adoption & Rescue!</Text>
+          <Text style={styles.postHeading}>Lost and Found!</Text>
           <Text style={styles.postDiscription} numberOfLines={2}>
             Connect with Caring Pet Owners and Verified Buyers
           </Text>
         </View>
-        <AdoptionRescue style={styles.postImage} />
+        <PetAd style={styles.postImage} />
       </View>
       <View style={styles.txtLblMainContainer}>
         <View style={styles.txtLblContainer}>
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     borderColor: '#eee',
     borderWidth: 2,
+    marginTop: 10,
   },
   postHeading: {
     fontSize: 20,
@@ -103,4 +104,4 @@ const styles = StyleSheet.create({
   cardOutterBox: {flexDirection: 'row', flex: 1},
   cardInnerBox: {flexDirection: 'column', flex: 1, marginEnd: 10},
 });
-export default OferingCard;
+export default LostAndFoundCard;

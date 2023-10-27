@@ -17,7 +17,7 @@ const BrowsCategory = props => {
       id: '1',
       title: 'Pet',
       lable: 'PakWild',
-      image: require('../assets/images/Dogs-01.png'),
+      image: require('../assets/images/Dogs.png'),
     },
     {
       id: '2',

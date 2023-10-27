@@ -15,6 +15,7 @@ import VideoSvg from '../../assets/SVGIcon/Video.svg';
 import LogOutSvg from '../../assets/SVGIcon/Logout.svg';
 import Contactus from '../../assets/SVGIcon/Contactus.svg';
 import CartSvg from '../../assets/SVGIcon/Cart.svg';
+import RecentActivity from '../../assets/SVGIcon/RecentActivity.svg';
 const More = ({navigation}) => {
   return (
     <ScrollView>
@@ -86,6 +87,19 @@ const More = ({navigation}) => {
           <Text style={styles.listLblText}>Language</Text>
           <Text style={styles.language}>English</Text>
         </View>
+
+        <TouchableOpacity
+          style={styles.listContainer}
+          onPress={() => navigation.navigate('RecentActivity')}>
+          {/* <EvilIcons name="heart" size={25} color="#808080" /> */}
+          <RecentActivity height={25} width={25} />
+          <Text style={styles.listLblText}>Recent Activity</Text>
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={25}
+            color="#808080"
+          />
+        </TouchableOpacity>
 
         <Text style={styles.lblText}>Others</Text>
 

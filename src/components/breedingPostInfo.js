@@ -20,6 +20,8 @@ import NameSvg from '../assets/SVGIcon/Name01.svg';
 import MobileNoSvg from '../assets/SVGIcon/Mobile Number.svg';
 import PriceSvg from '../assets/SVGIcon/Price.svg';
 import VaccinatedSvg from '../assets/SVGIcon/Vaccination.svg';
+
+import Age from '../assets/SVGIcon/Age.svg';
 import ColorBottomSheet from './colorBottomSheet';
 import AnimalTypes from './animalTypes';
 
@@ -107,7 +109,7 @@ const BreedingPostInfo = props => {
       <View style={styles.horizontolLine2} />
       {props.type !== 'Accessories' ? (
         <View>
-          <AnimalTypes />
+          <AnimalTypes type={props.type} />
 
           <View style={styles.horizontolLine2} />
           <TouchableOpacity
@@ -116,7 +118,7 @@ const BreedingPostInfo = props => {
               // setOpen1(!open1);
             }}>
             <View style={styles.iconBack}>
-              <AnimalTypeSvg width={30} height={240} />
+              <Age width={30} height={240} />
             </View>
             <View flex={1} paddingStart={13}>
               <Text style={styles.text1}>Age</Text>
