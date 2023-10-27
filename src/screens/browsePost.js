@@ -275,12 +275,12 @@ const styles = StyleSheet.create({
   },
   resultcounting: {
     fontSize: 15,
+    paddingLeft: 25,
     flex: 0.9,
   },
   savesearchview: {
     flexDirection: 'row',
     marginTop: 20,
-    paddingRight: 20,
     fontSize: 15,
   },
   savesearch: {

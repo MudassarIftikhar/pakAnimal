@@ -1,6 +1,8 @@
 import React from 'react';
 import {
+  FlatList,
   Image,
+  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -15,72 +17,107 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import PagerView from 'react-native-pager-view';
 const PostViewScreen = props => {
   // console.log('Type>>>>', route);
+  const descriptionlist = [
+    {
+      id: '1',
+      label: 'Animal Type',
+      name: 'cat',
+    },
+    {
+      id: '2',
+      label: 'Age',
+      name: '1 year',
+    },
+    {
+      id: '3',
+      label: 'gender',
+      name: 'female',
+    },
+    {
+      id: '4',
+      label: 'vaccination',
+      name: 'complete',
+    },
+    {
+      id: '5',
+      label: 'Training level',
+      name: 'expert',
+    },
+    {
+      id: '6',
+      label: 'Color',
+      name: 'white',
+    },
+  ];
   return (
-    <View flex={1}>
-      <ScrollView>
-        <View>
-          <StatusBar translucent backgroundColor={'rgba(0,0,0,0)'} />
-          <View style={styles.imageMainContainer}>
-            <PagerView style={styles.itemImage} initialPage={0}>
-              <Image
-                key="1"
-                style={styles.itemImage}
-                source={props.route.params.postImage}
-              />
-            </PagerView>
-            {/* <Image style={styles.itemImage} source={route.params.postImage} /> */}
-            <View style={styles.imageTxtContainer}>
-              <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                <IonIcons name="chevron-back-sharp" size={30} color="#fff" />
-              </TouchableOpacity>
-              <Text style={styles.itemName}>
-                {props.route.params.postTitle}
-              </Text>
-            </View>
-            <View style={styles.picQty}>
-              <Text style={styles.picQtyTxt}>1/5</Text>
-            </View>
-            <View style={styles.imageBtnContainer}>
-              <Entypo
-                style={styles.btnShare}
-                name="share"
-                size={20}
-                color="#000"
-              />
-              <Entypo
-                style={styles.btnShare}
-                name="heart"
-                size={20}
-                color={'#B2BEB5'}
-              />
-            </View>
+    <SafeAreaView flex={1}>
+      <ScrollView horizontal={false}>
+        <StatusBar translucent backgroundColor={'rgba(0,0,0,0)'} />
+        <View style={styles.imageMainContainer}>
+          <PagerView style={styles.itemImage} initialPage={0}>
+            <Image
+              key="1"
+              style={styles.itemImage}
+              source={props.route.params.postImage}
+            />
+          </PagerView>
+          {/* <Image style={styles.itemImage} source={route.params.postImage} /> */}
+          <View style={styles.imageTxtContainer}>
+            <TouchableOpacity onPress={() => props.navigation.goBack()}>
+              <IonIcons name="chevron-back-sharp" size={30} color="#fff" />
+            </TouchableOpacity>
+            <Text style={styles.itemName}>{props.route.params.postTitle}</Text>
           </View>
-          <Text style={styles.postTitle}>{props.route.params.postTitle}</Text>
-          <Text style={styles.postPrice}>
-            PKR {props.route.params.postPrice}
-          </Text>
-          <View style={styles.postCityContainer}>
-            <EvilIcons name="location" size={20} color={'#B2BEB5'} />
-            <Text>{props.route.params.postCity}</Text>
+          <View style={styles.picQty}>
+            <Text style={styles.picQtyTxt}>1/5</Text>
           </View>
-          <View style={styles.horizontolLine} />
-
-          <Text style={styles.lbl1}>Discription</Text>
-          <Text style={styles.discriptionTxt}>
-            {props.route.params.postDiscription}
-          </Text>
-          <View style={styles.horizontolLine} />
-          <Text style={styles.lbl1}>Seller Comment</Text>
-          <Text style={styles.discriptionTxt}>
-            {props.route.params.postDiscription}
-          </Text>
-          <View style={styles.horizontolLine} />
-          <Text style={styles.lbl1}>Seller Detail</Text>
-          <Text style={styles.discriptionTxt}>
-            {props.route.params.postDiscription}
-          </Text>
+          <View style={styles.imageBtnContainer}>
+            <Entypo
+              style={styles.btnShare}
+              name="share"
+              size={20}
+              color="#000"
+            />
+            <Entypo
+              style={styles.btnShare}
+              name="heart"
+              size={20}
+              color={'#B2BEB5'}
+            />
+          </View>
         </View>
+        <Text style={styles.postTitle}>{props.route.params.postTitle}</Text>
+        <Text style={styles.postPrice}>PKR {props.route.params.postPrice}</Text>
+        <View style={styles.postCityContainer}>
+          <EvilIcons name="location" size={20} color={'#B2BEB5'} />
+          <Text>{props.route.params.postCity}</Text>
+        </View>
+        <View style={styles.horizontolLine} />
+
+        {descriptionlist.map((item, index) => {
+          return (
+            <View>
+              <View style={styles.descriptionview}>
+                <Text style={styles.titletext}>{item.label}</Text>
+                <Text style={styles.cattext}>{item.name}</Text>
+              </View>
+
+              <View style={styles.horizontalline3} />
+            </View>
+          );
+        })}
+
+        <Text style={styles.lbl1}>Seller Comment</Text>
+        <Text style={styles.discriptionTxt}>
+          {props.route.params.postDiscription}
+        </Text>
+        <View style={styles.horizontolLine} />
+        <Text style={styles.lbl1}>Seller Detail</Text>
+        <Text marginBottom={20} marginStart={15}>
+          {props.route.params.postDiscription}
+        </Text>
       </ScrollView>
+      {/* </View> */}
       <View style={styles.btnMainContainer}>
         <TouchableOpacity style={styles.btnContainer}>
           <FontAwesome name="phone" size={20} color={'#fff'} />
@@ -91,13 +128,13 @@ const PostViewScreen = props => {
             <IonIcons
               name="chatbox-ellipses-outline"
               size={20}
-              color={'#00AEEF'}
+              color={'#b63439'}
             />
             <Text style={styles.btnContact}>SMS</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.btnOuterContact}>
-            <IonIcons name="chatbubbles-outline" size={20} color={'#00AEEF'} />
+            <IonIcons name="chatbubbles-outline" size={20} color={'#b63439'} />
             <Text style={styles.btnContact}>Chat</Text>
           </TouchableOpacity>
 
@@ -110,7 +147,7 @@ const PostViewScreen = props => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -196,13 +233,13 @@ const styles = StyleSheet.create({
     marginStart: 15,
   },
   btnMainContainer: {
-    position: 'absolute',
-    bottom: 0,
+    // position: 'absolute',
+    // bottom: 0,
     width: '100%',
   },
   btnContainer: {
     flexDirection: 'row',
-    backgroundColor: '#00AEEF',
+    backgroundColor: '#b63439',
     justifyContent: 'center',
     alignItems: 'center',
     height: 40,
@@ -229,7 +266,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   btnContact: {
-    color: '#00AEEF',
+    color: '#b63439',
     fontSize: 18,
     marginStart: 5,
     alignItems: 'center',
@@ -248,6 +285,28 @@ const styles = StyleSheet.create({
   },
   discriptionTxt: {
     marginStart: 15,
+  },
+  descriptionview: {
+    flexDirection: 'row',
+    margin: 15,
+  },
+  titletext: {
+    flex: 1,
+    marginStart: 5,
+    fontSize: 18,
+    color: 'black',
+  },
+  cattext: {
+    marginEnd: 5,
+    fontSize: 18,
+    color: 'black',
+    fontWeight: 'bold',
+  },
+  horizontalline3: {
+    borderBottomColor: 'grey',
+    borderBottomWidth: 0.5,
+    marginStart: 15,
+    marginEnd: 15,
   },
 });
 export default PostViewScreen;
