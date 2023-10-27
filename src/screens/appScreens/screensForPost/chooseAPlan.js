@@ -11,6 +11,10 @@ import {
   View,
 } from 'react-native';
 import Header from '../../../components/header';
+import AdFarmAnimal from '../../../assets/SVGIcon/AdFarmAnimal.svg';
+import FarmAnimalBreed from '../../../assets/SVGIcon/FarmAnimalBreeding.svg';
+import PetBreeding from '../../../assets/SVGIcon/PetBreeding.svg';
+import PetAdd from '../../../assets/SVGIcon/PetAd.svg';
 const screenHeight = Dimensions.get('window').height;
 const ChooseAPlan = props => {
   console.log('Type>>>>', props.route.params.type);
@@ -49,10 +53,7 @@ const ChooseAPlan = props => {
                   I want expert to sell my animal
                 </Text>
               </View>
-              <Image
-                style={styles.postImage}
-                source={require('../../../assets/images/splash_icon.png')}
-              />
+              <PetAdd style={styles.postImage} />
             </TouchableOpacity>
             {/* Card 2 */}
 
@@ -72,10 +73,7 @@ const ChooseAPlan = props => {
                   I want expert to sell my animal
                 </Text>
               </View>
-              <Image
-                style={styles.postImage}
-                source={require('../../../assets/images/splash_icon.png')}
-              />
+              <PetBreeding style={styles.postImage} />
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -103,10 +101,7 @@ const ChooseAPlan = props => {
                   I want expert to sell my animal
                 </Text>
               </View>
-              <Image
-                style={styles.postImage}
-                source={require('../../../assets/images/splash_icon.png')}
-              />
+              <AdFarmAnimal style={styles.postImage} />
             </TouchableOpacity>
             {/* Card 4 */}
 
@@ -126,10 +121,7 @@ const ChooseAPlan = props => {
                   I want expert to sell my animal
                 </Text>
               </View>
-              <Image
-                style={styles.postImage}
-                source={require('../../../assets/images/splash_icon.png')}
-              />
+              <FarmAnimalBreed style={styles.postImage} />
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -157,8 +149,9 @@ const styles = StyleSheet.create({
   postHeading: {
     fontSize: 20,
     fontWeight: '600',
-    margin: 10,
+    margin: 8,
     color: '#0000FF',
+    width: '96%',
   },
   postDiscription: {
     fontSize: 16,

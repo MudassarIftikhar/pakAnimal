@@ -17,47 +17,64 @@ import RBSheet from 'react-native-raw-bottom-sheet';
 const AnimalTypes = props => {
   const [animalType, setAnimalType] = useState('Pet');
   const refRBSheet = useRef();
-  const colorsList = [
+  const petList = [
     {
-      imag: require('../assets/images/silver.png'),
-      name: 'White',
+      imag: require('../assets/images/Dogs.png'),
+      name: 'Dogs',
     },
     {
-      imag: require('../assets/images/black.png'),
-      name: 'Black',
+      imag: require('../assets/images/Cats.png'),
+      name: 'Cats',
     },
     {
-      imag: require('../assets/images/grey.png'),
-      name: 'Gray',
+      imag: require('../assets/images/Birds.png'),
+      name: 'Birds',
     },
     {
-      imag: require('../assets/images/blue.png'),
-      name: 'Blue',
+      imag: require('../assets/images/SmallPets.png'),
+      name: 'Small Pets',
     },
     {
-      imag: require('../assets/images/green.png'),
-      name: 'Green',
+      imag: require('../assets/images/Reptiles.png'),
+      name: 'Reptiles',
     },
     {
-      imag: require('../assets/images/red.png'),
-      name: 'Red',
+      imag: require('../assets/images/Fishes.png'),
+      name: 'Fishes',
     },
     {
-      imag: require('../assets/images/gold.png'),
-      name: 'Golden',
+      imag: require('../assets/images/UniquePets.png'),
+      name: 'Unique Pets',
+    },
+  ];
+  const farmList = [
+    {
+      imag: require('../assets/images/Dogs.png'),
+      name: 'Cattle',
     },
     {
-      imag: require('../assets/images/maroon.png'),
-      name: 'Cream',
+      imag: require('../assets/images/Cats.png'),
+      name: 'Goats',
     },
     {
-      imag: require('../assets/images/brown.png'),
-      name: 'Brown',
+      imag: require('../assets/images/Birds.png'),
+      name: 'Sheep',
     },
-
     {
-      imag: require('../assets/images/orange.png'),
-      name: 'Orange',
+      imag: require('../assets/images/SmallPets.png'),
+      name: 'Poultry',
+    },
+    {
+      imag: require('../assets/images/Reptiles.png'),
+      name: 'Camels',
+    },
+    {
+      imag: require('../assets/images/Fishes.png'),
+      name: 'Horses',
+    },
+    {
+      imag: require('../assets/images/UniquePets.png'),
+      name: 'Donkeys',
     },
   ];
   return (
@@ -78,9 +95,10 @@ const AnimalTypes = props => {
               flexDirection: 'column',
               borderTopLeftRadius: 10,
               borderTopRightRadius: 10,
+              marginBottom: 30,
             }}>
             <View style={styles.sheettopcontent}>
-              <Text style={styles.bodycolor}>AnimalTypes</Text>
+              <Text style={styles.bodycolor}>Animal Types</Text>
               <TouchableOpacity onPress={() => refRBSheet.current.close()}>
                 <Text style={styles.cancel}>Cancel</Text>
               </TouchableOpacity>
@@ -88,7 +106,7 @@ const AnimalTypes = props => {
             <View style={styles.flatlist}>
               <FlatList
                 showsVerticalScrollIndicator={false}
-                data={colorsList}
+                data={props.type === 'Farm Animal' ? farmList : petList}
                 horizontal={false}
                 renderItem={({item}) => (
                   <TouchableOpacity
@@ -167,7 +185,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   cancel: {
-    color: 'skyblue',
+    color: '#b63439',
     fontWeight: 'bold',
     marginRight: 20,
   },

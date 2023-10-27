@@ -3,7 +3,7 @@ import {SafeAreaView, StyleSheet, View} from 'react-native';
 import Header from '../../../components/header';
 import SavedTab from '../../../router/savedTab';
 
-const Saved = ({navigation}) => {
+const RecentActivity = ({navigation}) => {
   useEffect(() => {
     navigation.getParent()?.setOptions({
       tabBarStyle: {
@@ -21,9 +21,13 @@ const Saved = ({navigation}) => {
 
   return (
     <SafeAreaView>
-      <Header title="Saved" CrossIcon={false} Navigation={navigation} />
+      <Header
+        title="Recent Activity"
+        CrossIcon={false}
+        Navigation={navigation}
+      />
       <View style={{width: '100%', height: '100%'}}>
-        <SavedTab tab1="Searches" tab2="Ads" />
+        <SavedTab tab1="Contacted" tab2="Seen" />
       </View>
     </SafeAreaView>
   );
@@ -56,4 +60,4 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 });
-export default Saved;
+export default RecentActivity;

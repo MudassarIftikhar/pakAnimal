@@ -27,7 +27,7 @@ const SellNow = ({navigation, props}) => {
             <Image
               resizeMode={'center'}
               style={styles.icon}
-              source={require('../../assets/images/Dogs-01.png')}
+              source={require('../../assets/images/Dogs.png')}
             />
             <Text style={styles.textIcon}>Pets</Text>
           </TouchableOpacity>

@@ -20,6 +20,7 @@ import CategoryTab from '../../router/homeCategoryTab';
 import {Modal} from 'react-native-paper';
 import Cross from 'react-native-vector-icons/Feather';
 import axios from 'axios';
+import LostAndFoundCard from '../../components/lostAndFoundCard';
 class Home extends Component {
   // const [modalVisible, setModalVisible] = useState(false);
   // const route = useRoute();
@@ -84,6 +85,7 @@ class Home extends Component {
             <Text style={styles.lbl1}>PakWild Offerings</Text>
 
             <OferingCard />
+            <LostAndFoundCard />
             <FeatureList />
 
             <View style={styles.listLblContainer}>
