@@ -18,7 +18,7 @@ const AnimalTypes = props => {
   const refRBSheet = useRef();
   const petList = [
     {
-      imag: require('../assets/images/Dogs.png'),
+      imag: require('../assets/SVGIcon/Dogs.svg'),
       name: 'Dogs',
     },
     {
