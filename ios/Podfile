@@ -1,4 +1,4 @@
-platform :ios, '12.4'
+platform :ios, '13.0'
   pod 'Firebase', :modular_headers => true
   pod 'FirebaseCoreInternal', :modular_headers => true
   pod 'GoogleUtilities', :modular_headers => true

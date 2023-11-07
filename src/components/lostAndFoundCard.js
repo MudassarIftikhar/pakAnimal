@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import PetAd from '../assets/SVGIcon/PetAd.svg';
+import PetAd from '../assets/SVGIcon/LostFound.svg';
 
 const LostAndFoundCard = props => {
   return (
@@ -10,12 +10,12 @@ const LostAndFoundCard = props => {
         <View style={styles.cardInnerBox}>
           <Text style={styles.postHeading}>Lost and Found!</Text>
           <Text style={styles.postDiscription} numberOfLines={2}>
-            Connect with Caring Pet Owners and Verified Buyers
+            Post missing pets and help connect them with their loving owners.
           </Text>
         </View>
         <PetAd style={styles.postImage} />
       </View>
-      <View style={styles.txtLblMainContainer}>
+      {/* <View style={styles.txtLblMainContainer}>
         <View style={styles.txtLblContainer}>
           <IonIcons name="checkmark-circle" size={25} color={'#b63439'} />
           <Text style={styles.txtLbl2}>text 1</Text>
@@ -33,7 +33,7 @@ const LostAndFoundCard = props => {
           name="chevron-forward-sharp"
           size={25}
         />
-      </View>
+      </View> */}
     </TouchableOpacity>
   );
 };
@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: '#fff',
     paddingLeft: 10,
-    padding: 10,
     flexDirection: 'row',
     marginLeft: 10,
     marginRight: 10,
@@ -102,6 +101,11 @@ const styles = StyleSheet.create({
   },
 
   cardOutterBox: {flexDirection: 'row', flex: 1},
-  cardInnerBox: {flexDirection: 'column', flex: 1, marginEnd: 10},
+  cardInnerBox: {
+    flexDirection: 'column',
+    flex: 1,
+    marginEnd: 10,
+    justifyContent: 'center',
+  },
 });
 export default LostAndFoundCard;

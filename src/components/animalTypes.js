@@ -8,7 +8,6 @@ import {
   Image,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import AnimalTypeSvg from '../assets/SVGIcon/Animal Type.svg';
 
@@ -49,31 +48,31 @@ const AnimalTypes = props => {
   ];
   const farmList = [
     {
-      imag: require('../assets/images/Dogs.png'),
+      imag: require('../assets/SVGIcon/Cattle.svg'),
       name: 'Cattle',
     },
     {
-      imag: require('../assets/images/Cats.png'),
+      imag: require('../assets/SVGIcon/Goat.svg'),
       name: 'Goats',
     },
     {
-      imag: require('../assets/images/Birds.png'),
+      imag: require('../assets/SVGIcon/Sheep.svg'),
       name: 'Sheep',
     },
     {
-      imag: require('../assets/images/SmallPets.png'),
+      imag: require('../assets/SVGIcon/Poultry.svg'),
       name: 'Poultry',
     },
     {
-      imag: require('../assets/images/Reptiles.png'),
+      imag: require('../assets/SVGIcon/Camel.svg'),
       name: 'Camels',
     },
     {
-      imag: require('../assets/images/Fishes.png'),
+      imag: require('../assets/SVGIcon/Horse.svg'),
       name: 'Horses',
     },
     {
-      imag: require('../assets/images/UniquePets.png'),
+      imag: require('../assets/SVGIcon/Donkey.svg'),
       name: 'Donkeys',
     },
   ];
@@ -90,13 +89,7 @@ const AnimalTypes = props => {
               backgroundColor: '#FFFFFF',
             },
           }}>
-          <View
-            style={{
-              flexDirection: 'column',
-              borderTopLeftRadius: 10,
-              borderTopRightRadius: 10,
-              marginBottom: 30,
-            }}>
+          <View style={styles.Container}>
             <View style={styles.sheettopcontent}>
               <Text style={styles.bodycolor}>Animal Types</Text>
               <TouchableOpacity onPress={() => refRBSheet.current.close()}>
@@ -150,6 +143,12 @@ const AnimalTypes = props => {
 };
 
 const styles = StyleSheet.create({
+  Container: {
+    flexDirection: 'column',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    marginBottom: 30,
+  },
   infoContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -197,6 +196,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 30,
+    backgroundColor: 'yellow',
   },
   colorandnameview: {
     flexDirection: 'row',

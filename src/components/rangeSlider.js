@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput} from 'react-native';
+import {View, Text, StyleSheet, TextInput, Dimensions} from 'react-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
-const RangeSlider = () => {
+const RangeSlider = props => {
   const [values, setValues] = useState([0, 'Any']);
 
   const onValuesChange = newValues => {
@@ -29,12 +29,12 @@ const RangeSlider = () => {
         values={values}
         onValuesChange={onValuesChange}
         min={0}
-        max={2000}
-        step={50}
+        max={props.type === 'Age' ? 100 : 2000}
+        step={props.type === 'Age' ? 1 : 50}
         allowOverlap={false}
         snapped
         selectedStyle={styles.sliderStyle}
-        sliderLength={340}
+        sliderLength={Dimensions.get('window').width * 0.89}
         markerStyle={styles.markerStyle}
         trackStyle={styles.trackStyle} // Change track style
         unselectedStyle={styles.unselectedStyle}

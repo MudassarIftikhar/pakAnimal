@@ -97,22 +97,18 @@ const Filter = props => {
   // Color List Code end
 
   const [tagLable, setTagLable] = useState([props.route.params.lable]);
-  const [newItem, setNewItem] = useState(''); // State to hold the new item
 
-  const addItemToList = () => {
-    if (newItem) {
+  const addItemToList = itemName => {
+    if (itemName) {
       // Make sure newItem is not empty
-      console.log('NewItem>>>', newItem);
-      if (tagLable.includes(newItem)) {
+      console.log('NewItem>>>', itemName);
+      if (tagLable.includes(itemName)) {
         // If selected, remove it from the selectedIndices array
-        setTagLable(tagLable.filter(item => item !== newItem));
+        setTagLable(tagLable.filter(item => item !== itemName));
       } else {
         // If not selected, add it to the selectedIndices array
-        setTagLable([...tagLable, newItem]);
-        // setNewItem('');
+        setTagLable([...tagLable, itemName]);
       }
-      // setTagLable([...tagLable, newItem]); // Add the new item to the list
-      // setNewItem(''); // Clear the input field
     }
   };
 
@@ -152,7 +148,7 @@ const Filter = props => {
             </View>
             <Text style={styles.textPrice}>Age</Text>
           </View>
-          <RangeSlider />
+          <RangeSlider type="Age" />
         </View>
         <View style={styles.horizontolLine2} />
 
@@ -203,8 +199,8 @@ const Filter = props => {
               <TouchableOpacity
                 style={styles2().colornname}
                 onPress={() => {
-                  setNewItem(item.name);
-                  addItemToList();
+                  console.log('Hit>>>', item.name);
+                  addItemToList(item.name);
                   handleColorPress(index);
                 }}>
                 <View style={styles2().colorandnameview}>

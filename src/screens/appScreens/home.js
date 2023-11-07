@@ -21,6 +21,7 @@ import {Modal} from 'react-native-paper';
 import Cross from 'react-native-vector-icons/Feather';
 import axios from 'axios';
 import LostAndFoundCard from '../../components/lostAndFoundCard';
+import MapView from 'react-native-maps';
 class Home extends Component {
   // const [modalVisible, setModalVisible] = useState(false);
   // const route = useRoute();
@@ -45,6 +46,14 @@ class Home extends Component {
   }
   handleButtonClick = () => {
     return;
+    <MapView
+      initialRegion={{
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }}
+    />;
   };
   render() {
     const {customProp} = this.props.route.params?.customProp || false;
@@ -62,12 +71,14 @@ class Home extends Component {
               placeholder="Search animal"
             />
 
-            <View style={styles.searchLocationContainer}>
+            <TouchableOpacity
+              style={styles.searchLocationContainer}
+              onPress={() => this.handleButtonClick()}>
               <Ionicons name="location-sharp" size={15} color="#b63439" />
               <Text style={styles.locationTxt} numberOfLines={1}>
                 Faisalabad
               </Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
         <ScrollView
@@ -82,11 +93,11 @@ class Home extends Component {
               }}>
               <CategoryTab navigation={this.navigation} />
             </View>
-            <Text style={styles.lbl1}>PakWild Offerings</Text>
+            <Text style={styles.lbl1}>PakWild Welfare</Text>
 
             <OferingCard />
             <LostAndFoundCard />
-            <FeatureList />
+            {/* <FeatureList />            */}
 
             <View style={styles.listLblContainer}>
               <Text style={styles.lbl1}>Managed By PakWild</Text>

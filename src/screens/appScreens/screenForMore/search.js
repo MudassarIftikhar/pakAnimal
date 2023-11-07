@@ -8,9 +8,17 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import NoDataFind from '../../../components/noDataText';
 
 const Search = ({navigation}) => {
-  return <Text>0 Saved Searchs</Text>;
+  return (
+    <NoDataFind
+      title1="No Searches Saved"
+      title2="Tab the heart on a listing to save the Searches here."
+      Button={true}
+      screen="Ads"
+    />
+  );
 };
 
 const styles = StyleSheet.create({});

@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
+import NoItemAddedtoCart from '../../../assets/SVGIcon/NoItemAddedtoCart.svg';
 const Cart = ({navigation}) => {
   return (
     <SafeAreaView>
@@ -23,7 +23,7 @@ const Cart = ({navigation}) => {
       </View>
 
       <View style={styles.noItemBox}>
-        <Feather name="shopping-cart" size={100} color="#909090" />
+        <NoItemAddedtoCart height={100} width={320} />
         <Text style={styles.txtLbl}>No Item added to cart</Text>
         <Text style={styles.txtLbl2}>Looking for Products?</Text>
         <TouchableOpacity style={styles.btnShopNow}>
