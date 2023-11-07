@@ -80,7 +80,7 @@ const BreedingPostInfo = props => {
           <DiscriptionSvg height={30} width={240} />
         </View>
         <View flex={1} paddingStart={13}>
-          <Text style={styles.text1}>Description</Text>
+          <Text style={styles.text1}>Seller Comment</Text>
           <TextInput
             style={styles.text2}
             placeholder="eg. Selling a friendly Labrador Retriever puppy"
