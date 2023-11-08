@@ -1,15 +1,15 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import PetAd from '../assets/SVGIcon/LostFound.svg';
+import PetAd from '../assets/SVGIcon/Lost&Found.svg';
 
 const LostAndFoundCard = props => {
   return (
     <TouchableOpacity style={styles.postContainer}>
       <View style={styles.cardOutterBox}>
         <View style={styles.cardInnerBox}>
-          <Text style={styles.postHeading}>Lost and Found!</Text>
-          <Text style={styles.postDiscription} numberOfLines={2}>
+          <Text style={styles.postHeading}>Lost & Found!</Text>
+          <Text style={styles.postDiscription} numberOfLines={3}>
             Post missing pets and help connect them with their loving owners.
           </Text>
         </View>

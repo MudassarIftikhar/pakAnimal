@@ -48,31 +48,31 @@ const AnimalTypes = props => {
   ];
   const farmList = [
     {
-      imag: require('../assets/SVGIcon/Cattle.svg'),
+      imag: require('../assets/images/Cattle.png'),
       name: 'Cattle',
     },
     {
-      imag: require('../assets/SVGIcon/Goat.svg'),
+      imag: require('../assets/images/goat.png'),
       name: 'Goats',
     },
     {
-      imag: require('../assets/SVGIcon/Sheep.svg'),
+      imag: require('../assets/images/Sheep.png'),
       name: 'Sheep',
     },
     {
-      imag: require('../assets/SVGIcon/Poultry.svg'),
+      imag: require('../assets/images/Poultry.png'),
       name: 'Poultry',
     },
     {
-      imag: require('../assets/SVGIcon/Camel.svg'),
+      imag: require('../assets/images/Camel.png'),
       name: 'Camels',
     },
     {
-      imag: require('../assets/SVGIcon/Horse.svg'),
+      imag: require('../assets/images/horse.png'),
       name: 'Horses',
     },
     {
-      imag: require('../assets/SVGIcon/Donkey.svg'),
+      imag: require('../assets/images/Donkey.png'),
       name: 'Donkeys',
     },
   ];
@@ -196,7 +196,6 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 30,
-    backgroundColor: 'yellow',
   },
   colorandnameview: {
     flexDirection: 'row',

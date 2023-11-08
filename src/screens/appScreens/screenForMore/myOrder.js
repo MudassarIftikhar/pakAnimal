@@ -12,34 +12,7 @@ import Header from '../../../components/header';
 const MyOrders = ({navigation}) => {
   return (
     <SafeAreaView>
-      <StatusBar backgroundColor={'#00AEEF'} />
       <Header title="My Orders" Navigation={navigation} />
-      {/* <View
-        style={{height: 50, backgroundColor: '#00AEEF', alignItems: 'center'}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            height: 40,
-            width: '100%',
-            alignSelf: 'flex-start',
-            alignItems: 'center',
-            right: 0,
-            paddingTop: 5,
-          }}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <IonIcons name="chevron-back-sharp" size={30} color="#fff" />
-          </TouchableOpacity>
-          <Text
-            style={{
-              fontSize: 20,
-              color: '#fff',
-              fontWeight: '600',
-              marginStart: 20,
-            }}>
-            My Orders
-          </Text>
-        </View>
-      </View> */}
     </SafeAreaView>
   );
 };
