@@ -5,7 +5,9 @@ import AdoptionRescue from '../assets/SVGIcon/AdoptionRescue.svg';
 
 const OferingCard = props => {
   return (
-    <TouchableOpacity style={styles.postContainer}>
+    <TouchableOpacity
+      style={styles.postContainer}
+      onPress={() => props.navigation.navigation.navigate('SellYourCar')}>
       <View style={styles.cardOutterBox}>
         <View style={styles.cardInnerBox}>
           <Text style={styles.postHeading}>Adoption & Rescue!</Text>

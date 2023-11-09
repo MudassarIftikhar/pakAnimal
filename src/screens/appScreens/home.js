@@ -96,7 +96,7 @@ class Home extends Component {
             </View>
             <Text style={styles.lbl1}>PakWild Welfare</Text>
 
-            <OferingCard />
+            <OferingCard navigation={this.navigation} />
             <LostAndFoundCard />
             {/* <FeatureList />            */}
 
