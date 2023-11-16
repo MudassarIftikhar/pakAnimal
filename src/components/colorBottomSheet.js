@@ -74,7 +74,9 @@ const ColorBottomSheet = props => {
           <View style={{flexDirection: 'column'}}>
             <View style={styles.sheettopcontent}>
               <Text style={styles.bodycolor}>Body color</Text>
-              <Text style={styles.cancel}>Cancel</Text>
+              <TouchableOpacity onPress={() => refRBSheet.current.close()}>
+                <Text style={styles.cancel}>Cancel</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.flatlist}>
               <FlatList
@@ -147,13 +149,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   bodycolor: {
-    color: 'darkblue',
+    color: '#b63439',
     fontWeight: 'bold',
     flex: 1,
     marginLeft: 20,
   },
   cancel: {
-    color: 'skyblue',
+    color: '#b63439',
     fontWeight: 'bold',
     marginRight: 20,
   },

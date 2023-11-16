@@ -12,7 +12,7 @@ import {
 import Icon from 'react-native-vector-icons/AntDesign';
 import CallIcon from 'react-native-vector-icons/Ionicons';
 import ReportIcon from 'react-native-vector-icons/MaterialIcons';
-import DotIcon from 'react-native-vector-icons/Entypo';
+import DescriptionIcon from 'react-native-vector-icons/MaterialIcons';
 import SendIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const InboxHeader = ({navigation}) => {
@@ -27,30 +27,32 @@ const InboxHeader = ({navigation}) => {
         />
       </TouchableOpacity>
       <Text style={styles.nametext}>Name</Text>
-      <TouchableOpacity>
+      {/* <TouchableOpacity>
         <CallIcon
           name="call-outline"
           size={20}
           color="#fff"
           style={styles.call}
         />
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <ReportIcon
-          name="report-problem"
-          size={20}
-          color="#fff"
-          style={styles.report}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <DotIcon
-          name="dots-three-vertical"
-          size={20}
-          color="#fff"
-          style={styles.dot}
-        />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+      <View style={styles.headericonscontainer}>
+        <TouchableOpacity>
+          <ReportIcon
+            name="report-problem"
+            size={20}
+            color="#fff"
+            style={styles.report}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <DescriptionIcon
+            name="description"
+            size={20}
+            color="#fff"
+            style={styles.dot}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -123,7 +125,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 60,
     backgroundColor: '#b63439',
-    justifyContent: 'space-between',
   },
   backarrow: {
     marginLeft: 13,
@@ -132,10 +133,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
-    flex: 0.4,
+    marginLeft: 20,
+    flex: 1,
   },
   dot: {
-    marginRight: 10,
+    marginRight: 20,
   },
   detailview: {
     flexDirection: 'row',
@@ -193,6 +195,11 @@ const styles = StyleSheet.create({
   messageText: {
     fontSize: 16,
     color: '#fff',
+  },
+  headericonscontainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flex: 0.4,
   },
 });
 export default Inbox;

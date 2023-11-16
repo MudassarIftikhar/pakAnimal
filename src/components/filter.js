@@ -17,6 +17,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RangeSlider from './rangeSlider';
 import SelectCity from '../screens/appScreens/screensForPost/selectCity';
 import SelectedTags from './selectedTags';
+import {FilterCategory} from './filterCategory';
 
 const FilterHeader = props => {
   return (
@@ -125,20 +126,7 @@ const Filter = props => {
         <View style={styles.horizontolLine} />
         <SelectCity />
         <View style={styles.horizontolLine2} />
-
-        <TouchableOpacity style={styles.infoContainer}>
-          <View style={styles.iconBack}>
-            <LocationSvg height={30} width={240} />
-          </View>
-          <View flex={1} paddingStart={13}>
-            <Text style={styles.text1}>Categery</Text>
-          </View>
-          <MaterialIcons
-            name={'keyboard-arrow-down'}
-            size={30}
-            color={'#808080'}
-          />
-        </TouchableOpacity>
+        <FilterCategory />
         <View style={styles.horizontolLine2} />
 
         <View style={styles.RangePickerContainer}>
@@ -234,7 +222,6 @@ const styles2 = checked =>
       height: 45,
       borderRadius: 30,
       marginLeft: 22,
-
       borderWidth: checked ? 2 : 0,
       borderColor: checked ? '#b63439' : '',
     },
@@ -359,7 +346,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   flatlist: {
-    marginStart: 40,
+    // marginStart: 40,
   },
   namesofcolors: {
     alignItems: 'center',

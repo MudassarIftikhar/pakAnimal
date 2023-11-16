@@ -35,7 +35,7 @@ const More = ({navigation}) => {
         </View>
         <Text style={styles.lblText}>Personal</Text>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.listContainer}
           onPress={() => navigation.navigate('Cart')}>
           <CartSvg height={25} width={25} />
@@ -45,9 +45,9 @@ const More = ({navigation}) => {
             size={25}
             color="#808080"
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.listContainer}
           onPress={() => navigation.navigate('MyOrders')}>
           <LanguageSvg height={25} width={25} />
@@ -57,7 +57,7 @@ const More = ({navigation}) => {
             size={25}
             color="#808080"
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <TouchableOpacity
           style={styles.listContainer}
@@ -88,10 +88,10 @@ const More = ({navigation}) => {
           <Text style={styles.language}>English</Text>
         </View>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.listContainer}
           onPress={() => navigation.navigate('RecentActivity')}>
-          {/* <EvilIcons name="heart" size={25} color="#808080" /> */}
+           <EvilIcons name="heart" size={25} color="#808080" /> 
           <RecentActivity height={25} width={25} />
           <Text style={styles.listLblText}>Recent Activity</Text>
           <MaterialIcons
@@ -99,7 +99,7 @@ const More = ({navigation}) => {
             size={25}
             color="#808080"
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <Text style={styles.lblText}>Others</Text>
 

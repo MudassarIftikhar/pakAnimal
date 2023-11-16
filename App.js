@@ -5,17 +5,14 @@
  * @format
  */
 
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import {} from 'react-native';
 import Router from './src/router/index.js';
-// import SplashScreen from 'react-native-splash-screen';
-class App extends Component {
-  componentDidMount() {
-    // SplashScreen.hide();
-  }
-  render() {
-    return <Router />;
-  }
-}
+import SplashScreen from 'react-native-splash-screen';
 
-export default App;
+export default function App() {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+  return <Router />;
+}

@@ -144,7 +144,9 @@ const BrowsePost = (props, {navigation}) => {
             }}>
             <View style={styles.topview}>
               <Text style={styles.sortby}>Sort by</Text>
-              <Text style={styles.cancel}>cancel</Text>
+              <TouchableOpacity onPress={() => refRBSheet.current.close()}>
+                <Text style={styles.cancel}>cancel</Text>
+              </TouchableOpacity>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
               <RadioButton data={data} style={{padding: 20}} />
