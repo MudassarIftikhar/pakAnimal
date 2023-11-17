@@ -291,6 +291,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
+    flex: 0.3,
   },
   appButton2Container: {
     backgroundColor: '#b63439',
@@ -300,6 +301,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 20,
+    flex: 0.6,
   },
   appButtonText: {
     color: 'black',

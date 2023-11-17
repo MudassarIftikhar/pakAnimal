@@ -9,12 +9,15 @@ import {
 } from 'react-native';
 import NoSavedAds from '../assets/SVGIcon/NoSavedAds.svg';
 import NoActiveAds from '../assets/SVGIcon/NoActiveAds.svg';
+import NoSavedSearches from '../assets/SVGIcon/NoSavedSearches.svg';
 const NoDataFind = props => {
   return (
     <SafeAreaView>
       <View style={styles.noData}>
         {props.screen === 'Ads' ? (
           <NoSavedAds height={200} width={220} />
+        ) : props.screen === 'searches' ? (
+          <NoSavedSearches height={200} width={220} />
         ) : (
           <NoActiveAds height={160} width={220} />
         )}
@@ -35,7 +38,6 @@ const NoDataFind = props => {
 const styles = StyleSheet.create({
   noData: {
     alignItems: 'center',
-
     backgroundColor: '#fff',
   },
   txtNoAds: {

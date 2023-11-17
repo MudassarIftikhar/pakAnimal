@@ -21,7 +21,7 @@ import {Modal} from 'react-native-paper';
 import Cross from 'react-native-vector-icons/Feather';
 import axios from 'axios';
 import LostAndFoundCard from '../../components/lostAndFoundCard';
-import MapView from 'react-native-maps';
+// import MapView from 'react-native-maps';
 class Home extends Component {
   // const [modalVisible, setModalVisible] = useState(false);
   // const route = useRoute();
@@ -44,17 +44,17 @@ class Home extends Component {
     // console.log('Response>>>>', resp);
     // console.log('Data>>>>>', this.setState.data);
   }
-  handleButtonClick = () => {
-    return;
-    <MapView
-      initialRegion={{
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      }}
-    />;
-  };
+  // handleButtonClick = () => {
+  //   return;
+  //   <MapView
+  //     initialRegion={{
+  //       latitude: 37.78825,
+  //       longitude: -122.4324,
+  //       latitudeDelta: 0.0922,
+  //       longitudeDelta: 0.0421,
+  //     }}
+  //   />;
+  // };
   render() {
     const {customProp} = this.props.route.params?.customProp || false;
 
@@ -73,7 +73,8 @@ class Home extends Component {
 
             <TouchableOpacity
               style={styles.searchLocationContainer}
-              onPress={() => this.handleButtonClick()}>
+              // onPress={() => this.handleButtonClick()}
+            >
               <Ionicons name="location-sharp" size={15} color="#b63439" />
               <Text style={styles.locationTxt} numberOfLines={1}>
                 Faisalabad
@@ -95,7 +96,7 @@ class Home extends Component {
             </View>
             <Text style={styles.lbl1}>PakWild Welfare</Text>
 
-            <OferingCard />
+            <OferingCard navigation={this.navigation} />
             <LostAndFoundCard />
             {/* <FeatureList />            */}
 

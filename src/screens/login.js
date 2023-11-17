@@ -87,27 +87,36 @@ const Login = ({navigation}) => {
           </View>
         </View>
         <Text style={styles.lblWelcom}>Welcome to PakAnimals</Text>
-        <PagerView style={styles.pagerView} initialPage={0} ref={viewPagerRef}>
-          {images.map((item, index) => (
-            <View key={index} style={styles.page}>
-              <Image source={item.src} style={styles.image} />
-              <Text style={styles.textLable}>{item.label}</Text>
-
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <TouchableOpacity>
-                  <Icon name="left" size={30} />
-                </TouchableOpacity>
+        <View
+          style={{
+            flexDirection: 'row',
+          }}>
+          <TouchableOpacity style={{position: 'absolute', left: 15, top: 100}}>
+            <Icon name="left" size={30} />
+          </TouchableOpacity>
+          <PagerView
+            style={styles.pagerView}
+            initialPage={0}
+            ref={viewPagerRef}>
+            {images.map((item, index) => (
+              <View key={index} style={styles.page}>
                 <Image source={item.src} style={styles.image} />
-                <TouchableOpacity>
-                  <Icon name="right" size={30} />
-                </TouchableOpacity>
-              </View>
-              <Text style={styles.text}>{item.label}</Text>
 
-              <Text style={styles.text}>{item.text}</Text>
-            </View>
-          ))}
-        </PagerView>
+                <Text style={styles.text}>{item.label}</Text>
+
+                <Text style={styles.text}>{item.text}</Text>
+              </View>
+            ))}
+          </PagerView>
+          <TouchableOpacity
+            style={{
+              position: 'absolute',
+              right: 15,
+              top: 100,
+            }}>
+            <Icon name="right" size={30} />
+          </TouchableOpacity>
+        </View>
         <View style={styleIndicator().indicatorBox}>
           {images.map((items, index) => {
             return (
