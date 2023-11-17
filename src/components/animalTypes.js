@@ -6,6 +6,7 @@ import {
   View,
   FlatList,
   Image,
+  Dimensions,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -16,6 +17,8 @@ import RBSheet from 'react-native-raw-bottom-sheet';
 const AnimalTypes = props => {
   const [animalType, setAnimalType] = useState('Pet');
   const refRBSheet = useRef();
+  const refRBSheet2 = useRef();
+  const screenHeight = Dimensions.get('window').height;
   const petList = [
     {
       imag: require('../assets/SVGIcon/Dogs.svg'),
@@ -83,7 +86,7 @@ const AnimalTypes = props => {
           ref={refRBSheet}
           closeOnDragDown={true}
           closeOnPressMask={true}
-          height={600}
+          height={screenHeight}
           customStyles={{
             draggableIcon: {
               backgroundColor: '#FFFFFF',
@@ -105,8 +108,9 @@ const AnimalTypes = props => {
                   <TouchableOpacity
                     style={styles.colornname}
                     onPress={() => {
-                      setAnimalType(item.name);
-                      refRBSheet.current.close();
+                      refRBSheet2.current.open();
+                      // setAnimalType(item.name);
+                      // refRBSheet.current.close();
                     }}>
                     <View style={styles.colorandnameview}>
                       <Image source={item.imag} style={styles.colorimage} />
@@ -119,7 +123,47 @@ const AnimalTypes = props => {
           </View>
         </RBSheet>
       </View>
-
+      <View>
+        <RBSheet
+          ref={refRBSheet2}
+          closeOnDragDown={true}
+          closeOnPressMask={true}
+          height={screenHeight}
+          customStyles={{
+            draggableIcon: {
+              backgroundColor: '#FFFFFF',
+            },
+          }}>
+          <View style={styles.Container}>
+            <View style={styles.sheettopcontent}>
+              <Text style={styles.bodycolor}>Animal Types</Text>
+              <TouchableOpacity onPress={() => refRBSheet2.current.close()}>
+                <Text style={styles.cancel}>Cancel</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.flatlist}>
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                data={props.type === 'Farm Animal' ? farmList : petList}
+                horizontal={false}
+                renderItem={({item}) => (
+                  <TouchableOpacity
+                    style={styles.colornname}
+                    onPress={() => {
+                      // setAnimalType(item.name);
+                      // refRBSheet2.current.close();
+                    }}>
+                    <View style={styles.colorandnameview}>
+                      <Image source={item.imag} style={styles.colorimage} />
+                      <Text style={styles.namesofcolors}>{item.name}</Text>
+                    </View>
+                  </TouchableOpacity>
+                )}
+              />
+            </View>
+          </View>
+        </RBSheet>
+      </View>
       <TouchableOpacity
         style={styles.infoContainer}
         onPress={() => {

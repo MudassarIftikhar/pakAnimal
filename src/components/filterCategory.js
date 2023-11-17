@@ -101,14 +101,18 @@ export const FilterCategory = () => {
 
           {petList.map(item => (
             <View style={{height: 40}}>
-              <Text style={styles.petlistnames}>{item.name}</Text>
+              <TouchableOpacity onPress={() => refRBSheet.current.close()}>
+                <Text style={styles.petlistnames}>{item.name}</Text>
+              </TouchableOpacity>
               <View style={styles.petlistline} />
             </View>
           ))}
           <Text style={styles.pettext}>Farm Animal</Text>
           {farmList.map(item => (
             <View style={{height: 40}}>
-              <Text style={styles.petlistnames}>{item.name}</Text>
+              <TouchableOpacity>
+                <Text style={styles.petlistnames}>{item.name}</Text>
+              </TouchableOpacity>
               <View style={styles.petlistline} />
             </View>
           ))}
