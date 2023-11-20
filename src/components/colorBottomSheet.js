@@ -180,6 +180,7 @@ const styles = StyleSheet.create({
   },
   flatlist: {
     padding: 35,
+    marginBottom: 30,
   },
 });
 export default ColorBottomSheet;

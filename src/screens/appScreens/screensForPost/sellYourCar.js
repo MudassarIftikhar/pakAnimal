@@ -19,7 +19,7 @@ const SellYourCar = props => {
   useFocusEffect(
     React.useCallback(() => {
       const onBackPress = () => {
-        this.props.navigation.goBack();
+        props.navigation.goBack();
         return true;
       };
 
