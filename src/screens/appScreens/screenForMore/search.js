@@ -16,7 +16,7 @@ const Search = ({navigation}) => {
       title1="No Searches Saved"
       title2="Tab the heart on a listing to save the Searches here."
       Button={true}
-      screen="Ads"
+      screen="searches"
     />
   );
 };

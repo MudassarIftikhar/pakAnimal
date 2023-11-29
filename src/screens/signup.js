@@ -16,10 +16,11 @@ import auth from '@react-native-firebase/auth';
 const SignUp = ({navigation}) => {
   const [state, setState] = useState(true);
   const [state2, setState2] = useState(true);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  // const [email, setEmail] = useState('mudassar12@gmail.com');
+  // const [password, setPassword] = useState('12345678');
+  // const [fullName, setFullName] = useState('Mudassar Iftikhar');
+  // const [confirmPassword, setConfirmPassword] = useState('12345678');
+  const [info, setInfo] = useState({});
   const createUser = () => {
     // auth()
     //   .createUserWithEmailAndPassword(email, password)
@@ -37,23 +38,23 @@ const SignUp = ({navigation}) => {
     //   });
 
     if (
-      email !== '' &&
-      fullName !== '' &&
-      password !== '' &&
-      confirmPassword !== ''
+      info &&
+      info.email !== '' &&
+      info.fullName !== '' &&
+      info.password !== ''
     ) {
-      if (password.length >= 8 && password === confirmPassword) {
-        services
-          .userRegistration(email, fullName, password)
-          .then(res => {
-            alert('Successfully Registered');
-          })
-          .catch(err => {
-            console.log('error.....', JSON.stringify(err));
-          });
-      } else {
-        alert('Please enter valid Password');
-      }
+      // if (password.length >= 8 && password === confirmPassword) {
+      services
+        .userRegistration(info)
+        .then(res => {
+          alert('Successfully Registered');
+        })
+        .catch(err => {
+          console.log('error.....', JSON.stringify(err));
+        });
+      // } else {
+      //   alert('Please enter valid Password');
+      // }
     } else {
       alert('All fields are required');
     }
@@ -72,16 +73,16 @@ const SignUp = ({navigation}) => {
           style={styles.textInputStyle}
           placeholderTextColor={'#000'}
           placeholder="username@email.com"
-          value={email}
-          onChangeText={text => setEmail(text)}
+          value={info.email}
+          onChangeText={text => setInfo({...info, email: text})}
         />
         <Text style={styles.lable}>Full Name</Text>
         <TextInput
           style={styles.textInputStyle}
           placeholderTextColor={'#000'}
           placeholder="Enter your full name here"
-          value={fullName}
-          onChangeText={text => setFullName(text)}
+          value={info.firstName}
+          onChangeText={text => setInfo({...info, firstName: text})}
         />
         <Text style={styles.lable}>Password</Text>
         <View>
@@ -90,11 +91,11 @@ const SignUp = ({navigation}) => {
             placeholderTextColor={'#000'}
             placeholder="set a new passsword"
             secureTextEntry={state}
-            autoCompleteType="password"
+            // autoCompleteType="password"
             autoCapitalize="none"
             autoCorrect={false}
-            value={password}
-            onChangeText={text => setPassword(text)}
+            value={info.password}
+            onChangeText={text => setInfo({...info, password: text})}
           />
           <TouchableOpacity
             activeOpacity={0.8}
@@ -121,8 +122,8 @@ const SignUp = ({navigation}) => {
             autoCompleteType="password"
             autoCapitalize="none"
             autoCorrect={false}
-            value={confirmPassword}
-            onChangeText={text => setConfirmPassword(text)}
+            // value={confirmPassword}
+            // onChangeText={text => setConfirmPassword(text)}
           />
           <TouchableOpacity
             activeOpacity={0.8}
@@ -138,7 +139,7 @@ const SignUp = ({navigation}) => {
             />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={() => createUser()}>
+        <TouchableOpacity style={styles.btnBox} onPress={() => createUser()}>
           <Text style={styles.btnSignup}>Sign Up</Text>
         </TouchableOpacity>
         <View style={styles.haveAccContainer}>
@@ -186,14 +187,18 @@ const styles = StyleSheet.create({
     color: '#808080',
     marginTop: 15,
   },
-  btnSignup: {
-    backgroundColor: '#00AEEF',
-    color: '#fff',
+  btnBox: {
+    backgroundColor: '#b63439',
     height: 40,
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 3,
+  },
+  btnSignup: {
+    color: '#fff',
     fontSize: 18,
     textAlign: 'center',
-    textAlignVertical: 'center',
-    marginTop: 20,
     fontWeight: '600',
   },
   lblAlreadyAcc: {

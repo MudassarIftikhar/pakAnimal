@@ -93,7 +93,7 @@ const Login = ({navigation}) => {
               <Image source={item.src} style={styles.image} />
               <Text style={styles.textLable}>{item.label}</Text>
 
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              {/* <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <TouchableOpacity>
                   <Icon name="left" size={30} />
                 </TouchableOpacity>
@@ -101,7 +101,7 @@ const Login = ({navigation}) => {
                 <TouchableOpacity>
                   <Icon name="right" size={30} />
                 </TouchableOpacity>
-              </View>
+              </View> */}
               <Text style={styles.text}>{item.label}</Text>
 
               <Text style={styles.text}>{item.text}</Text>

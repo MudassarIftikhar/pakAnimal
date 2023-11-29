@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Switch,
@@ -24,6 +24,7 @@ import VaccinatedSvg from '../assets/SVGIcon/Vaccination.svg';
 import Age from '../assets/SVGIcon/Age.svg';
 import ColorBottomSheet from './colorBottomSheet';
 import AnimalTypes from './animalTypes';
+import {services} from '../utils/api/services';
 
 const BreedingPostInfo = props => {
   const [open1, setOpen1] = useState(false);
@@ -31,6 +32,8 @@ const BreedingPostInfo = props => {
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
   const [open5, setOpen5] = useState(false);
+  const [info, setInfo] = useState({email: 'Mudassar12@gmail.com'});
+  const [userName, setUserName] = useState('');
   const [valueGender, setValueGender] = useState('Male');
   const [valueTraining, setValueTraining] = useState('No Training');
   const [valueVaccinated, setValueVaccinated] = useState('No Vaccinated');
@@ -55,6 +58,17 @@ const BreedingPostInfo = props => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   // console.log('Post>>>>', props.type);
+
+  useEffect(() => {
+    services
+      .singleUser(info)
+      .then(res => {
+        setUserName(res.firstName);
+      })
+      .catch(err => {
+        console.log('error.....', JSON.stringify(err));
+      });
+  }, [userName]);
   return (
     <View>
       {/* Info List */}
@@ -266,7 +280,9 @@ const BreedingPostInfo = props => {
         </View>
         <View flex={1} paddingStart={13}>
           <Text style={styles.text1}>Name</Text>
-          <Text style={styles.text2}>Enter your name</Text>
+          <Text style={styles.text2}>
+            {userName ? userName : 'Enter your name'}
+          </Text>
         </View>
       </View>
       <View style={styles.horizontolLine2} />

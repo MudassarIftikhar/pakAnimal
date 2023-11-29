@@ -12,32 +12,45 @@ import {
 import Cross from 'react-native-vector-icons/Feather';
 import auth from '@react-native-firebase/auth';
 import SignUp from './signup';
+import {services} from '../utils/api/services';
 const EmailLogin = ({navigation}) => {
   const [state, setState] = useState(true);
-  const [email, setEmail] = useState('mudassar12@gmail.com');
-  const [password, setPassword] = useState('123456');
+  const [email, setEmail] = useState('Mudassar12@gmail.com');
+  const [password, setPassword] = useState('12345678');
+  const [info, setInfo] = useState({});
   const signinUser = () => {
-    if (email !== '' && password !== '') {
-      auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(() => {
+    if (info && info.email !== '' && info.password !== '') {
+      services
+        .userLogin(info)
+        .then(res => {
+          Alert.alert('Successfully Login!!!');
           navigation.navigate('HomeActivity');
-          console.log('User account signed in!');
         })
-        .catch(error => {
-          if (error.code === 'auth/email-already-in-use') {
-            console.log('That email address is already in use!');
-          }
-
-          if (error.code === 'auth/invalid-email') {
-            console.log('That email address is invalid!');
-          }
-
-          console.error(error);
+        .catch(err => {
+          console.log('error.....', JSON.stringify(err));
         });
-    } else {
-      Alert.alert('Please put the right information');
     }
+    // if (email !== '' && password !== '') {
+    //   auth()
+    //     .signInWithEmailAndPassword(email, password)
+    //     .then(() => {
+    //       navigation.navigate('HomeActivity');
+    //       console.log('User account signed in!');
+    //     })
+    //     .catch(error => {
+    //       if (error.code === 'auth/email-already-in-use') {
+    //         console.log('That email address is already in use!');
+    //       }
+
+    //       if (error.code === 'auth/invalid-email') {
+    //         console.log('That email address is invalid!');
+    //       }
+
+    //       console.error(error);
+    //     });
+    // } else {
+    //   Alert.alert('Please put the right information');
+    // }
   };
   return (
     <SafeAreaView>
@@ -53,8 +66,8 @@ const EmailLogin = ({navigation}) => {
           style={styles.textInputStyle}
           placeholderTextColor={'#000'}
           placeholder="username@email.com"
-          value={email}
-          onChangeText={text => setEmail(text)}
+          value={info.email}
+          onChangeText={text => setInfo({...info, email: text})}
         />
 
         <Text style={styles.lable}>Password</Text>
@@ -67,8 +80,8 @@ const EmailLogin = ({navigation}) => {
             autoCompleteType="password"
             autoCapitalize="none"
             autoCorrect={false}
-            value={password}
-            onChangeText={text => setPassword(text)}
+            value={info.password}
+            onChangeText={text => setInfo({...info, password: text})}
           />
 
           <TouchableOpacity
@@ -130,17 +143,17 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   btnBox: {
-    backgroundColor: '#00AEEF',
+    backgroundColor: '#b63439',
     height: 40,
     marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 3,
   },
   btnSignup: {
     color: '#fff',
     fontSize: 18,
     textAlign: 'center',
-
     fontWeight: '600',
   },
   lblAlreadyAcc: {
