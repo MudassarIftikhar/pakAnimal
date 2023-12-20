@@ -87,22 +87,6 @@ const Login = ({navigation}) => {
           </View>
         </View>
         <Text style={styles.lblWelcom}>Welcome to PakAnimals</Text>
-<<<<<<< HEAD
-        <View
-          style={{
-            flexDirection: 'row',
-          }}>
-          <TouchableOpacity style={{position: 'absolute', left: 15, top: 100}}>
-            <Icon name="left" size={30} />
-          </TouchableOpacity>
-          <PagerView
-            style={styles.pagerView}
-            initialPage={0}
-            ref={viewPagerRef}>
-            {images.map((item, index) => (
-              <View key={index} style={styles.page}>
-                <Image source={item.src} style={styles.image} />
-=======
         <PagerView style={styles.pagerView} initialPage={0} ref={viewPagerRef}>
           {images.map((item, index) => (
             <View key={index} style={styles.page}>
@@ -118,16 +102,14 @@ const Login = ({navigation}) => {
                   <Icon name="right" size={30} />
                 </TouchableOpacity>
               </View> */}
+
               <Text style={styles.text}>{item.label}</Text>
->>>>>>> 49b1450a76804441d090b229ccdf469ec538a657
 
-                <Text style={styles.text}>{item.label}</Text>
-
-                <Text style={styles.text}>{item.text}</Text>
-              </View>
-            ))}
-          </PagerView>
-          <TouchableOpacity
+              <Text style={styles.text}>{item.text}</Text>
+            </View>
+          ))}
+        </PagerView>
+        {/* <TouchableOpacity
             style={{
               position: 'absolute',
               right: 15,
@@ -135,7 +117,7 @@ const Login = ({navigation}) => {
             }}>
             <Icon name="right" size={30} />
           </TouchableOpacity>
-        </View>
+        </View> */}
         <View style={styleIndicator().indicatorBox}>
           {images.map((items, index) => {
             return (

@@ -21,6 +21,7 @@ import {Modal} from 'react-native-paper';
 import Cross from 'react-native-vector-icons/Feather';
 import axios from 'axios';
 import LostAndFoundCard from '../../components/lostAndFoundCard';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import MapView from 'react-native-maps';
 class Home extends Component {
   // const [modalVisible, setModalVisible] = useState(false);
@@ -37,6 +38,7 @@ class Home extends Component {
   componentDidMount() {
     // this.getApiData();
   }
+
   async getApiData() {
     // let resp = await axios.get(
     //   'https://www.dailyfaceoff.com/_next/data/QCbC4gwcIQPVQ4S4akU2O/teams/vancouver-canucks/line-combinations.json?slug=vancouver-canucks',

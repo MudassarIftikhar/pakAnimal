@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Alert,
   Image,
@@ -13,18 +13,24 @@ import Cross from 'react-native-vector-icons/Feather';
 import auth from '@react-native-firebase/auth';
 import SignUp from './signup';
 import {services} from '../utils/api/services';
+import {useAuth} from '../context/auth.context';
+
 const EmailLogin = ({navigation}) => {
   const [state, setState] = useState(true);
-  const [email, setEmail] = useState('Mudassar12@gmail.com');
-  const [password, setPassword] = useState('12345678');
+  const {user, isLoading, signOut, setUser} = useAuth();
+
+  // const [email, setEmail] = useState('Mudassar12@gmail.com');
+  // const [password, setPassword] = useState('12345678');
+  console.log('UserState>>>', isLoading);
   const [info, setInfo] = useState({});
   const signinUser = () => {
     if (info && info.email !== '' && info.password !== '') {
       services
         .userLogin(info)
         .then(res => {
+          setUser(res);
           Alert.alert('Successfully Login!!!');
-          navigation.navigate('HomeActivity');
+          navigation.navigate('MoreTab');
         })
         .catch(err => {
           console.log('error.....', JSON.stringify(err));
@@ -52,6 +58,7 @@ const EmailLogin = ({navigation}) => {
     //   Alert.alert('Please put the right information');
     // }
   };
+
   return (
     <SafeAreaView>
       <TouchableOpacity
@@ -100,7 +107,11 @@ const EmailLogin = ({navigation}) => {
         </View>
 
         <Text style={styles.txtForgotPassword}>Forgot Password?</Text>
-        <TouchableOpacity style={styles.btnBox} onPress={() => signinUser()}>
+        <TouchableOpacity
+          style={styles.btnBox}
+          onPress={() => {
+            signinUser();
+          }}>
           <Text style={styles.btnSignup}>Sign in</Text>
         </TouchableOpacity>
 

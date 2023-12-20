@@ -18,6 +18,9 @@ import RangeSlider from './rangeSlider';
 import SelectCity from '../screens/appScreens/screensForPost/selectCity';
 import SelectedTags from './selectedTags';
 import {FilterCategory} from './filterCategory';
+import auth from '@react-native-firebase/auth';
+import {services} from '../utils/api/services';
+import {Axios} from 'axios';
 
 const FilterHeader = props => {
   return (
@@ -112,6 +115,7 @@ const Filter = props => {
       }
     }
   };
+  handleGetAnimal = async () => {};
 
   return (
     <View flex={1} backgroundColor={'#fff'}>

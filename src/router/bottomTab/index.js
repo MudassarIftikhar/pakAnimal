@@ -8,9 +8,22 @@ import MoreTab from '../moreTab';
 import PostAdd from '../postAdd';
 import BrowsePost from '../../screens/browsePost';
 import MyAds from '../../screens/appScreens/myAds/myAds';
+import {useAuth} from '../../context/auth.context';
+import Login from '../../screens/login';
 const Tab = createBottomTabNavigator();
 const BottomTab = ({navigation}) => {
   const [show, setShow] = useState('false');
+  const {user, isLoading, signOut, setUser} = useAuth();
+
+  const openchat = () => {
+    if (isLoading) {
+      console.log('logged in ');
+      navigation.navigate('Chat');
+    } else {
+      console.log('Not logged in ');
+      return navigation.navigate('Login');
+    }
+  };
 
   const myAdsOutline = require('../../assets/images/MyAdsOutline.png'); //My Ads Outline-01-01
   const myAdsFill = require('../../assets/images/MyAdsFill.png');
@@ -23,6 +36,8 @@ const BottomTab = ({navigation}) => {
 
   const moreFill = require('../../assets/images/MoreFill.png');
   const moreOutline = require('../../assets/images/MoreOutline.png');
+  const chatScreen = isLoading ? Chat : Login;
+  const sellNow = isLoading ? PostAdd : Login;
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -93,12 +108,12 @@ const BottomTab = ({navigation}) => {
           tabBarIcon: tabBarPlusBtn,
         }}
         name="PostAdd" //"PostAdd"
-        component={PostAdd}
+        component={sellNow}
       />
 
       <Tab.Screen
         name="Chat"
-        component={Chat}
+        component={chatScreen}
         options={{
           headerShown: false,
           title: '',

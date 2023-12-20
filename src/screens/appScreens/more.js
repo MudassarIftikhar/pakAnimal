@@ -16,7 +16,16 @@ import LogOutSvg from '../../assets/SVGIcon/Logout.svg';
 import Contactus from '../../assets/SVGIcon/Contactus.svg';
 import CartSvg from '../../assets/SVGIcon/Cart.svg';
 import RecentActivity from '../../assets/SVGIcon/RecentActivity.svg';
+import {useAuth} from '../../context/auth.context';
 const More = ({navigation}) => {
+  const {isLoading, signOut} = useAuth();
+  const handlesignOut = () => {
+    if (isLoading) {
+      return signOut(), navigation.navigate('Login');
+    } else {
+      console.warn('you are already logged out');
+    }
+  };
   return (
     <ScrollView>
       <SafeAreaView>
@@ -133,9 +142,7 @@ const More = ({navigation}) => {
           />
         </View>
 
-        <TouchableOpacity
-          style={styles.listContainer}
-          onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity style={styles.listContainer} onPress={handlesignOut}>
           <LogOutSvg height={25} width={25} />
           <Text style={styles.listLblText}>Logout</Text>
         </TouchableOpacity>

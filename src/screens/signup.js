@@ -1,5 +1,11 @@
 /* eslint-disable no-alert */
-import React, {useState} from 'react';
+import React, {
+  useState,
+  useEffect,
+  createContext,
+  useContext,
+  useReducer,
+} from 'react';
 import {services} from '../utils/api/services';
 import {
   Image,
@@ -12,31 +18,19 @@ import {
 } from 'react-native';
 import Cross from 'react-native-vector-icons/Feather';
 import auth from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUp = ({navigation}) => {
   const [state, setState] = useState(true);
   const [state2, setState2] = useState(true);
+
   // const [email, setEmail] = useState('mudassar12@gmail.com');
   // const [password, setPassword] = useState('12345678');
   // const [fullName, setFullName] = useState('Mudassar Iftikhar');
   // const [confirmPassword, setConfirmPassword] = useState('12345678');
   const [info, setInfo] = useState({});
-  const createUser = () => {
-    // auth()
-    //   .createUserWithEmailAndPassword(email, password)
-    //   .then(() => {
-    //     console.log('User account created & signed in!');
-    //   })
-    //   .catch(error => {
-    //     if (error.code === 'auth/email-already-in-use') {
-    //       console.log('That email address is already in use!');
-    //     }
-    //     if (error.code === 'auth/invalid-email') {
-    //       console.log('That email address is invalid!');
-    //     }
-    //     console.error(error);
-    //   });
 
+  const createUser = () => {
     if (
       info &&
       info.email !== '' &&
@@ -48,6 +42,8 @@ const SignUp = ({navigation}) => {
         .userRegistration(info)
         .then(res => {
           alert('Successfully Registered');
+          // AsyncStorage.setItem('@auth', JSON.stringify(res));
+          setInfo({});
         })
         .catch(err => {
           console.log('error.....', JSON.stringify(err));
@@ -59,6 +55,7 @@ const SignUp = ({navigation}) => {
       alert('All fields are required');
     }
   };
+
   return (
     <SafeAreaView>
       <TouchableOpacity

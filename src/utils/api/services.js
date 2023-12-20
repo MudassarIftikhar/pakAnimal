@@ -1,5 +1,5 @@
 import axios from 'axios';
-const url = 'http://192.168.1.10:3000/api';
+const url = 'http://192.168.1.14:3000/api';
 // const url = "http://172.105.159.234:3000/api";
 
 const config = {
