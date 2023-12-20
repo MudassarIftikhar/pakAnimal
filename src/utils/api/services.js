@@ -1,5 +1,5 @@
 import axios from 'axios';
-const url = 'http://192.168.1.16:3000/api';
+const url = 'http://192.168.1.10:3000/api';
 // const url = "http://172.105.159.234:3000/api";
 
 const config = {
@@ -15,14 +15,28 @@ class Services {
   //     config.headers.Authorization = payload.token;
   //     return "token";
   //   }
-  //   async userLogin(payload) {
-  //     console.log("DATA.....", payload);
-  //     const { data } = await axios.post("/user/login", payload, config);
-  //     console.log("DATA.....", data);
-  //     return data;
-  //   }
+  async userLogin(payload) {
+    console.log('DATA.....', payload);
+    const {data} = await axios.post('/user/login', payload, config);
+    console.log('DATA.....', data);
+    return data;
+  }
   async userRegistration(payload) {
+    // const payload = {email, fullName, password};
     const {data} = await axios.post('/user/register', payload, config);
+    console.log('UserData>>>>', payload);
+    return data;
+  }
+
+  async singleUser(payload) {
+    console.log('Email>>>>', payload);
+    const {data} = await axios.post('/user/singleUser', payload, config);
+    console.log('email.....', data);
+    return data;
+  }
+
+  async adPost(payload) {
+    const {data} = await axios.post('/products', payload, config);
     return data;
   }
 

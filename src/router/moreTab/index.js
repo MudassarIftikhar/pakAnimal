@@ -9,6 +9,7 @@ import SavedTab from '../savedTab';
 import Saved from '../../screens/appScreens/screenForMore/saved';
 import MyProfile from '../../screens/appScreens/screenForMore/myProfile';
 import RecentActivity from '../../screens/appScreens/screenForMore/recenetAcitivity';
+import Login from '../../screens/login';
 const Stack = createNativeStackNavigator();
 const MoreTab = props => {
   return (
@@ -23,6 +24,7 @@ const MoreTab = props => {
       <Stack.Screen name="Cart" component={Cart} />
       <Stack.Screen name="MyOrders" component={MyOrders} />
       <Stack.Screen name="RecentActivity" component={RecentActivity} />
+      <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
   );
 };

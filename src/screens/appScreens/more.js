@@ -133,10 +133,12 @@ const More = ({navigation}) => {
           />
         </View>
 
-        <View style={styles.listContainer}>
+        <TouchableOpacity
+          style={styles.listContainer}
+          onPress={() => navigation.navigate('Login')}>
           <LogOutSvg height={25} width={25} />
           <Text style={styles.listLblText}>Logout</Text>
-        </View>
+        </TouchableOpacity>
       </SafeAreaView>
     </ScrollView>
   );
